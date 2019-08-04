@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:MCB19-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -485,15 +485,13 @@ $Comp
 L Device:R_Small R408
 U 1 1 5D4B9662
 P 6900 3750
-F 0 "R408" V 6975 3750 50  0000 C CNN
-F 1 "1k5" V 7050 3750 50  0000 C CNN
+F 0 "R408" V 6825 3750 50  0000 C CNN
+F 1 "1k5" V 6750 3750 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6900 3750 50  0001 C CNN
 F 3 "~" H 6900 3750 50  0001 C CNN
 	1    6900 3750
-	0    1    1    0   
+	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	7000 3750 7125 3750
 Wire Wire Line
 	6300 4250 6100 4250
 Wire Wire Line
@@ -568,9 +566,6 @@ Wire Wire Line
 	6350 3750 6350 3775
 Wire Wire Line
 	4950 3750 6350 3750
-Wire Wire Line
-	6350 3750 6800 3750
-Connection ~ 6350 3750
 $Comp
 L power:GND #PWR0101
 U 1 1 5D4E7F0C
@@ -636,4 +631,9 @@ Wire Wire Line
 Wire Wire Line
 	6025 5725 5800 5725
 Connection ~ 5800 5725
+Wire Wire Line
+	7125 3750 7000 3750
+Wire Wire Line
+	6800 3750 6350 3750
+Connection ~ 6350 3750
 $EndSCHEMATC

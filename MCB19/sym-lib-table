@@ -4,4 +4,5 @@
   (lib (name MAB19-rescue)(type Legacy)(uri ${KIPRJMOD}/MAB19-rescue.lib)(options "")(descr ""))
   (lib (name MAM19-rescue)(type Legacy)(uri ${KIPRJMOD}/MAM19-rescue.lib)(options "")(descr ""))
   (lib (name INA211BIDCKR)(type Legacy)(uri C:/Users/Aluno/Desktop/MCB19/Lib/INA211BIDCKR.lib)(options "")(descr ""))
+  (lib (name MCB19-rescue)(type Legacy)(uri ${KIPRJMOD}/MCB19-rescue.lib)(options "")(descr ""))
 )

@@ -1,4 +1,4 @@
-15794016995764445
+15797163440684445
 Aquilles
 Fuse_Holder_5x20
 
@@ -47880,6 +47880,13 @@ solder jumper open
 5
 3
 KicadZeniteSolarLibrary18
+CP_Radial_D35.0mm_P12.5mm_SnapIn
+CP, Radial series, Radial, pin pitch=10.00mm, , diameter=35mm, Electrolytic Capacitor, , http://www.vishay.com/docs/28342/058059pll-si.pdf
+CP Radial series Radial pin pitch 10.00mm  diameter 35mm Electrolytic Capacitor
+0
+2
+2
+KicadZeniteSolarLibrary18
 Fuse_Holder_5x20
 
 Zenite Solar Library 2018
@@ -47897,6 +47904,13 @@ KicadZeniteSolarLibrary18
 TO-220-3_Horizontal_TabDown_SMD
 TO-220-3, Horizontal, RM 2.54mm, see https://www.vishay.com/docs/66542/to-220-1.pdf
 TO-220-3 Horizontal RM 2.54mm
+0
+4
+3
+KicadZeniteSolarLibrary18
+TO-247-3_Horizontal_TabDown_SMD
+TO-247-3, Horizontal, RM 5.45mm, see https://toshiba.semicon-storage.com/us/product/mosfet/to-247-4l.html
+TO-247-3 Horizontal RM 5.45mm
 0
 4
 3
