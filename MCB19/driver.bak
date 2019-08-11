@@ -40,28 +40,6 @@ Wire Wire Line
 	3650 2300 3850 2300
 Wire Wire Line
 	3850 2300 3850 2650
-$Comp
-L Device:Q_NMOS_GDS Q601
-U 1 1 5D42B3E2
-P 5175 2550
-F 0 "Q601" H 5380 2596 50  0000 L CNN
-F 1 "IRFP260N" H 5380 2505 50  0000 L CNN
-F 2 "KicadZeniteSolarLibrary18:TO-247-3_Horizontal_TabDown_SMD" H 5375 2650 50  0001 C CNN
-F 3 "~" H 5175 2550 50  0001 C CNN
-	1    5175 2550
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:Q_NMOS_GDS Q602
-U 1 1 5D42B435
-P 5175 3000
-F 0 "Q602" H 5380 3046 50  0000 L CNN
-F 1 "IRFP260N" H 5380 2955 50  0000 L CNN
-F 2 "KicadZeniteSolarLibrary18:TO-247-3_Horizontal_TabDown_SMD" H 5375 3100 50  0001 C CNN
-F 3 "~" H 5175 3000 50  0001 C CNN
-	1    5175 3000
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5275 2750 5275 2775
 Wire Wire Line
@@ -85,7 +63,7 @@ F 3 "~" H 5850 2775 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	5275 2775 5700 2775
+	5275 2775 5375 2775
 Connection ~ 5275 2775
 Wire Wire Line
 	5275 2775 5275 2800
@@ -202,42 +180,18 @@ Wire Wire Line
 Text HLabel 7250 2325 2    50   Output ~ 0
 IRALLL
 $Comp
-L MCB19-rescue:LM5104MNOPB-INA211BIDCKR U601
-U 1 1 5D437554
-P 2375 3850
-F 0 "U601" H 2625 4015 50  0000 C CNN
-F 1 "LM5104MNOPB" H 2625 3924 50  0000 C CNN
-F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 2375 3850 50  0001 C CNN
-F 3 "" H 2375 3850 50  0001 C CNN
-	1    2375 3850
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+5V #PWR0109
 U 1 1 5D438678
-P 2225 3850
-F 0 "#PWR0109" H 2225 3700 50  0001 C CNN
-F 1 "+5V" H 2240 4023 50  0000 C CNN
-F 2 "" H 2225 3850 50  0001 C CNN
-F 3 "" H 2225 3850 50  0001 C CNN
-	1    2225 3850
+P 2250 2925
+F 0 "#PWR0109" H 2250 2775 50  0001 C CNN
+F 1 "+5V" H 2265 3098 50  0000 C CNN
+F 2 "" H 2250 2925 50  0001 C CNN
+F 3 "" H 2250 2925 50  0001 C CNN
+	1    2250 2925
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2275 3900 2225 3900
-Wire Wire Line
-	2225 3900 2225 3850
-$Comp
-L power:GND #PWR0108
-U 1 1 5D438BD1
-P 3025 4475
-F 0 "#PWR0108" H 3025 4225 50  0001 C CNN
-F 1 "GND" H 3030 4302 50  0000 C CNN
-F 2 "" H 3025 4475 50  0001 C CNN
-F 3 "" H 3025 4475 50  0001 C CNN
-	1    3025 4475
-	1    0    0    -1  
-$EndComp
+	2275 3900 2250 3900
 Wire Wire Line
 	2975 4000 3025 4000
 Text HLabel 3075 4100 2    50   Output ~ 0
@@ -255,9 +209,6 @@ F 3 "http://www.vishay.com/docs/85557/ll4148.pdf" H 2025 3900 50  0001 C CNN
 	1    2025 3900
 	1    0    0    1   
 $EndComp
-Wire Wire Line
-	2225 3900 2175 3900
-Connection ~ 2225 3900
 Wire Wire Line
 	1875 3900 1825 3900
 Wire Wire Line
@@ -281,9 +232,6 @@ Wire Wire Line
 	3025 4000 3025 4450
 Wire Wire Line
 	2975 4450 3025 4450
-Connection ~ 3025 4450
-Wire Wire Line
-	3025 4450 3025 4475
 $Comp
 L Device:C_Small C601
 U 1 1 5D43FC3D
@@ -296,8 +244,6 @@ F 3 "~" H 1825 4100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 1825 4000
-Wire Wire Line
-	1825 4200 2200 4200
 $Comp
 L Device:R_Small R602
 U 1 1 5D440BE6
@@ -321,10 +267,6 @@ F 3 "~" H 3700 4725 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	2275 4100 2250 4100
-Wire Wire Line
-	2250 4100 2250 4725
-Wire Wire Line
 	2975 3900 3550 3900
 $Comp
 L Diode:LL4148 D603
@@ -337,8 +279,6 @@ F 3 "http://www.vishay.com/docs/85557/ll4148.pdf" H 3725 4625 50  0001 C CNN
 	1    3725 4625
 	1    0    0    1   
 $EndComp
-Wire Wire Line
-	2250 4725 3550 4725
 $Comp
 L Diode:LL4148 D602
 U 1 1 5D444E94
@@ -418,7 +358,7 @@ $EndComp
 Wire Wire Line
 	4075 4375 4075 4400
 Wire Wire Line
-	4075 4400 4600 4400
+	4075 4400 4300 4400
 Wire Wire Line
 	4600 4400 4600 4250
 Wire Wire Line
@@ -426,18 +366,6 @@ Wire Wire Line
 Wire Wire Line
 	4600 3900 4075 3900
 Connection ~ 4075 3900
-Wire Wire Line
-	2200 4200 2200 4775
-Wire Wire Line
-	2200 4775 3500 4775
-Wire Wire Line
-	3500 4775 3500 4400
-Wire Wire Line
-	3500 4400 4075 4400
-Connection ~ 2200 4200
-Wire Wire Line
-	2200 4200 2275 4200
-Connection ~ 4075 4400
 Connection ~ 3900 3900
 $Comp
 L Device:D_Zener_Small DZ603
@@ -481,27 +409,13 @@ $EndComp
 Wire Wire Line
 	4075 5200 4075 5225
 Wire Wire Line
-	4075 5225 4600 5225
-Wire Wire Line
 	4600 5225 4600 5075
 Wire Wire Line
 	4600 4875 4600 4725
 Wire Wire Line
 	4600 4725 4075 4725
 Connection ~ 4075 4725
-Connection ~ 4075 5225
-Wire Wire Line
-	3025 4450 3100 4450
-Wire Wire Line
-	3100 4450 3100 5225
-Wire Wire Line
-	3100 5225 4075 5225
 Connection ~ 3900 4725
-Wire Wire Line
-	4600 3900 4600 2550
-Wire Wire Line
-	4600 2550 4975 2550
-Connection ~ 4600 3900
 Connection ~ 4600 4725
 $Comp
 L Amplifier_Operational:LM324 U603
@@ -718,18 +632,7 @@ Wire Wire Line
 Wire Wire Line
 	7775 3250 8425 3250
 Wire Wire Line
-	4600 4400 4700 4400
-Connection ~ 4600 4400
-Wire Wire Line
-	4700 2775 5275 2775
-Wire Wire Line
-	4700 2775 4700 4400
-Wire Wire Line
-	4975 3000 4800 3000
-Wire Wire Line
-	4800 3000 4800 4725
-Wire Wire Line
-	4600 4725 4800 4725
+	4600 4725 4650 4725
 $Comp
 L Connector:Screw_Terminal_01x01 J611
 U 1 1 5D42C7F6
@@ -752,4 +655,173 @@ F 3 "~" H 3375 3250 50  0001 C CNN
 	1    3375 3250
 	-1   0    0    1   
 $EndComp
+$Comp
+L Device:Q_NMOS_GDSD Q601
+U 1 1 5D4779AA
+P 5175 2550
+F 0 "Q601" H 5463 2596 50  0000 L CNN
+F 1 "IRFP260N" H 5463 2505 50  0000 L CNN
+F 2 "KicadZeniteSolarLibrary18:TO-247-3_Horizontal_TabDown_SMD" H 5375 2650 50  0001 C CNN
+F 3 "~" H 5175 2550 50  0001 C CNN
+	1    5175 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Q_NMOS_GDSD Q602
+U 1 1 5D479074
+P 5175 3000
+F 0 "Q602" H 5463 3046 50  0000 L CNN
+F 1 "IRFP260N" H 5463 2955 50  0000 L CNN
+F 2 "KicadZeniteSolarLibrary18:TO-247-3_Horizontal_TabDown_SMD" H 5375 3100 50  0001 C CNN
+F 3 "~" H 5175 3000 50  0001 C CNN
+	1    5175 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5375 2350 5375 2300
+Wire Wire Line
+	5375 2300 5275 2300
+Connection ~ 5275 2300
+Wire Wire Line
+	5375 2800 5375 2775
+Connection ~ 5375 2775
+Wire Wire Line
+	5375 2775 5700 2775
+$Comp
+L Device:CP1_Small C?
+U 1 1 5D47B02C
+P 1725 3200
+AR Path="/5AACFFEF/5D47B02C" Ref="C?"  Part="1" 
+AR Path="/5D414D87/5D47B02C" Ref="C604"  Part="1" 
+F 0 "C604" H 1735 3270 50  0000 L CNN
+F 1 "1uF" H 1735 3120 50  0000 L CNN
+F 2 "Capacitor_Tantalum_SMD:CP_EIA-6032-20_AVX-F_Pad2.25x2.35mm_HandSolder" H 1725 3200 50  0001 C CNN
+F 3 "" H 1725 3200 50  0001 C CNN
+	1    1725 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C605
+U 1 1 5D480B54
+P 1925 3200
+F 0 "C605" H 2017 3246 50  0000 L CNN
+F 1 "100nF" H 2017 3155 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1925 3200 50  0001 C CNN
+F 3 "~" H 1925 3200 50  0001 C CNN
+	1    1925 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1725 3300 1725 3350
+Wire Wire Line
+	1725 3350 1825 3350
+Wire Wire Line
+	1925 3350 1925 3300
+Wire Wire Line
+	1725 3100 1725 3050
+Wire Wire Line
+	1925 3050 1925 3100
+Wire Wire Line
+	2250 3050 2250 2925
+Wire Wire Line
+	1725 3050 1925 3050
+Connection ~ 1925 3050
+Wire Wire Line
+	1925 3050 2250 3050
+Wire Wire Line
+	2250 3050 2250 3900
+Connection ~ 2250 3050
+Connection ~ 2250 3900
+Wire Wire Line
+	2175 3900 2250 3900
+$Comp
+L MCB19-rescue:LM5104MNOPB-INA211BIDCKR U601
+U 1 1 5D437554
+P 2375 3850
+F 0 "U601" H 2625 4015 50  0000 C CNN
+F 1 "LM5104MNOPB" H 2625 3924 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 2375 3850 50  0001 C CNN
+F 3 "" H 2375 3850 50  0001 C CNN
+	1    2375 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0108
+U 1 1 5D438BD1
+P 2975 4450
+F 0 "#PWR0108" H 2975 4200 50  0001 C CNN
+F 1 "GND" H 2980 4277 50  0000 C CNN
+F 2 "" H 2975 4450 50  0001 C CNN
+F 3 "" H 2975 4450 50  0001 C CNN
+	1    2975 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5D4A1ABA
+P 1825 3375
+F 0 "#PWR?" H 1825 3125 50  0001 C CNN
+F 1 "GND" H 1830 3202 50  0000 C CNN
+F 2 "" H 1825 3375 50  0001 C CNN
+F 3 "" H 1825 3375 50  0001 C CNN
+	1    1825 3375
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1825 3350 1825 3375
+Connection ~ 1825 3350
+Wire Wire Line
+	1825 3350 1925 3350
+Connection ~ 4075 5225
+Connection ~ 4600 3900
+Wire Wire Line
+	4600 3900 4600 3000
+Connection ~ 2975 4450
+Wire Wire Line
+	1825 4200 2225 4200
+Wire Wire Line
+	2200 4100 2200 4725
+Wire Wire Line
+	2200 4100 2275 4100
+Wire Wire Line
+	2225 4200 2225 5225
+Connection ~ 2225 4200
+Wire Wire Line
+	2225 4200 2275 4200
+Wire Wire Line
+	2200 4725 3550 4725
+Wire Wire Line
+	2225 5225 4075 5225
+$Comp
+L power:GND #PWR?
+U 1 1 5D4C842A
+P 4300 4400
+F 0 "#PWR?" H 4300 4150 50  0001 C CNN
+F 1 "GND" H 4305 4227 50  0000 C CNN
+F 2 "" H 4300 4400 50  0001 C CNN
+F 3 "" H 4300 4400 50  0001 C CNN
+	1    4300 4400
+	1    0    0    -1  
+$EndComp
+Connection ~ 4300 4400
+Wire Wire Line
+	4300 4400 4600 4400
+Wire Wire Line
+	4600 3000 4975 3000
+Wire Wire Line
+	5000 2550 4975 2550
+Wire Wire Line
+	4650 2550 4650 4725
+Connection ~ 4975 2550
+Wire Wire Line
+	4975 2550 4650 2550
+Wire Wire Line
+	4700 5225 4700 2775
+Wire Wire Line
+	4075 5225 4600 5225
+Connection ~ 4600 5225
+Wire Wire Line
+	4600 5225 4700 5225
+Wire Wire Line
+	4700 2775 5275 2775
 $EndSCHEMATC
