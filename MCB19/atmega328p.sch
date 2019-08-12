@@ -86,17 +86,6 @@ VCC
 Text HLabel 7950 2350 0    60   Output ~ 0
 GND
 $Comp
-L MCU_Microchip_ATmega:ATmega328P-PU U401
-U 1 1 59FE3414
-P 4350 3950
-F 0 "U401" H 3850 5400 50  0000 L BNN
-F 1 "ATMEGA328P-PU" H 4500 2450 50  0000 L BNN
-F 2 "Package_DIP:DIP-28_W7.62mm_Socket" H 4350 3950 50  0001 C CIN
-F 3 "" H 4350 3950 50  0001 C CNN
-	1    4350 3950
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:R_Small R402
 U 1 1 5AACAE36
 P 7350 4350
@@ -425,7 +414,6 @@ Wire Wire Line
 NoConn ~ 5050 3850
 NoConn ~ 5050 3950
 NoConn ~ 5050 4050
-NoConn ~ 5050 4150
 NoConn ~ 5050 4650
 NoConn ~ 5050 4750
 NoConn ~ 5050 4850
@@ -464,10 +452,8 @@ Text HLabel 7125 3650 2    50   Input ~ 0
 INALLL
 Text HLabel 7125 3750 2    50   Input ~ 0
 LM324_A
-Text HLabel 5100 5050 2    50   Output ~ 0
+Text HLabel 5050 4150 2    50   Output ~ 0
 PWM
-Wire Wire Line
-	4950 5050 5100 5050
 $Comp
 L Device:R_Small R407
 U 1 1 5D4B7586
@@ -636,4 +622,18 @@ F 3 "~" H 6900 3750 50  0001 C CNN
 	1    6900 3750
 	0    -1   -1   0   
 $EndComp
+NoConn ~ 5050 5050
+$Comp
+L MCU_Microchip_ATmega:ATmega328P-PU U401
+U 1 1 59FE3414
+P 4350 3950
+F 0 "U401" H 3850 5400 50  0000 L BNN
+F 1 "ATMEGA328P-PU" H 4500 2450 50  0000 L BNN
+F 2 "Package_DIP:DIP-28_W7.62mm_Socket" H 4350 3950 50  0001 C CIN
+F 3 "" H 4350 3950 50  0001 C CNN
+	1    4350 3950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5050 5050 4950 5050
 $EndSCHEMATC

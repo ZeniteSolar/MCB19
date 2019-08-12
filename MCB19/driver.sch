@@ -17,12 +17,12 @@ $EndDescr
 $Comp
 L power:+BATT #PWR0603
 U 1 1 5D42882D
-P 3650 2300
-F 0 "#PWR0603" H 3650 2150 50  0001 C CNN
-F 1 "+BATT" V 3665 2427 50  0000 L CNN
-F 2 "" H 3650 2300 50  0001 C CNN
-F 3 "" H 3650 2300 50  0001 C CNN
-	1    3650 2300
+P 3650 2075
+F 0 "#PWR0603" H 3650 1925 50  0001 C CNN
+F 1 "+BATT" V 3665 2202 50  0000 L CNN
+F 2 "" H 3650 2075 50  0001 C CNN
+F 3 "" H 3650 2075 50  0001 C CNN
+	1    3650 2075
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -37,36 +37,16 @@ F 3 "~" H 3850 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3650 2300 3850 2300
+	3650 2075 3850 2075
 Wire Wire Line
-	3850 2300 3850 2650
+	3850 2075 5275 2075
 Wire Wire Line
-	5275 2750 5275 2775
-Wire Wire Line
-	3850 2300 5275 2300
-Wire Wire Line
-	5275 2300 5275 2350
-Connection ~ 3850 2300
+	5275 2075 5275 2125
+Connection ~ 3850 2075
 Wire Wire Line
 	5275 3250 3850 3250
 Wire Wire Line
 	3850 2850 3850 3250
-$Comp
-L Device:L L601
-U 1 1 5D42B749
-P 5850 2775
-F 0 "L601" V 6040 2775 50  0000 C CNN
-F 1 "300uH" V 5949 2775 50  0000 C CNN
-F 2 "MCCplaca:Inductor_Nocoupled" H 5850 2775 50  0001 C CNN
-F 3 "~" H 5850 2775 50  0001 C CNN
-	1    5850 2775
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	5275 2775 5375 2775
-Connection ~ 5275 2775
-Wire Wire Line
-	5275 2775 5275 2800
 $Comp
 L Device:C_Small C603
 U 1 1 5D42B8DB
@@ -83,23 +63,10 @@ Wire Wire Line
 Wire Wire Line
 	5275 3200 5275 3250
 Wire Wire Line
-	5275 3250 6150 3250
+	5275 3250 5650 3250
 Wire Wire Line
 	6150 3250 6150 3075
 Connection ~ 5275 3250
-$Comp
-L Device:R_Small R606
-U 1 1 5D42BDA6
-P 7450 2775
-F 0 "R606" V 7254 2775 50  0000 C CNN
-F 1 "1,5mR" V 7345 2775 50  0000 C CNN
-F 2 "Resistor_SMD:R_2512_6332Metric_Pad1.52x3.35mm_HandSolder" H 7450 2775 50  0001 C CNN
-F 3 "~" H 7450 2775 50  0001 C CNN
-	1    7450 2775
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	6000 2775 6150 2775
 Connection ~ 6150 2775
 $Comp
 L MCB19-rescue:INA211_DCK_6-INA211BIDCKR U602
@@ -173,10 +140,7 @@ F 3 "" H 6475 2525 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	6150 2775 7325 2775
-Connection ~ 7325 2775
-Wire Wire Line
-	7325 2775 7350 2775
+	6150 2775 7225 2775
 Text HLabel 7250 2325 2    50   Output ~ 0
 IRALLL
 $Comp
@@ -253,17 +217,6 @@ F 1 "1R" V 3850 3900 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3700 3900 50  0001 C CNN
 F 3 "~" H 3700 3900 50  0001 C CNN
 	1    3700 3900
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:R_Small R603
-U 1 1 5D440D6F
-P 3700 4725
-F 0 "R603" V 3775 4725 50  0000 C CNN
-F 1 "1R" V 3850 4725 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3700 4725 50  0001 C CNN
-F 3 "~" H 3700 4725 50  0001 C CNN
-	1    3700 4725
 	0    1    1    0   
 $EndComp
 Wire Wire Line
@@ -439,8 +392,6 @@ F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 8200 2400 50  0001 C CNN
 	5    8150 2200
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	7550 2775 7575 2775
 $Comp
 L Amplifier_Operational:LM324 U603
 U 2 1 5D47935F
@@ -559,17 +510,6 @@ Text HLabel 8500 2200 2    50   Input ~ 0
 LM324A
 Wire Wire Line
 	8500 2200 8450 2200
-Connection ~ 7575 2775
-Wire Wire Line
-	7575 2775 7700 2775
-Wire Wire Line
-	7225 2525 7325 2525
-Wire Wire Line
-	7325 2525 7325 2775
-Wire Wire Line
-	7225 2425 7575 2425
-Wire Wire Line
-	7575 2425 7575 2775
 Wire Wire Line
 	7250 2325 7225 2325
 Wire Wire Line
@@ -589,17 +529,12 @@ Connection ~ 6500 3250
 Wire Wire Line
 	8050 2500 8050 2525
 Wire Wire Line
-	7850 2100 7700 2100
-Wire Wire Line
-	7700 2100 7700 2775
-Connection ~ 7700 2775
+	7850 2100 7725 2100
 Wire Wire Line
 	7850 2300 7775 2300
 Wire Wire Line
 	7775 2300 7775 3250
 Connection ~ 7775 3250
-Wire Wire Line
-	6500 3250 7775 3250
 $Comp
 L Connector:Screw_Terminal_01x01 J614
 U 1 1 5D53EAEE
@@ -623,12 +558,10 @@ F 3 "~" H 8625 2775 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3575 2300 3650 2300
-Connection ~ 3650 2300
+	3575 2075 3650 2075
+Connection ~ 3650 2075
 Wire Wire Line
 	3575 3250 3850 3250
-Wire Wire Line
-	7700 2775 8425 2775
 Wire Wire Line
 	7775 3250 8425 3250
 Wire Wire Line
@@ -636,12 +569,12 @@ Wire Wire Line
 $Comp
 L Connector:Screw_Terminal_01x01 J611
 U 1 1 5D42C7F6
-P 3375 2300
-F 0 "J611" H 3295 2075 50  0000 C CNN
-F 1 "+BATT" H 3295 2166 50  0000 C CNN
-F 2 "MountingHole:MountingHole_5.3mm_M5_Pad_Via" H 3375 2300 50  0001 C CNN
-F 3 "~" H 3375 2300 50  0001 C CNN
-	1    3375 2300
+P 3375 2075
+F 0 "J611" H 3295 1850 50  0000 C CNN
+F 1 "+BATT" H 3295 1941 50  0000 C CNN
+F 2 "MountingHole:MountingHole_5.3mm_M5_Pad_Via" H 3375 2075 50  0001 C CNN
+F 3 "~" H 3375 2075 50  0001 C CNN
+	1    3375 2075
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -658,35 +591,30 @@ $EndComp
 $Comp
 L Device:Q_NMOS_GDSD Q601
 U 1 1 5D4779AA
-P 5175 2550
-F 0 "Q601" H 5463 2596 50  0000 L CNN
-F 1 "IRFP260N" H 5463 2505 50  0000 L CNN
-F 2 "KicadZeniteSolarLibrary18:TO-247-3_Horizontal_TabDown_SMD" H 5375 2650 50  0001 C CNN
-F 3 "~" H 5175 2550 50  0001 C CNN
-	1    5175 2550
+P 5175 2325
+F 0 "Q601" H 4900 2525 50  0000 L CNN
+F 1 "IRFP260N" H 4800 2450 50  0000 L CNN
+F 2 "KicadZeniteSolarLibrary18:TO-247-3_Horizontal_TabDown_SMD" H 5375 2425 50  0001 C CNN
+F 3 "~" H 5175 2325 50  0001 C CNN
+	1    5175 2325
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:Q_NMOS_GDSD Q602
 U 1 1 5D479074
 P 5175 3000
-F 0 "Q602" H 5463 3046 50  0000 L CNN
-F 1 "IRFP260N" H 5463 2955 50  0000 L CNN
+F 0 "Q602" H 4900 3175 50  0000 L CNN
+F 1 "IRFP260N" H 4775 3100 50  0000 L CNN
 F 2 "KicadZeniteSolarLibrary18:TO-247-3_Horizontal_TabDown_SMD" H 5375 3100 50  0001 C CNN
 F 3 "~" H 5175 3000 50  0001 C CNN
 	1    5175 3000
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5375 2350 5375 2300
+	5375 2125 5375 2075
 Wire Wire Line
-	5375 2300 5275 2300
-Connection ~ 5275 2300
-Wire Wire Line
-	5375 2800 5375 2775
-Connection ~ 5375 2775
-Wire Wire Line
-	5375 2775 5700 2775
+	5375 2075 5275 2075
+Connection ~ 5275 2075
 $Comp
 L Device:CP1_Small C?
 U 1 1 5D47B02C
@@ -809,16 +737,225 @@ Wire Wire Line
 Wire Wire Line
 	4600 3000 4975 3000
 Wire Wire Line
-	4650 2550 4650 4725
-Wire Wire Line
-	4700 5225 4700 2775
-Wire Wire Line
 	4075 5225 4600 5225
 Connection ~ 4600 5225
 Wire Wire Line
 	4600 5225 4700 5225
+$Comp
+L Device:R_Small R603
+U 1 1 5D440D6F
+P 3700 4725
+F 0 "R603" V 3775 4725 50  0000 C CNN
+F 1 "1R" V 3850 4725 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3700 4725 50  0001 C CNN
+F 3 "~" H 3700 4725 50  0001 C CNN
+	1    3700 4725
+	0    1    1    0   
+$EndComp
 Wire Wire Line
-	4700 2775 5275 2775
+	4975 2325 4650 2325
 Wire Wire Line
-	4650 2550 4975 2550
+	4650 2325 4650 4725
+Wire Wire Line
+	3850 2075 3850 2650
+Wire Wire Line
+	6150 2775 6150 2675
+Wire Wire Line
+	6150 2675 6000 2675
+Wire Wire Line
+	5275 2675 5275 2525
+Wire Wire Line
+	4700 2675 5275 2675
+Wire Wire Line
+	4700 2675 4700 5225
+Connection ~ 5275 2675
+Wire Wire Line
+	5275 2675 5275 2800
+Wire Wire Line
+	5375 2675 5375 2800
+Connection ~ 5375 2675
+Wire Wire Line
+	5375 2675 5275 2675
+$Comp
+L Device:L L601
+U 1 1 5D42B749
+P 5850 2675
+F 0 "L601" V 5975 2475 50  0000 C CNN
+F 1 "300uH" V 5900 2450 50  0000 C CNN
+F 2 "MCCplaca:Inductor_Nocoupled" H 5850 2675 50  0001 C CNN
+F 3 "~" H 5850 2675 50  0001 C CNN
+	1    5850 2675
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R_Small R607
+U 1 1 5D501030
+P 5650 2225
+F 0 "R607" V 5725 2225 50  0000 C CNN
+F 1 "1R" V 5800 2225 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5650 2225 50  0001 C CNN
+F 3 "~" H 5650 2225 50  0001 C CNN
+	1    5650 2225
+	-1   0    0    1   
+$EndComp
+$Comp
+L Diode:LL4148 D604
+U 1 1 5D501EE3
+P 5750 2275
+F 0 "D604" H 5775 2450 50  0000 C CNN
+F 1 "LL4148" H 5775 2375 50  0000 C CNN
+F 2 "Diode_SMD:D_MiniMELF_Handsoldering" H 5750 2100 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/85557/ll4148.pdf" H 5750 2275 50  0001 C CNN
+	1    5750 2275
+	0    1    -1   0   
+$EndComp
+$Comp
+L Device:C_Small C606
+U 1 1 5D5035B7
+P 5650 2525
+F 0 "C606" H 5742 2571 50  0000 L CNN
+F 1 "47nF" H 5742 2480 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5650 2525 50  0001 C CNN
+F 3 "~" H 5650 2525 50  0001 C CNN
+	1    5650 2525
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5750 2425 5650 2425
+Wire Wire Line
+	5650 2425 5650 2325
+Connection ~ 5650 2425
+Wire Wire Line
+	5750 2125 5750 2100
+Wire Wire Line
+	5750 2100 5650 2100
+Wire Wire Line
+	5650 2100 5650 2125
+$Comp
+L Device:R_Small R608
+U 1 1 5D596EA2
+P 5650 2825
+F 0 "R608" V 5725 2825 50  0000 C CNN
+F 1 "1R" V 5800 2825 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5650 2825 50  0001 C CNN
+F 3 "~" H 5650 2825 50  0001 C CNN
+	1    5650 2825
+	-1   0    0    1   
+$EndComp
+$Comp
+L Diode:LL4148 D605
+U 1 1 5D596EAC
+P 5750 2875
+F 0 "D605" H 5775 3050 50  0000 C CNN
+F 1 "LL4148" H 5775 2975 50  0000 C CNN
+F 2 "Diode_SMD:D_MiniMELF_Handsoldering" H 5750 2700 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/85557/ll4148.pdf" H 5750 2875 50  0001 C CNN
+	1    5750 2875
+	0    1    -1   0   
+$EndComp
+$Comp
+L Device:C_Small C607
+U 1 1 5D596EB6
+P 5650 3125
+F 0 "C607" H 5742 3171 50  0000 L CNN
+F 1 "47nF" H 5742 3080 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5650 3125 50  0001 C CNN
+F 3 "~" H 5650 3125 50  0001 C CNN
+	1    5650 3125
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5750 3025 5650 3025
+Wire Wire Line
+	5650 3025 5650 2925
+Connection ~ 5650 3025
+Wire Wire Line
+	5750 2725 5750 2700
+Wire Wire Line
+	5750 2700 5650 2700
+Wire Wire Line
+	5650 2700 5650 2725
+Wire Wire Line
+	5650 2700 5650 2675
+Wire Wire Line
+	5375 2675 5650 2675
+Connection ~ 5650 2700
+Connection ~ 5650 2675
+Wire Wire Line
+	5650 2675 5700 2675
+Wire Wire Line
+	5650 3225 5650 3250
+Connection ~ 5650 3250
+Wire Wire Line
+	5650 3250 6150 3250
+Wire Wire Line
+	5650 2625 5650 2675
+Wire Wire Line
+	5375 2075 5650 2075
+Wire Wire Line
+	5650 2075 5650 2100
+Connection ~ 5375 2075
+Connection ~ 5650 2100
+$Comp
+L Device:R_Small R609
+U 1 1 5D5C969D
+P 7725 2625
+F 0 "R609" V 7625 2625 50  0000 C CNN
+F 1 "470R" V 7550 2625 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7725 2625 50  0001 C CNN
+F 3 "~" H 7725 2625 50  0001 C CNN
+	1    7725 2625
+	-1   0    0    1   
+$EndComp
+Connection ~ 7725 2100
+Wire Wire Line
+	7725 2525 7725 2100
+Wire Wire Line
+	6500 3250 7725 3250
+Wire Wire Line
+	7725 2725 7725 3250
+Connection ~ 7725 3250
+Wire Wire Line
+	7725 3250 7775 3250
+$Comp
+L Device:R_Small R606
+U 1 1 5D42BDA6
+P 7325 2775
+F 0 "R606" V 7475 2775 50  0000 C CNN
+F 1 "1,5mR" V 7400 2775 50  0000 C CNN
+F 2 "Resistor_SMD:R_2512_6332Metric_Pad1.52x3.35mm_HandSolder" H 7325 2775 50  0001 C CNN
+F 3 "~" H 7325 2775 50  0001 C CNN
+	1    7325 2775
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7425 2775 7650 2775
+Wire Wire Line
+	7225 2525 7225 2775
+Connection ~ 7225 2775
+Wire Wire Line
+	7425 2425 7425 2775
+Wire Wire Line
+	7225 2425 7425 2425
+Connection ~ 7425 2775
+$Comp
+L Device:R_Small R610
+U 1 1 5D601A34
+P 7650 2625
+F 0 "R610" V 7725 2625 50  0000 C CNN
+F 1 "1k5" V 7800 2625 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7650 2625 50  0001 C CNN
+F 3 "~" H 7650 2625 50  0001 C CNN
+	1    7650 2625
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7650 2100 7650 2525
+Wire Wire Line
+	7650 2100 7725 2100
+Wire Wire Line
+	7650 2725 7650 2775
+Connection ~ 7650 2775
+Wire Wire Line
+	7650 2775 8425 2775
 $EndSCHEMATC
