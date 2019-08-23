@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:MCB19-cache
-EELAYER 29 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -79,7 +79,7 @@ Text HLabel 6450 2750 2    60   Output ~ 0
 MCP_SS
 Text HLabel 6450 2850 2    60   Input ~ 0
 MCP_INT
-Text Label 5675 4250 0    60   ~ 0
+Text Label 7250 4250 0    60   ~ 0
 RESET
 Text HLabel 7950 2200 0    60   Input ~ 0
 VCC
@@ -255,21 +255,8 @@ F 3 "" H 6500 4725 50  0001 C CNN
 	1    6500 4725
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:C_Small C405
-U 1 1 5BED8033
-P 6525 4250
-F 0 "C405" V 6625 4100 50  0000 L CNN
-F 1 "100nF" V 6625 3850 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6525 4250 50  0001 C CNN
-F 3 "" H 6525 4250 50  0001 C CNN
-	1    6525 4250
-	0    -1   -1   0   
-$EndComp
 Text Label 5050 4450 0    60   ~ 0
 USART_RX
-Wire Wire Line
-	6625 4250 7550 4250
 $Comp
 L power:GND #PWR0409
 U 1 1 5BEE0905
@@ -403,9 +390,7 @@ Wire Wire Line
 Wire Wire Line
 	4950 5150 5500 5150
 Wire Wire Line
-	6300 4250 6425 4250
-Wire Wire Line
-	4950 4250 5975 4250
+	4950 4250 5650 4250
 Connection ~ 6300 4250
 Connection ~ 5975 4250
 NoConn ~ 4950 2950
@@ -636,4 +621,19 @@ F 3 "" H 4350 3950 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5050 5050 4950 5050
+Wire Wire Line
+	6300 4250 7550 4250
+$Comp
+L Device:R_Small R411
+U 1 1 5D608202
+P 5750 4250
+F 0 "R411" H 5780 4270 50  0000 L CNN
+F 1 "100" H 5780 4210 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5750 4250 50  0001 C CNN
+F 3 "" H 5750 4250 50  0001 C CNN
+	1    5750 4250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5850 4250 5975 4250
 $EndSCHEMATC
