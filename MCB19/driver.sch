@@ -4,7 +4,7 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 6
+Sheet 6 7
 Title ""
 Date ""
 Rev ""
@@ -80,17 +80,6 @@ F 3 "" H 6325 3125 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR0605
-U 1 1 5D42E9E1
-P 2800 2700
-F 0 "#PWR0605" H 2800 2550 50  0001 C CNN
-F 1 "+5V" H 2815 2873 50  0000 C CNN
-F 2 "" H 2800 2700 50  0001 C CNN
-F 3 "" H 2800 2700 50  0001 C CNN
-	1    2800 2700
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GND #PWR0606
 U 1 1 5D42EA3B
 P 2800 2875
@@ -99,20 +88,14 @@ F 1 "GND" H 2805 2702 50  0000 C CNN
 F 2 "" H 2800 2875 50  0001 C CNN
 F 3 "" H 2800 2875 50  0001 C CNN
 	1    2800 2875
-	1    0    0    -1  
+	0    1    1    0   
 $EndComp
-Text HLabel 2850 2750 2    50   Input ~ 0
+Text HLabel 2850 2700 2    50   Input ~ 0
 VCC
-Text HLabel 2850 2825 2    50   Input ~ 0
+Text HLabel 2850 2875 2    50   Input ~ 0
 GND
 Wire Wire Line
-	2850 2825 2800 2825
-Wire Wire Line
-	2800 2825 2800 2875
-Wire Wire Line
-	2850 2750 2800 2750
-Wire Wire Line
-	2800 2750 2800 2700
+	2850 2700 2800 2700
 $Comp
 L power:GND #PWR0604
 U 1 1 5D42F225
@@ -143,17 +126,6 @@ Wire Wire Line
 	6150 2775 7225 2775
 Text HLabel 7250 2325 2    50   Output ~ 0
 IRALLL
-$Comp
-L power:+5V #PWR0109
-U 1 1 5D438678
-P 2250 2925
-F 0 "#PWR0109" H 2250 2775 50  0001 C CNN
-F 1 "+5V" H 2265 3098 50  0000 C CNN
-F 2 "" H 2250 2925 50  0001 C CNN
-F 3 "" H 2250 2925 50  0001 C CNN
-	1    2250 2925
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2275 3900 2250 3900
 Wire Wire Line
@@ -594,7 +566,7 @@ U 1 1 5D4779AA
 P 5175 2325
 F 0 "Q601" H 4900 2525 50  0000 L CNN
 F 1 "IRFP260N" H 4800 2450 50  0000 L CNN
-F 2 "KicadZeniteSolarLibrary18:TO-247-3_Horizontal_TabDown_SMD" H 5375 2425 50  0001 C CNN
+F 2 "Package_TO_SOT_THT:TO-247-3_Vertical" H 5375 2425 50  0001 C CNN
 F 3 "~" H 5175 2325 50  0001 C CNN
 	1    5175 2325
 	1    0    0    -1  
@@ -605,7 +577,7 @@ U 1 1 5D479074
 P 5175 3000
 F 0 "Q602" H 4900 3175 50  0000 L CNN
 F 1 "IRFP260N" H 4775 3100 50  0000 L CNN
-F 2 "KicadZeniteSolarLibrary18:TO-247-3_Horizontal_TabDown_SMD" H 5375 3100 50  0001 C CNN
+F 2 "Package_TO_SOT_THT:TO-247-3_Vertical" H 5375 3100 50  0001 C CNN
 F 3 "~" H 5175 3000 50  0001 C CNN
 	1    5175 3000
 	1    0    0    -1  
@@ -958,4 +930,43 @@ Wire Wire Line
 Connection ~ 7650 2775
 Wire Wire Line
 	7650 2775 8425 2775
+$Comp
+L power:+5V #PWR0605
+U 1 1 5D42E9E1
+P 2800 2700
+F 0 "#PWR0605" H 2800 2550 50  0001 C CNN
+F 1 "+5V" H 2815 2873 50  0000 C CNN
+F 2 "" H 2800 2700 50  0001 C CNN
+F 3 "" H 2800 2700 50  0001 C CNN
+	1    2800 2700
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2800 2875 2850 2875
+Text HLabel 2850 2525 2    50   Input ~ 0
++15V
+$Comp
+L power:+15V #PWR0113
+U 1 1 5D9FF9B4
+P 2800 2525
+F 0 "#PWR0113" H 2800 2375 50  0001 C CNN
+F 1 "+15V" V 2815 2653 50  0000 L CNN
+F 2 "" H 2800 2525 50  0001 C CNN
+F 3 "" H 2800 2525 50  0001 C CNN
+	1    2800 2525
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2850 2525 2800 2525
+$Comp
+L power:+15V #PWR0114
+U 1 1 5DA059B9
+P 2250 2925
+F 0 "#PWR0114" H 2250 2775 50  0001 C CNN
+F 1 "+15V" H 2265 3098 50  0000 C CNN
+F 2 "" H 2250 2925 50  0001 C CNN
+F 3 "" H 2250 2925 50  0001 C CNN
+	1    2250 2925
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
