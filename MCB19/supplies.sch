@@ -21,7 +21,7 @@ P 5900 3950
 AR Path="/5AACFFEF/5A007B62" Ref="U301"  Part="1" 
 AR Path="/5D9BEA13/5A007B62" Ref="U301"  Part="1" 
 F 0 "U301" H 5750 4075 50  0000 C CNN
-F 1 "LM7815" H 5900 4100 50  0000 L CNN
+F 1 "LM7805" H 5900 4100 50  0000 L CNN
 F 2 "KicadZeniteSolarLibrary18:TO-220-3_Horizontal_TabDown_SMD" H 5900 4175 50  0001 C CIN
 F 3 "https://www.sparkfun.com/datasheets/Components/LM7805.pdf" H 5900 3900 50  0001 C CNN
 	1    5900 3950
@@ -30,7 +30,7 @@ $EndComp
 Text HLabel 3950 4800 0    60   Output ~ 0
 GND
 Text HLabel 6650 3750 2    60   Input ~ 0
-+15V_OUT
++5V_OUT
 $Comp
 L Device:CP1_Small C301
 U 1 1 5A008895
