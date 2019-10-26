@@ -732,7 +732,7 @@ F 1 "300uH" V 6325 2675 50  0000 C CNN
 F 2 "KicadZeniteSolarLibrary18:Inductor_Nocoupled" H 6400 2675 50  0001 C CNN
 F 3 "~" H 6400 2675 50  0001 C CNN
 	1    6400 2675
-	0    1    1    0   
+	0    -1   -1   0   
 $EndComp
 $Comp
 L Device:R_Small R607

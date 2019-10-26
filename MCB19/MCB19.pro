@@ -1,4 +1,4 @@
-update=04/08/2019 14:58:35
+update=Fri 25 Oct 2019 04:38:55 PM -03
 version=1
 last_client=kicad
 [general]
@@ -41,10 +41,12 @@ MinHoleToHole=0.25
 TrackWidth1=0.508
 TrackWidth2=0.254
 TrackWidth3=0.381
-TrackWidth4=0.635
+TrackWidth4=0.508
 TrackWidth5=0.762
 TrackWidth6=1.016
 TrackWidth7=1.524
+TrackWidth8=2.032
+TrackWidth9=2.54
 ViaDiameter1=1.5
 ViaDrill1=0.8
 dPairWidth1=0.508
@@ -253,6 +255,17 @@ dPairWidth=0.508
 dPairGap=0.508
 dPairViaGap=0.25
 [pcbnew/Netclasses/1]
+Name=Shunt
+Clearance=0.127
+TrackWidth=0.508
+ViaDiameter=1.5
+ViaDrill=0.8
+uViaDiameter=0.3
+uViaDrill=0.1
+dPairWidth=0.508
+dPairGap=0.508
+dPairViaGap=0.25
+[pcbnew/Netclasses/2]
 Name=power
 Clearance=0.762
 TrackWidth=1.524
