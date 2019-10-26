@@ -362,7 +362,7 @@
       (net 27 "Net-(C603-Pad1)"))
     (pad 2 thru_hole circle (at 10.844 35.672 270) (size 5 5) (drill 2) (layers *.Cu *.Mask)
       (net 54 "Net-(L601-Pad2)"))
-    (model /home/joaoantoniocardoso/ZeniteSolar/2018/MCC18/Hardware/Shunt_sensor/Cuk_converter/KiCad/MCC_bibliotecas/MCCplaca.pretty/3D/inductor.wrl
+    (model ${KIPRJMOD}/shapes3D/inductor.wrl
       (offset (xyz 11.43 13.97 -6.35))
       (scale (xyz 1 1 1))
       (rotate (xyz -90 0 0))
@@ -1596,8 +1596,8 @@
       (net 38 +BATT))
     (pad 3 thru_hole oval (at 10.9 0 270) (size 2.5 4.5) (drill 1.5) (layers *.Cu *.Mask)
       (net 37 "Net-(C601-Pad2)"))
-    (model "/home/joaoantoniocardoso/ZeniteSolar/2018/MCC18/Hardware/Shunt_sensor/Cuk_converter/KiCad/MCC_bibliotecas/MCCplaca.pretty/3D/User Library-TO-247H.step"
-      (offset (xyz 6.35 -19.558 3.048))
+    (model "${KIPRJMOD}/shapes3D/User Library-TO-247H.wrl"
+      (offset (xyz 5.588 -19.558 3.048))
       (scale (xyz 1 1 1))
       (rotate (xyz 90 0 0))
     )
@@ -1645,7 +1645,7 @@
     (pad 3 thru_hole oval (at 10.9 0 270) (size 2.5 4.5) (drill 1.5) (layers *.Cu *.Mask)
       (net 1 GND))
     (model "/home/joaoantoniocardoso/ZeniteSolar/2018/MCC18/Hardware/Shunt_sensor/Cuk_converter/KiCad/MCC_bibliotecas/MCCplaca.pretty/3D/User Library-TO-247H.step"
-      (offset (xyz 5.715 -19.558 3.048))
+      (offset (xyz 5.588 -19.558 3.048))
       (scale (xyz 1 1 1))
       (rotate (xyz 90 0 0))
     )
@@ -4340,7 +4340,7 @@
       (net 1 GND))
     (pad 9 thru_hole circle (at -3.3 3.296 90) (size 2.5 2.5) (drill 1.6) (layers *.Cu *.Mask))
     (pad 9 thru_hole circle (at 12.2 3.296 90) (size 2.5 2.5) (drill 1.6) (layers *.Cu *.Mask))
-    (model ${KIPRJMOD}/rj45.wrl
+    (model ${KIPRJMOD}/shapes3D/rj45.wrl
       (offset (xyz 4.444999933242798 -6.527799901962281 6.47699990272522))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4387,7 +4387,7 @@
       (net 1 GND))
     (pad 9 thru_hole circle (at -3.3 3.296 90) (size 2.5 2.5) (drill 1.6) (layers *.Cu *.Mask))
     (pad 9 thru_hole circle (at 12.2 3.296 90) (size 2.5 2.5) (drill 1.6) (layers *.Cu *.Mask))
-    (model ${KIPRJMOD}/rj45.wrl
+    (model ${KIPRJMOD}/shapes3D/rj45.wrl
       (offset (xyz 4.444999933242798 -6.527799901962281 6.47699990272522))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
