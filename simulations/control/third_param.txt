@@ -1,0 +1,15 @@
+Ra = 1.59554K Ohm
+Rb = 500 Ohm
+Vref = 2.86294 V
+Gain = 0.238602
+kgain = 0.159767
+Ti = 289.702u s
+fz = 549.375 Hz
+fi = 87.7718 Hz
+Fsw_i = 20K
+Gain_i = 0.3 Ohm
+kgain_i = 0.107998
+Ti_i = 100.265u s
+fz_i = 1.58734K Hz
+fi_i = 171.43 Hz
+Gmod_i = 1

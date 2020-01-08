@@ -1,0 +1,10 @@
+Ra=1.59554KOhm
+Rb=500Ohm
+Vref=2.86294V
+Kgain=0.159767
+Ti=289.702us
+Fsw_i=20K
+Gain_i=0.3Ohm
+Kgain_i=0.107998
+Ti_i=100.265us
+Gmod_i=1

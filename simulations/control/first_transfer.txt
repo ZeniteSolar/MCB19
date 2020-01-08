@@ -1,0 +1,7 @@
+C:\users\joaoantoniocardoso\Desktop\ZeniteSolar\2019\MCB19\simulations\control\first.psimsch
+C:\users\joaoantoniocardoso\Desktop\ZeniteSolar\2019\MCB19\simulations\control\first_param.txt
+Loop type = Double
+Outer loop = voltage divider + PI
+Inner loop = current sensor + PI
+Export option = sdomain
+Get = Regulator and parameters
