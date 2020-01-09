@@ -80,6 +80,14 @@ void init(void)
         VERBOSE_MSG_INIT(usart_send_string("MACHINE... OFF!\n"));
 	#endif
 
+    #ifdef CONTROL_ON
+        VERBOSE_MSG_INIT(usart_send_string("CONTROL..."));
+		control_init();
+        VERBOSE_MSG_INIT(usart_send_string(" OK!\n"));
+    #else
+        VERBOSE_MSG_INIT(usart_send_string("CONTROL... OFF!\n"));
+	#endif 
+
     #ifdef WATCHDOG_ON
         wdt_reset();
     #endif

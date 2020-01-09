@@ -165,7 +165,6 @@ inline void can_app_send_adc(void)
     VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
 #endif
 
-    reset_measurements();
 }
 
 /**

@@ -34,7 +34,15 @@
 #define LED_ON
 #define WATCHDOG_ON
 #define SLEEP_ON
+#define CONTROL_ON
 
+#ifdef CONTROL_ON
+#define D_MIN 0
+#define D_MAX 1
+#define IO_MAX 4
+#define VO_MAX 15
+#define PERIOD 0.0002                   // 5kHz 
+#endif
 
 #ifdef ADC_ON
 // ADC CONFIGURATION

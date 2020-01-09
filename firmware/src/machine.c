@@ -7,7 +7,7 @@ void machine_init(void)
 {
 	//clr_bit(PRR0, PRTIM2);                          // Activates clock
 
-    // MODE 2 -> CTC with TOP on OCR1
+    // MODE 2 -> CTC with TOP on OCR2
     TCCR2A  =    (1 << WGM21) | (0 << WGM20)        // mode 2
               | (0 << COM2B1) | (0 << COM2B0)       // do nothing
               | (0 << COM2A1) | (0 << COM2A0);      // do nothing
@@ -103,8 +103,6 @@ inline void print_configurations(void)
     
     VERBOSE_MSG_MACHINE(usart_send_string("\nadc_f: "));
     VERBOSE_MSG_MACHINE(usart_send_uint16( ADC_FREQUENCY ));
-    VERBOSE_MSG_MACHINE(usart_send_char(','));
-    VERBOSE_MSG_MACHINE(usart_send_uint16( ADC_AVG_SIZE_10 ));
     VERBOSE_MSG_MACHINE(usart_send_string("\nmachine_f: "));
     VERBOSE_MSG_MACHINE(usart_send_uint16( MACHINE_FREQUENCY ));
 
@@ -252,73 +250,47 @@ void print_infos(void)
     }
 }
 
-inline void reset_measurements(void)
-{
-    measurements.adc0_avg_sum_count = 0;
-    measurements.adc0_avg_sum = 0;
-    measurements.adc0_max = 0;
-    measurements.adc0_min = 1023;
-}
-
 /**
  * @brief this is the machine state itself.
  */
 inline void machine_run(void)
 {
     //print_infos();
-    
 
     if(machine_clk){
         machine_clk = 0;
-    #ifdef ADC_ON
-        if(adc.ready){
-            adc.ready = 0;
 
-            measurements.adc0_avg = ADC0_AVG;
-                //* ADC0_ANGULAR_COEF
-                //+ ADC0_LINEAR_COEF;
-            
-            if(measurements.adc0_avg < measurements.adc0_min) 
-                measurements.adc0_min = measurements.adc0_avg;
-            if(measurements.adc0_avg > measurements.adc0_max) 
-                measurements.adc0_max = measurements.adc0_avg;
+        if(error_flags.all){
+            print_system_flags();
+            print_error_flags();
+            print_infos();
+            set_state_error();
+        }
 
-            measurements.adc0_avg_sum_count++;
-            measurements.adc0_avg_sum += measurements.adc0_avg;
+        switch(state_machine){
+            case STATE_INITIALIZING:
+                task_initializing();
 
-            if(error_flags.all){
-                print_system_flags();
-                print_error_flags();
-                print_infos();
-                set_state_error();
-            }
+                break;
+            case STATE_IDLE:
+                task_idle();
 
-            switch(state_machine){
-                case STATE_INITIALIZING:
-                    task_initializing();
+                break;
+            case STATE_RUNNING:
+                task_running();
+                #ifdef CAN_ON
+                    can_app_task();
+                #endif /* CAN_ON */   
+                
+                break;
+            case STATE_ERROR:
+                task_error();
 
-                    break;
-                case STATE_IDLE:
-                    task_idle();
-
-                    break;
-                case STATE_RUNNING:
-                    task_running();
-                    #ifdef CAN_ON
-                        can_app_task();
-                    #endif /* CAN_ON */   
-                    
-                    break;
-                case STATE_ERROR:
-                    task_error();
-
-                case STATE_RESET:
-                default:
-                    task_reset();
-                    break;
-            }
-        } 
-    #endif /* ADC_ON */
+            case STATE_RESET:
+            default:
+                task_reset();
+                break;
+        }
     }
 }
 
