@@ -51,8 +51,8 @@ inline float piVo(float r, float y){
 
 inline float piIo(float r, float y){
     // PI CONFIGURATIONS:
-    const float Kp = 0.003;         // analog series proportional gain
-    const float Ti = 0.003;         // analog series integration period
+    const float Kp = 0.001;         // analog series proportional gain
+    const float Ti = 0.001;         // analog series integration period
     const float Ts = PERIOD;        // digital sampling period
 
     // INTERNAL CONSTANTS COMPUTATION:
