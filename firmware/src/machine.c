@@ -237,14 +237,29 @@ void print_infos(void)
     switch(i++){
         case 0:
             //print_system_flags();
+            usart_send_string("\nvi: ");
+            usart_send_float(vi);
             break;
         case 1:
             //print_error_flags();
+            usart_send_string(" , vo: ");
+            usart_send_float(vo); 
             break;
         case 2:
             //print_control_others(); 
+            usart_send_string(" , io: ");
+            usart_send_float(io);
+            break;
+        case 3:
+            usart_send_string(" , dt: ");
+            usart_send_float(dt);
+            usart_send_char(',');
+            usart_send_float(dt_min);
+            break;
         default:
             //VERBOSE_MSG_MACHINE(usart_send_char('\n'));
+            usart_send_string(" , en: ");
+            usart_send_char(enable+'0');
             i = 0;
             break;
     }
@@ -255,7 +270,7 @@ void print_infos(void)
  */
 inline void machine_run(void)
 {
-    //print_infos();
+    if(print_adc){ print_infos(); print_adc = 0;}
 
     if(machine_clk){
         machine_clk = 0;

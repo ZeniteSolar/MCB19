@@ -23,12 +23,13 @@
 // Note the resolution. For example.. at 150hz, ICR1 = PWM_TOP = 159, so it
 //#define QUOTIENT  (((uint32_t)MACHINE_TIMER_PRESCALER)*((uint32_t)MACHINE_TIMER_FREQUENCY))
 //#define ADC_TIMER_TOP (0.5*(F_CPU)/QUOTIENT)
-#define ADC_NUMBER_OF_CHANNELS  2
+#define ADC_NUMBER_OF_CHANNELS  3
 #define ADC_TIMER_FREQUENCY     ((uint32_t)(ADC_FREQUENCY)*(uint8_t)(ADC_NUMBER_OF_CHANNELS))
-#define ADC_TIMER_TOP           50 //F_CPU/(2 * ADC_TIMER_PRESCALER * 20000)
+#define ADC_TIMER_TOP           F_CPU/(2 * ADC_TIMER_PRESCALER * ADC_FREQUENCY)
 
-#define ADC0 0
-#define ADC1 1
+typedef enum {ADC0, ADC1, ADC2} adc_channels_t;
+volatile uint8_t print_adc;
+
 void adc_init(void);
 
 #endif /* ifndef _ADC_H_ */

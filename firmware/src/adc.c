@@ -1,11 +1,12 @@
 #include "adc.h"
 
+//#define ADC_8BITS
 /**
  * @brief inicializa o ADC, configurado para conversão engatilhada com o timer0.
  */
 void adc_init(void)
 {
-    //clr_bit(PRR0, PRADC);                           // Activates clock to adc
+    clr_bit(PRR, PRADC);                           // Activates clock to adc
 
     // configuracao do ADC
     PORTC   =   0b00000000;                         // disables pull-up for adcs pins
@@ -19,12 +20,8 @@ void adc_init(void)
 #else
             | (0 << ADLAR);                         // ADC left adjusted -> using all 10 bits
 #endif
+    ADMUX = (ADMUX & 0xF8) | ADC0;                  // Choose ADMUX
 
-    ADCSRB  =   (0 << ADTS2)                        // Auto-trigger source: timer0 Compare Match A
-            | (1 << ADTS1)
-            | (1 << ADTS0);
-
-    ADMUX = (ADMUX & 0xF0) | (0 & 0x0F);   // Choose ADMUX
     ADCSRA  =   (1 << ADATE)                        // ADC Auto Trigger Enable
             | (1 << ADIE)                           // ADC Interrupt Enable
             | (1 << ADEN)                           // ADC Enable
@@ -33,14 +30,17 @@ void adc_init(void)
             | (1 << ADPS1)
             | (0 << ADPS0);
 
-    // TIMER configurations
+    ADCSRB  =   (0 << ADTS2)    // Auto-trigger source: timer0 Compare Match A
+            | (1 << ADTS1)
+            | (1 << ADTS0);
 
-    //clr_bit(PRR0, PRTIM0);                          // Activates clock to timer0
+    // TIMER configurations
+    clr_bit(PRR, PRTIM0);                          // Activates clock to timer0
     // MODE 2 -> CTC with TOP on OCR1
     TCCR0A  =   (1 << WGM01) | (0 << WGM00)         // mode 2
             | (0 << COM0B1) | (0 << COM0B0)         // do nothing
             | (0 << COM0A1) | (0 << COM0A0);        // do nothing
-
+/*
     TCCR0B  =
 #if ADC_TIMER_PRESCALER ==     1
                 (0 << CS02) | (0 << CS01) | (1 << CS00) // Prescaler N=1
@@ -60,11 +60,15 @@ void adc_init(void)
                 0
 #endif
                 | (0 << WGM02);      // mode 2
+*/
+
+    TCCR0B  = (0 << CS02) | (1 << CS01) | (0 << CS00) // Prescaler N=8
+            | (0 << WGM02);      // mode 2
 
     TCNT0 = 0;
-    OCR0A = 199; //ADC_TIMER_TOP;                       	// OCR2A = TOP = fcpu/(N*2*f) -1
+    OCR0A = 66; //ADC_TIMER_TOP;        // OCR2A = TOP = fcpu/(N*2*f) -1
 
-    TIMSK0 |=   (1 << OCIE0A);                      // Ativa a interrupcao na igualdade de comparação do TC0 com OCR0A
+    TIMSK0 |=   (1 << OCIE0A);          // Ativa a interrupcao na igualdade de comparação do TC0 com OCR0A
 
 #ifdef DEBUG_ON
     set_bit(DDRD, PD5);
@@ -77,24 +81,48 @@ void adc_init(void)
  */
 ISR(ADC_vect)
 {
-    static const float vo_coeff = 0.02052114654f;
+    static const float vo_coeff = 0.07407407407407407f;
+    static const float vi_coeff = 0.07407407407407407f;
     static const float io_coeff = 0.01599315004f;
-    
-    if(ADMUX & ADC1){
-        ADMUX--;
-        vo = ADC * vo_coeff;
-        
+
+    uint16_t adc = ADC;                     // read adc
+    uint8_t channel = ADMUX & 0x07;         // read channel
+
+    /*
+    cpl_bit(PORTD, PD5);
+    usart_send_uint8(ADMUX);
+    usart_send_char(':');
+    usart_send_uint16(ADC);
+    usart_send_char('\n');
+    */
+
+    switch(channel++){
+        case ADC0:
+            vi = adc * vi_coeff;
+            break;
+
+        case ADC1:                       
+            io = adc * io_coeff;
+            break;
+
+        case ADC2: default:
+            vo = adc * vo_coeff;
+            channel = ADC0;             // recycle
+
+            print_adc = 1;
 #ifdef DEBUG_ON
-        set_bit(PORTD, PD5);
+            set_bit(PORTD, PD5);
 #endif
-        control(); // call control action 
+            control(); // call control action 
 #ifdef DEBUG_ON
-        clr_bit(PORTD, PD5);
-#endif
-    }else{
-        ADMUX++;
-        io = ADC * io_coeff;
+            clr_bit(PORTD, PD5);
+#endif  
+            break;
     }
+
+    ADMUX = (ADMUX & 0xF8) | channel;   // select next channel
+    //ADCSRA = ADCSRA;                  // rearm for next conversion if TIMER0 not in use
+
 }
 
 /**

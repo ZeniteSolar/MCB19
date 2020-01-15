@@ -16,7 +16,7 @@
 
 
 // CONFIGURACOES DE COMPILACAO
-//#define DEBUG_ON
+#define DEBUG_ON
 #define VERBOSE_ON
 //#define VERBOSE_ON_CAN_APP
 //#define VERBOSE_ON_MACHINE
@@ -39,9 +39,11 @@
 #ifdef CONTROL_ON
 #define D_MIN       0
 #define D_MAX       1
+#define VO_SETPOINT 15.0-1
 #define IO_MAX      4
-#define VO_MAX      15.0-1
-#define PERIOD      0.00020001720147932722f // 0.0002      // 5kHz 
+#define VO_MAX      21
+#define VI_MIN      21
+#define PERIOD      0.00026802250316936607;// 0.00020100502512562814f // 0.0002      // 5kHz 
 #define F_PWM       30000UL
 #define PWM_DDR     DDRB
 #define PWM_PIN     PINB
@@ -54,7 +56,7 @@
 #endif
 
 #ifdef ADC_ON
-#define ADC_FREQUENCY                       10000 // 20000
+#define ADC_FREQUENCY                       5000
 #define ADC_TIMER_PRESCALER                 8
 #endif //ADC_ON
 

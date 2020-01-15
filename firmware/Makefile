@@ -44,7 +44,7 @@ MAIN 		= 	main
 MCU 		?=	atmega328p
 F_CPU		?=	16000000UL
 # Optimization
-OPT			=	s
+OPT			=	0
 # Debug
 DEBUG		=	dwarf-2
 # documentation (auto generated)
@@ -100,35 +100,35 @@ $(foreach i,$(SPECIAL_DEFS),$(eval $(call CHECK_ANSWER,$(i))))
 #  -Wa,...:      tell GCC to pass this to the assembler.
 #  -adhlns...:   create assembler listing
 #  INFO: https://www.nongnu.org/avr-libc/user-manual/using_tools.html
-CFLAGS += $(CDEFS)
+#CFLAGS += $(CDEFS)
 CFLAGS += -O$(OPT)
-CFLAGS += -g$(DEBUG)
-CFLAGS += -funsigned-char
-CFLAGS += -funsigned-bitfields
-CFLAGS += -fpack-struct
-CFLAGS += -fshort-enums
+#CFLAGS += -g$(DEBUG)
+#CFLAGS += -funsigned-char
+#CFLAGS += -funsigned-bitfields
+#CFLAGS += -fpack-struct
+#CFLAGS += -fshort-enums
 CFLAGS += -Wall
-CFLAGS += -Wstrict-prototypes
-CFLAGS += -mshort-calls
-CFLAGS += -ffunction-sections
-CFLAGS += -fdata-sections
-CFLAGS += -ffreestanding
-CFLAGS += -mcall-prologues
+#CFLAGS += -Wstrict-prototypes
+#CFLAGS += -mshort-calls
+#CFLAGS += -ffunction-sections
+#CFLAGS += -fdata-sections
+#CFLAGS += -ffreestanding
+#CFLAGS += -mcall-prologues
 #CFLAGS += --param inline-call-cost=2
 #CFLAGS += -finline-limit=3
 #CFLAGS += -fno-inline-small-functions
 #CFLAGS += -fno-unit-at-a-time
-CFLAGS += -Wundef
-CFLAGS += -Wunreachable-code
-CFLAGS += -Wsign-compare
-CFLAGS += -Waddr-space-convert
-CFLAGS += -Wmisspelled-isr
+#CFLAGS += -Wundef
+#CFLAGS += -Wunreachable-code
+#CFLAGS += -Wsign-compare
+#CFLAGS += -Waddr-space-convert
+#CFLAGS += -Wmisspelled-isr
 #CFLAGS += -Wa,-adhlns=$(<:%.c=$(OBJDIR)/%.lst)
-CFLAGS += $(patsubst %,-I%,$(EXTRAINCDIRS))
+#CFLAGS += $(patsubst %,-I%,$(EXTRAINCDIRS))
 CFLAGS += -mmcu=$(MCU)
 CFLAGS += -std=gnu99
 CFLAGS += -DF_CPU=$(F_CPU)
-CFLAGS += -finput-charset=utf-8 -fexec-charset=iso-8859-15
+#CFLAGS += -finput-charset=utf-8 -fexec-charset=iso-8859-15
 
 CFLAGSALT += \
 	-D__AVR_DEV_LIB_NAME__=m328pb

@@ -12,7 +12,7 @@ void control_init(void)
     OCR1B = 0;
 
     set_bit(PWM_ENABLE_DDR, PWM_ENABLE);
-    set_bit(PWM_ENABLE_PORT, PWM_ENABLE);
+    clr_bit(PWM_ENABLE_PORT, PWM_ENABLE);
     set_bit(PWM_DDR, PWM);
 }
 
@@ -46,16 +46,12 @@ inline float piVo(float r, float y){
     // Compute control action:
     u += + a1*e1 + a0*e0;
 
-    // Anti windup
-    //if(u < D_MIN)         u = D_MIN;
-    //else if(u > D_MAX)        u = D_MAX;
-
     return u;
 }
 
 inline float piIo(float r, float y){
     // PI CONFIGURATIONS:
-    const float Kp = 0.003;         // analog series proportional gain
+    const float Kp = 0.012;         // analog series proportional gain
     const float Ti = 0.003;         // analog series integration period
     const float Ts = PERIOD;        // digital sampling period
 
@@ -83,21 +79,31 @@ inline float piIo(float r, float y){
 }
 
 inline void control(void){
-    vo_setpoint = VO_MAX;
+    vo_setpoint = VO_SETPOINT;
 
-    // VOLTAGE CONTROL as outter loop
-    io_setpoint = piVo(vo_setpoint, vo);
+	// Safe condition to start working
+    if( (vi > VI_MIN) /*&& (vo > 1) && (vo < VO_MAX)*/ ){
+		dt_min = enable? D_MIN : vo/vi;
+		enable = 1;
+	}else{
+		enable = 0;
+	}
 
-    if(io_setpoint > IO_MAX) io_setpoint = IO_MAX;
+    enable = 1;
 
-    // CURRENT CONTROL as inner loop
-    dt = piIo(io_setpoint, io);
-
-    if(dt <= 0.2){
-        clr_bit(PWM_ENABLE_PORT, PWM_ENABLE);
-    }else{
+	if(enable){    
         set_bit(PWM_ENABLE_PORT, PWM_ENABLE);
+		// VOLTAGE CONTROL as outter loop
+		io_setpoint = piVo(vo_setpoint, vo);
+
+		if(io_setpoint > IO_MAX) io_setpoint = IO_MAX;
+
+		// CURRENT CONTROL as inner loop
+		dt = piIo(io_setpoint, io);
+
+		OCR1B = ICR1 * dt;
+	}else{
+        clr_bit(PWM_ENABLE_PORT, PWM_ENABLE);
     }
 
-    OCR1B = ICR1 * dt;
 }
