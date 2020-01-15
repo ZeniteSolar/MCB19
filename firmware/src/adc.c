@@ -10,7 +10,7 @@ void adc_init(void)
     // configuracao do ADC
     PORTC   =   0b00000000;                         // disables pull-up for adcs pins
     DDRC    =   0b00000000;                         // all adcs as inputs
-    DIDR0   =   0b11111111;                         // ADC0 to ADC2 as adc (digital disable)
+    DIDR0   =   0b11111111;                         // digital disable for all adcs
 
     ADMUX   =   (0 << REFS1)                        // AVcc with external capacitor at AREF pin
             | (1 << REFS0)
@@ -24,14 +24,14 @@ void adc_init(void)
             | (1 << ADTS1)
             | (1 << ADTS0);
 
-    ADMUX = (ADMUX & 0xF8) | ADC0;                  // Choose admux
+    ADMUX = (ADMUX & 0xF0) | (0 & 0x0F);   // Choose ADMUX
     ADCSRA  =   (1 << ADATE)                        // ADC Auto Trigger Enable
             | (1 << ADIE)                           // ADC Interrupt Enable
             | (1 << ADEN)                           // ADC Enable
             | (1 << ADSC)                           // Do the first Start of Conversion
-            | (1 << ADPS2)                          // ADC Prescaller = 128;
+            | (1 << ADPS2)                          // ADC Prescaller = 64
             | (1 << ADPS1)
-            | (1 << ADPS0);
+            | (0 << ADPS0);
 
     // TIMER configurations
 
@@ -61,10 +61,14 @@ void adc_init(void)
 #endif
                 | (0 << WGM02);      // mode 2
 
-    OCR0A = ADC_TIMER_TOP;                       	// OCR2A = TOP = fcpu/(N*2*f) -1
-
+    TCNT0 = 0;
+    OCR0A = 199; //ADC_TIMER_TOP;                       	// OCR2A = TOP = fcpu/(N*2*f) -1
 
     TIMSK0 |=   (1 << OCIE0A);                      // Ativa a interrupcao na igualdade de comparação do TC0 com OCR0A
+
+#ifdef DEBUG_ON
+    set_bit(DDRD, PD5);
+#endif
 
 }
 
@@ -75,15 +79,21 @@ ISR(ADC_vect)
 {
     static const float vo_coeff = 0.02052114654f;
     static const float io_coeff = 0.01599315004f;
-
+    
     if(ADMUX & ADC1){
         ADMUX--;
-        io = ADC * io_coeff;
+        vo = ADC * vo_coeff;
         
+#ifdef DEBUG_ON
+        set_bit(PORTD, PD5);
+#endif
         control(); // call control action 
+#ifdef DEBUG_ON
+        clr_bit(PORTD, PD5);
+#endif
     }else{
         ADMUX++;
-        vo = ADC * vo_coeff;
+        io = ADC * io_coeff;
     }
 }
 
@@ -92,3 +102,4 @@ ISR(ADC_vect)
  * BADISR_vect.
  */
 EMPTY_INTERRUPT(TIMER0_COMPA_vect);
+

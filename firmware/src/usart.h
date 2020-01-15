@@ -12,6 +12,7 @@
 #define USART_H
 
 #include <avr/io.h>
+#include <stdlib.h>
 #include "../lib/bit_utils.h"
 #include "conf.h"
 
@@ -41,5 +42,7 @@ void usart_send_uint32(uint32_t num);
 void usart_send_buffer(uint8_t *b, uint8_t lenght);
 
 void usart_init(uint16_t ubrr, uint8_t rx, uint8_t tx);
+
+void usart_send_float(float num);
 
 #endif

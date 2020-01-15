@@ -299,15 +299,16 @@ inline void machine_run(void)
 */
 ISR(TIMER2_COMPA_vect)
 {
-    if(machine_clk_divider++ == MACHINE_CLK_DIVIDER_VALUE){
+    if(++machine_clk_divider == MACHINE_CLK_DIVIDER_VALUE){
+        machine_clk_divider = 0;
+        machine_clk = 1;
+
         /*if(machine_clk){
             for(;;){
                 pwm_reset();
                 VERBOSE_MSG_ERROR(if(machine_clk) usart_send_string("\nERROR: CLOCK CONFLICT!!!\n"));
             }
         }*/
-        machine_clk = 1;
-        machine_clk_divider = 0;
     }
 }
 

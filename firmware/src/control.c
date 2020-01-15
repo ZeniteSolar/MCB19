@@ -2,9 +2,18 @@
 
 void control_init(void)
 {
+    TCCR1A = (0<<COM1A1) | (0<<COM1A0) 
+        | (1<<COM1B1) | (0<<COM1B0) 
+        | (0<<WGM11) | (0<<WGM10);
+    TCCR1B = (0<<CS12) | (0<<CS11) | (1<<CS10) 
+        | (1<<WGM13) | (0<<WGM12);
 
-    // configurar pwm aqui -> timer1 saida B
+    ICR1 = 260;
+    OCR1B = 0;
 
+    set_bit(PWM_ENABLE_DDR, PWM_ENABLE);
+    set_bit(PWM_ENABLE_PORT, PWM_ENABLE);
+    set_bit(PWM_DDR, PWM);
 }
 
 
@@ -15,20 +24,20 @@ void control_init(void)
 ** /var y é o valor da saída.
 ** /ret     retorna a ação de controle u.
 */
-float piVo(float r, float y){
+inline float piVo(float r, float y){
     // PI CONFIGURATIONS:
-    const float Kp = 2.0*0.2385*10; // analog series proportional gain
-    const float Ti = 50e-3;     // analog series integration period
-    const float Ts = PERIOD;    // digital sampling period
+    const float Kp = 1.0;           // analog series proportional gain
+    const float Ti = 0.01;          // analog series integration period
+    const float Ts = PERIOD;        // digital sampling period
 
     // INTERNAL CONSTANTS COMPUTATION:
-    const float a0 = -Kp;                       // IIR coefficient for old sample
-    const float a1 = Kp*(1+Ts/Ti);              // IIR coefficient for new sample
+    const float a0 = -Kp;           // IIR coefficient for old sample
+    const float a1 = Kp*(1+Ts/Ti);  // IIR coefficient for new sample
 
     // CONTROLLER STATIC VARIABLES
-    static float e0 = 0;        // old error
-    static float e1 = 0;        // new error
-    static float u = 0;     // control action
+    static float e0 = 0;            // old error
+    static float e1 = 0;            // new error
+    static float u = 0;             // control action
 
     // Compute error:
     e0 = e1;
@@ -44,20 +53,20 @@ float piVo(float r, float y){
     return u;
 }
 
-float piIo(float r, float y){
+inline float piIo(float r, float y){
     // PI CONFIGURATIONS:
-    const float Kp = 0.04*0.3;  // analog series proportional gain
-    const float Ti = 3e-3;      // analog series integration period
-    const float Ts = PERIOD;    // sampling period
+    const float Kp = 0.003;         // analog series proportional gain
+    const float Ti = 0.003;         // analog series integration period
+    const float Ts = PERIOD;        // digital sampling period
 
     // INTERNAL CONSTANTS COMPUTATION:
-    const float a0 = -Kp;                       // IIR coefficient for old sample
-    const float a1 = Kp*(1+Ts/Ti);              // IIR coefficient for new sample
+    const float a0 = -Kp;           // IIR coefficient for old sample
+    const float a1 = Kp*(1+Ts/Ti);  // IIR coefficient for new sample
 
     // CONTROLLER STATIC VARIABLES
-    static float e0 = 0;        // old error
-    static float e1 = 0;        // new error
-    static float u = 0;     // control action
+    static float e0 = 0;            // old error
+    static float e1 = 0;            // new error
+    static float u = 0;             // control action
 
     // Compute error:
     e0 = e1;
@@ -73,9 +82,7 @@ float piIo(float r, float y){
     return u;
 }
 
-
 inline void control(void){
-
     vo_setpoint = VO_MAX;
 
     // VOLTAGE CONTROL as outter loop
@@ -86,4 +93,11 @@ inline void control(void){
     // CURRENT CONTROL as inner loop
     dt = piIo(io_setpoint, io);
 
+    if(dt <= 0.2){
+        clr_bit(PWM_ENABLE_PORT, PWM_ENABLE);
+    }else{
+        set_bit(PWM_ENABLE_PORT, PWM_ENABLE);
+    }
+
+    OCR1B = ICR1 * dt;
 }

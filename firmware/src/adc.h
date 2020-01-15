@@ -17,7 +17,6 @@
 #include "dbg_vrb.h"
 #include "usart.h"
 #include "../lib/bit_utils.h"
-#include "../lib/log2.h"
 #include "control.h"
 
 // Equations for mode 2 (CTC with TOP OCR2A)
@@ -26,7 +25,7 @@
 //#define ADC_TIMER_TOP (0.5*(F_CPU)/QUOTIENT)
 #define ADC_NUMBER_OF_CHANNELS  2
 #define ADC_TIMER_FREQUENCY     ((uint32_t)(ADC_FREQUENCY)*(uint8_t)(ADC_NUMBER_OF_CHANNELS))
-#define ADC_TIMER_TOP           ((F_CPU/(2*ADC_TIMER_PRESCALER))/(ADC_TIMER_FREQUENCY) -1)
+#define ADC_TIMER_TOP           50 //F_CPU/(2 * ADC_TIMER_PRESCALER * 20000)
 
 #define ADC0 0
 #define ADC1 1

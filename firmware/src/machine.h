@@ -20,13 +20,13 @@
 // Note the resolution. For example.. at 150hz, ICR1 = PWM_TOP = 159, so it
 #define MACHINE_TIMER_TOP ((F_CPU/(2*MACHINE_TIMER_PRESCALER))/(MACHINE_TIMER_FREQUENCY) -1)
 
+#include "dbg_vrb.h"
 #ifdef ADC_ON
 #include "adc.h"
 #endif
 #ifdef USART_ON
 #include "usart.h"
 #endif
-#include "dbg_vrb.h"
 #ifdef CAN_ON
 #include "can.h"
 #include "can_app.h"
