@@ -44,7 +44,7 @@ MAIN 		= 	main
 MCU 		?=	atmega328p
 F_CPU		?=	16000000UL
 # Optimization
-OPT			=	0
+OPT			=	2
 # Debug
 DEBUG		=	dwarf-2
 # documentation (auto generated)

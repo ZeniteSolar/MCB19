@@ -19,14 +19,6 @@
 #include "../lib/bit_utils.h"
 #include "control.h"
 
-// Equations for mode 2 (CTC with TOP OCR2A)
-// Note the resolution. For example.. at 150hz, ICR1 = PWM_TOP = 159, so it
-//#define QUOTIENT  (((uint32_t)MACHINE_TIMER_PRESCALER)*((uint32_t)MACHINE_TIMER_FREQUENCY))
-//#define ADC_TIMER_TOP (0.5*(F_CPU)/QUOTIENT)
-#define ADC_NUMBER_OF_CHANNELS  3
-#define ADC_TIMER_FREQUENCY     ((uint32_t)(ADC_FREQUENCY)*(uint8_t)(ADC_NUMBER_OF_CHANNELS))
-#define ADC_TIMER_TOP           F_CPU/(2 * ADC_TIMER_PRESCALER * ADC_FREQUENCY)
-
 typedef enum {ADC0, ADC1, ADC2} adc_channels_t;
 volatile uint8_t print_adc;
 

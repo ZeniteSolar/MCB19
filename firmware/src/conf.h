@@ -43,7 +43,7 @@
 #define IO_MAX      4
 #define VO_MAX      21
 #define VI_MIN      21
-#define PERIOD      0.00026802250316936607;// 0.00020100502512562814f // 0.0002      // 5kHz 
+#define PERIOD      0.0009960853844391542f;// 0.0001995171684523453f; // 0.0002      // 5kHz 
 #define F_PWM       30000UL
 #define PWM_DDR     DDRB
 #define PWM_PIN     PINB
@@ -54,11 +54,6 @@
 #define PWM_ENABLE_PIN PIND
 #define PWM_ENABLE_PORT PORTD
 #endif
-
-#ifdef ADC_ON
-#define ADC_FREQUENCY                       5000
-#define ADC_TIMER_PRESCALER                 8
-#endif //ADC_ON
 
 #ifdef MACHINE_ON
 #define MACHINE_TIMER_FREQUENCY             300           //<! machine timer frequency in Hz
