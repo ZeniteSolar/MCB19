@@ -7,7 +7,7 @@
 #include "usart.h"
 #include "dbg_vrb.h"
 
-volatile float dt, dt_max, dt_min, vi, vo, io, vo_setpoint, io_setpoint;
+volatile float dt, dt_max, dt_min, vi, vo, io, io_max, vo_setpoint, io_setpoint;
 volatile uint8_t enable;
 
 void control(void);

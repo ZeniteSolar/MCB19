@@ -74,8 +74,8 @@ void adc_init(void)
 ISR(ADC_vect)
 {
     cli();
-    static const float vo_coeff = 0.07407407407407407f;
-    static const float vi_coeff = 0.07407407407407407f;
+    static const float vi_coeff = 0.06582490575070313f;
+    static const float vo_coeff = 0.06717781789490249f;
     static const float io_coeff = 0.01599315004f;
 
     uint16_t adc = ADC;                     // read adc

@@ -39,7 +39,7 @@
 #ifdef CONTROL_ON
 #define D_MIN       0
 #define D_MAX       1
-#define VO_SETPOINT 15.0-1
+#define VO_SETPOINT 15.0
 #define IO_MAX      4
 #define VO_MAX      21
 #define VI_MIN      21
