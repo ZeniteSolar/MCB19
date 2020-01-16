@@ -1,5 +1,5 @@
 EESchema Schematic File Version 4
-EELAYER 30 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -344,17 +344,6 @@ F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 8775 2100 50  0001 C CNN
 $EndComp
 $Comp
 L Amplifier_Operational:LM324 U603
-U 2 1 5D47935F
-P 6875 4625
-F 0 "U603" H 6875 4992 50  0000 C CNN
-F 1 "LM324" H 6875 4901 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 6825 4725 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 6925 4825 50  0001 C CNN
-	2    6875 4625
-	1    0    0    -1  
-$EndComp
-$Comp
-L Amplifier_Operational:LM324 U603
 U 3 1 5D4793F4
 P 7575 4625
 F 0 "U603" H 7575 4992 50  0000 C CNN
@@ -367,12 +356,12 @@ $EndComp
 $Comp
 L Amplifier_Operational:LM324 U603
 U 4 1 5D479479
-P 6175 4625
-F 0 "U603" H 6175 4992 50  0000 C CNN
-F 1 "LM324" H 6175 4901 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 6125 4725 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 6225 4825 50  0001 C CNN
-	4    6175 4625
+P 8375 4625
+F 0 "U603" H 8375 4992 50  0000 C CNN
+F 1 "LM324" H 8375 4901 50  0000 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 8325 4725 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 8425 4825 50  0001 C CNN
+	4    8375 4625
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -382,37 +371,20 @@ Wire Wire Line
 Wire Wire Line
 	7250 4725 7275 4725
 Wire Wire Line
-	6575 4525 6550 4525
+	8075 4525 8050 4525
 Wire Wire Line
-	6550 4525 6550 4725
+	8050 4525 8050 4725
 Wire Wire Line
-	6550 4725 6575 4725
-Wire Wire Line
-	5875 4525 5850 4525
-Wire Wire Line
-	5850 4525 5850 4725
-Wire Wire Line
-	5850 4725 5875 4725
+	8050 4725 8075 4725
 $Comp
 L power:GND #PWR0610
 U 1 1 5D482B0D
-P 6475 4650
-F 0 "#PWR0610" H 6475 4400 50  0001 C CNN
-F 1 "GND" H 6480 4477 50  0000 C CNN
-F 2 "" H 6475 4650 50  0001 C CNN
-F 3 "" H 6475 4650 50  0001 C CNN
-	1    6475 4650
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR0611
-U 1 1 5D482F12
-P 7175 4650
-F 0 "#PWR0611" H 7175 4400 50  0001 C CNN
-F 1 "GND" H 7180 4477 50  0000 C CNN
-F 2 "" H 7175 4650 50  0001 C CNN
-F 3 "" H 7175 4650 50  0001 C CNN
-	1    7175 4650
+P 8675 4650
+F 0 "#PWR0610" H 8675 4400 50  0001 C CNN
+F 1 "GND" H 8680 4477 50  0000 C CNN
+F 2 "" H 8675 4650 50  0001 C CNN
+F 3 "" H 8675 4650 50  0001 C CNN
+	1    8675 4650
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -429,9 +401,7 @@ $EndComp
 Wire Wire Line
 	7875 4625 7875 4650
 Wire Wire Line
-	7175 4625 7175 4650
-Wire Wire Line
-	6475 4625 6475 4650
+	8675 4625 8675 4650
 $Comp
 L power:+5V #PWR0608
 U 1 1 5D48C97C
@@ -457,7 +427,7 @@ $EndComp
 Text HLabel 9100 1900 2    50   Input ~ 0
 LM324A
 Wire Wire Line
-	9100 1900 9025 1900
+	9100 1900 9050 1900
 Wire Wire Line
 	5875 1900 5900 1900
 Wire Wire Line
@@ -1336,7 +1306,7 @@ F 3 "" H 1975 4875 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text HLabel 1300 3450 0    50   Input ~ 0
-enable
+ENABLE
 $Comp
 L power:GND #PWR0616
 U 1 1 5E26FD75
@@ -1371,10 +1341,10 @@ Connection ~ 7500 3950
 Wire Wire Line
 	7500 3950 7800 3950
 $Comp
-L Device:R_Small R?
+L Device:R_Small R613
 U 1 1 5E2900F5
 P 4250 3225
-F 0 "R?" V 4150 3225 50  0000 C CNN
+F 0 "R613" V 4150 3225 50  0000 C CNN
 F 1 "15k" V 4075 3225 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4250 3225 50  0001 C CNN
 F 3 "~" H 4250 3225 50  0001 C CNN
@@ -1382,10 +1352,10 @@ F 3 "~" H 4250 3225 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L Device:R_Small R?
+L Device:R_Small R614
 U 1 1 5E2900FF
 P 4250 3525
-F 0 "R?" V 4325 3525 50  0000 C CNN
+F 0 "R614" V 4325 3525 50  0000 C CNN
 F 1 "1k2" V 4400 3525 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4250 3525 50  0001 C CNN
 F 3 "~" H 4250 3525 50  0001 C CNN
@@ -1409,8 +1379,49 @@ Wire Wire Line
 Connection ~ 4250 3950
 Wire Wire Line
 	4250 3950 4525 3950
+$Comp
+L Amplifier_Operational:LM324 U603
+U 2 1 5D47935F
+P 4775 1900
+F 0 "U603" H 4775 2267 50  0000 C CNN
+F 1 "LM324" H 4775 2176 50  0000 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 4725 2000 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 4825 2100 50  0001 C CNN
+	2    4775 1900
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	4350 3375 4350 1925
+	4475 1800 4350 1800
 Wire Wire Line
-	7600 3650 7600 1925
+	4350 1800 4350 3375
+Wire Wire Line
+	4475 2000 4450 2000
+Wire Wire Line
+	4450 2000 4450 2125
+Wire Wire Line
+	4450 2125 5100 2125
+Wire Wire Line
+	5100 2125 5100 1900
+Wire Wire Line
+	5100 1900 5075 1900
+Wire Wire Line
+	8425 1800 7600 1800
+Wire Wire Line
+	7600 1800 7600 3650
+Wire Wire Line
+	8400 2000 8425 2000
+Wire Wire Line
+	8400 2000 8400 2450
+Wire Wire Line
+	8400 2450 9050 2450
+Wire Wire Line
+	9050 2450 9050 1900
+Connection ~ 9050 1900
+Wire Wire Line
+	9050 1900 9025 1900
+Text HLabel 5125 1900 2    50   Input ~ 0
+LM324B
+Wire Wire Line
+	5125 1900 5100 1900
+Connection ~ 5100 1900
 $EndSCHEMATC
