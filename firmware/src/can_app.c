@@ -70,8 +70,8 @@ inline void can_app_send_state(void)
 inline void can_app_send_adc(void)
 {
     can_t msg;
-    msg.id                                  = CAN_MSG_MSC19_ADC;
-    msg.length                              = CAN_LENGTH_MSG_MSC19_ADC;
+    msg.id                                  = CAN_MSG_MSC19_x_ADC_ID;
+    msg.length                              = CAN_MSG_MSC19_x_ADC_ID;
     msg.flags.rtr = 0;
 
     uint16_t avg_adc0 =
