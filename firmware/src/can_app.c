@@ -153,12 +153,12 @@ inline void can_app_send_adc(void)
 
 
     msg.data[CAN_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
-    msg.data[CAN_MSG_MSC19_ADC_AVG_BYTE_L]  = LOW(avg_adc0_converted);
-    msg.data[CAN_MSG_MSC19_ADC_AVG_BYTE_H]  = HIGH(avg_adc0_converted);
-    msg.data[CAN_MSG_MSC19_ADC_MIN_BYTE_L]  = LOW(measurements.adc0_min);
-    msg.data[CAN_MSG_MSC19_ADC_MIN_BYTE_H]  = HIGH(measurements.adc0_min);
-    msg.data[CAN_MSG_MSC19_ADC_MAX_BYTE_L]  = LOW(measurements.adc0_max);
-    msg.data[CAN_MSG_MSC19_ADC_MAX_BYTE_H]  = HIGH(measurements.adc0_max);
+    msg.data[CAN_MSG_MSC19_x_ADCAVG_BYTE_L]  = LOW(avg_adc0_converted);
+    msg.data[CAN_MSG_MSC19_x_ADCAVG_BYTE_H]  = HIGH(avg_adc0_converted);
+    msg.data[CAN_MSG_MSC19_x_ADCMIN_BYTE_L]  = LOW(measurements.adc0_min);
+    msg.data[CAN_MSG_MSC19_x_ADCMIN_BYTE_H]  = HIGH(measurements.adc0_min);
+    msg.data[CAN_MSG_MSC19_x_ADCMAX_BYTE_L]  = LOW(measurements.adc0_max);
+    msg.data[CAN_MSG_MSC19_x_ADCMAX_BYTE_H]  = HIGH(measurements.adc0_max);
 
     can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP
