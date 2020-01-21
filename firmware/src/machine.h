@@ -56,11 +56,21 @@ typedef union error_flags{
 }error_flags_t;
 
 typedef struct measurements{
-    uint16_t    adc0_avg;       // average value of ADC0
-    uint16_t    adc0_avg_sum_count;
-    uint64_t    adc0_avg_sum;   // average value of ADC0
-    uint16_t    adc0_min;       // period minimum value of ADC0
-    uint16_t    adc0_max;       // period maximum value of ADC0
+    uint16_t    vo_avg;         // average value
+    uint16_t    vo_avg_sum_count;
+    uint64_t    vo_avg_sum;     // average sum value
+    uint16_t    vo_min;         // period minimum value
+    uint16_t    vo_max;         // period maximum value
+    uint16_t    io_avg;         // average value
+    uint16_t    io_avg_sum_count;
+    uint64_t    io_avg_sum;     // average sum value
+    uint16_t    io_min;         // period minimum value
+    uint16_t    io_max;         // period maximum value
+    uint16_t    vi_avg;         // average value
+    uint16_t    vi_avg_sum_count;
+    uint64_t    vi_avg_sum;     // average sum value
+    uint16_t    vi_min;         // period minimum value
+    uint16_t    vi_max;         // period maximum value
 }measurements_t;
 
 
