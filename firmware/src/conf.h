@@ -106,6 +106,9 @@
  * be 0 all the time.
  */
 #define	SUPPORT_TIMESTAMPS		0
+
+#define CAN_SIGNATURE_SELF      CAN_SIGNATURE_MCB19
+
 #endif // CAN_ON
 
 #endif /* ifndef CONF_H */

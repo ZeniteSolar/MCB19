@@ -53,7 +53,7 @@ inline void can_app_task(void)
 inline void can_app_send_state(void)
 {
     can_t msg;
-    msg.id                                  = CAN_MSG_MSC19_STATE_ID;
+    msg.id                                  = CAN_MSG_MSC19_x_STATE_ID;
     msg.length                              = CAN_MSG_GENERIC_STATE_LENGTH;
     msg.flags.rtr = 0;
 
