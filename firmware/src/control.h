@@ -8,10 +8,11 @@
 #include "dbg_vrb.h"
 
 volatile float dt, dt_max, dt_min, vi, vo, io, io_max, vo_setpoint, io_setpoint;
-volatile uint8_t enable;
+volatile uint8_t enable, vi_safe_range, vo_safe_range, vi_stable, dt_safe_range;
 
 void control(void);
 void control_init(void);
+void control_feedback(void);
 
 float piVo(float r, float y);
 float piIo(float r, float y);

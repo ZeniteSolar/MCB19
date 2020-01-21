@@ -81,11 +81,71 @@ inline float piIo(float r, float y){
 inline void control(void){
     static float vi_old = 0;
     static uint16_t vi_stable_counter = 0;
+
+    // call feedback controller   
+    control_feedback();
+
+    dt = 0.5;
+
+    // apply outputs
+    OCR1B = ICR1 * dt;
+    
+    if(!enable){
+        if(dt > 0)  dt_safe_range = 1;
+        else        dt_safe_range = 0;
+
+        if((vo > 14) && (vo < 16))  vo_safe_range = 1;
+        else                        vo_safe_range = 0;
+ 
+        if(vi_stable_counter < 1000){
+            vi_stable = 0;
+            if((vi - vi_old) < 1)   vi_stable_counter++;
+            else                    vi_stable_counter = 0;
+            vi_old = vi;
+        }else{
+            vi_stable = 1;
+        }
+    }else{
+        vi_stable_counter = 0;
+    }
+
+    if(vi > VI_MIN)         vi_safe_range = 1;
+    else if(vi < VI_MIN -2) vi_safe_range = 0;
+
+                                
+    if(vo_safe_range 
+            && vi_safe_range 
+            && vi_stable 
+            && dt_safe_range)   enable = 1;
+    else                        enable = 0;
+
+    if(enable) set_bit(PWM_ENABLE_PORT, PWM_ENABLE);
+    else       clr_bit(PWM_ENABLE_PORT, PWM_ENABLE); 
+}
+
+inline void control_feedback(void)
+{
+    // VOLTAGE CONTROL as outter loop
+    vo_setpoint = VO_SETPOINT;
+    io_setpoint = piVo(vo_setpoint, vo);
+
+    // CURRENT CONTROL as inner loop
+    // soft start -> if(io_max < IO_MAX) io_max += 0.01;
+    //if(io_max > IO_MAX) io_max = IO_MAX;
+    //if(io_setpoint > io_max) io_setpoint = io_max;
+    if(io_setpoint > IO_MAX) io_setpoint = IO_MAX;
+    dt = piIo(io_setpoint, io);
+    if(dt < dt_min) dt = dt_min;
+}
+
+void lala(void){
+    static float vi_old = 0;
+    static uint16_t vi_stable_counter = 0;
     static uint8_t startup = 0;
     static uint16_t dt_startup_delay_counter = 0;
 
     vo_setpoint = VO_SETPOINT;
-
+     
 	// Safe condition to start working
     // detects stability of vi
     if( (vi > VI_MIN) /* && (vo > 1)  && (vo < VO_MAX) */){
@@ -93,10 +153,12 @@ inline void control(void){
             if(!startup){
                 if((vi - vi_old) < 1)   vi_stable_counter++;
                 else                    vi_stable_counter = 0;
+
+                vi_old = vi;
             }
         }else{
             //dt_min = enable? 0.26 /*D_MIN*/ : vo/vi;
-            if(!enable) dt_min = vo/vi + 0.01;
+            if(!enable) dt_min = vo/vi;
 
             enable = 1;
             startup = 1;
@@ -108,17 +170,18 @@ inline void control(void){
         startup = 0;
     }
 
-    vi_old = vi;
-
 //    enable = 1;
 
 	if(enable){    
 
-        if(dt_startup_delay_counter > 5000){
+        if(dt_startup_delay_counter < 5000){
+            dt_startup_delay_counter++;
+            dt = dt_min;
+        }else{
             // VOLTAGE CONTROL as outter loop
             io_setpoint = piVo(vo_setpoint, vo);
 
-            //if(io_max < IO_MAX) io_max += 0.01;
+            if(io_max < IO_MAX) io_max += 0.01;
             if(io_max > IO_MAX) io_max = IO_MAX;
 
             if(io_setpoint > io_max) io_setpoint = io_max;
@@ -126,10 +189,7 @@ inline void control(void){
             // CURRENT CONTROL as inner loop
             float dt_ = piIo(io_setpoint, io);
             if(dt_ > dt_min) dt = dt_min;
-            else dt = dt_;
-        }else{
-            dt_startup_delay_counter++;
-            dt = dt_min;
+            else dt = dt_; 
         }
 
 		OCR1B = ICR1 * dt;
