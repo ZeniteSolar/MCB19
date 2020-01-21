@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 7
+Sheet 7 7
 Title ""
 Date ""
 Rev ""
@@ -1138,25 +1138,8 @@ Wire Wire Line
 	2150 2550 2100 2550
 Wire Wire Line
 	2100 2550 2100 2600
-$Comp
-L Device:R_Small R612
-U 1 1 5E1F6547
-P 2450 3150
-F 0 "R612" V 2525 3150 50  0000 C CNN
-F 1 "1k" V 2600 3150 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2450 3150 50  0001 C CNN
-F 3 "~" H 2450 3150 50  0001 C CNN
-	1    2450 3150
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	2450 3250 2450 3300
-Wire Wire Line
-	2450 3300 2100 3300
 Wire Wire Line
 	2100 3300 2100 3250
-Wire Wire Line
-	2450 2350 2450 2300
 Wire Wire Line
 	2075 5000 2175 5000
 Connection ~ 2075 5000
@@ -1223,7 +1206,6 @@ F 3 "" H 2100 3300 50  0001 C CNN
 	1    2100 3300
 	1    0    0    -1  
 $EndComp
-Connection ~ 2100 3300
 Wire Wire Line
 	6475 3950 7500 3950
 Wire Wire Line
@@ -1402,8 +1384,6 @@ F 3 "" H 8175 4650 50  0001 C CNN
 	1    8175 4650
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2450 2750 2450 2850
 $Comp
 L power:+12V #PWR0114
 U 1 1 5DA059B9
@@ -1417,17 +1397,14 @@ F 3 "" H 2175 4275 50  0001 C CNN
 $EndComp
 Connection ~ 2175 4275
 Wire Wire Line
-	2675 2850 2450 2850
-Connection ~ 2450 2850
-Wire Wire Line
-	2450 2850 2450 3050
+	2675 3025 2450 3025
 $Comp
 L Relay:G5LE-1 K601
 U 1 1 5E344973
 P 9750 3150
 F 0 "K601" V 9125 3150 50  0000 C CNN
 F 1 "G5LE-1" V 9225 3150 50  0000 C CNN
-F 2 "" H 10200 3100 50  0001 L CNN
+F 2 "KicadZeniteSolarLibrary18:Relay_SPDT_SANYOU_SRD_Series_Form_C" H 10200 3100 50  0001 L CNN
 F 3 "http://www.omron.com/ecb/products/pdf/en-g5le.pdf" H 9750 2750 50  0001 C CNN
 	1    9750 3150
 	0    1    1    0   
@@ -1466,7 +1443,7 @@ Wire Wire Line
 Wire Wire Line
 	10200 2650 10200 2950
 Connection ~ 10200 2950
-Text Label 2675 2850 0    50   ~ 0
+Text Label 2675 3025 0    50   ~ 0
 relay_coil
 Text Label 9250 2950 2    50   ~ 0
 relay_coil
@@ -1482,8 +1459,6 @@ F 3 "" H 8825 1450 50  0001 C CNN
 	1    8825 1450
 	1    0    0    -1  
 $EndComp
-Text Notes 2125 2175 0    50   ~ 0
-trazer 18V pra cá
 $Comp
 L Device:CP1_Small C621
 U 1 1 5E6138AC
@@ -1507,4 +1482,25 @@ Wire Wire Line
 	4350 3950 4525 3950
 Wire Wire Line
 	3875 3950 4350 3950
+Text HLabel 2450 2175 0    50   Input ~ 0
++18V
+Wire Wire Line
+	2450 2175 2450 2350
+$Comp
+L Device:R_Small R1
+U 1 1 5E28801E
+P 2450 2900
+F 0 "R1" V 2525 2900 50  0000 C CNN
+F 1 "90R" V 2600 2900 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2450 2900 50  0001 C CNN
+F 3 "~" H 2450 2900 50  0001 C CNN
+	1    2450 2900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2450 2800 2450 2750
+Wire Wire Line
+	2450 3025 2450 3000
+Text Notes 9025 3150 0    79   ~ 0
+REVIEW RELAY FOOTPRINT\n
 $EndSCHEMATC
