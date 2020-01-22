@@ -24,6 +24,7 @@
 #define VERBOSE_ON_INIT
 #define VERBOSE_ON_ERROR
 
+#define CAN_SIGNATURE_SELF      CAN_SIGNATURE_MCB19_1
 
 // MODULES ACTIVATION
 #define USART_ON
@@ -106,8 +107,6 @@
  * be 0 all the time.
  */
 #define	SUPPORT_TIMESTAMPS		0
-
-#define CAN_SIGNATURE_SELF      CAN_SIGNATURE_MCB19
 
 #endif // CAN_ON
 

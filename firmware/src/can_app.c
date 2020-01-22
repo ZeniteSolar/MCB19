@@ -40,12 +40,12 @@ inline void can_app_task(void)
         can_app_send_state_clk_div = 0;
     }
 
-    if(can_app_send_adc_clk_div++ >= CAN_APP_SEND_ADC_CLK_DIV){
+    if(can_app_send_measurements_clk_div++ >= CAN_APP_SEND_MEASUREMENTS_CLK_DIV){
 #ifdef USART_ON
-        VERBOSE_MSG_CAN_APP(usart_send_string("adc msg was sent.\n"));
+        VERBOSE_MSG_CAN_APP(usart_send_string("measurements msg was sent.\n"));
 #endif
-        can_app_send_adc();
-        can_app_send_adc_clk_div = 0;
+        can_app_send_measurements();
+        can_app_send_measurements_clk_div = 0;
     }
 
 }
@@ -53,7 +53,7 @@ inline void can_app_task(void)
 inline void can_app_send_state(void)
 {
     can_t msg;
-    msg.id                                  = CAN_MSG_MSC19_x_STATE_ID;
+    msg.id                                  = CAN_MSG_MCB19_1_STATE_ID;
     msg.length                              = CAN_MSG_GENERIC_STATE_LENGTH;
     msg.flags.rtr = 0;
 
@@ -67,106 +67,89 @@ inline void can_app_send_state(void)
 #endif
 }
 
-inline void can_app_send_adc(void)
+inline void can_app_send_measurements(void)
+{
+    static char round = 0;
+
+    switch (round) {
+        case 0:
+            can_app_send_output_voltage();
+            round++;
+            break;
+        case 1:
+            can_app_send_output_current();
+            round++;
+            break;
+        case 2: default:
+            can_app_send_input_voltage();
+            round = 0;
+            break;
+    }
+}
+
+inline void can_app_send_output_voltage(void)
 {
     can_t msg;
-    msg.id                                  = CAN_MSG_MSC19_x_ADC_ID;
-    msg.length                              = CAN_MSG_MSC19_x_ADC_ID;
+    msg.id                                  = CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_ID;
+    msg.length                              = CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_LENGTH;
     msg.flags.rtr = 0;
 
-    uint16_t avg_adc0 =
-        (measurements.adc0_avg_sum / measurements.adc0_avg_sum_count);
-
-    uint16_t avg_adc0_converted;
-    // float avg_adc0_converted_f;
-
-    /* Valores da regressão polinomial para o sensor 1*/
-    #if CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_1
-    #define adc_adjust 1.0153122815934938
-    #define a0 -0.007214537133162624f * adc_adjust
-    #define b0 79.75377726031437f * adc_adjust
-    #define c0 -70.91969971593136f * adc_adjust
-    avg_adc0_converted = (uint16_t) (a0 * powf(avg_adc0, 2) + b0 * avg_adc0 );
-
-    /* Valores da regressão polinomial para o sensor 2*/
-    #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_2
-    #define adc_adjust 0.9876390605686033          /* fator de correção para o ADC */
-    #define a0 -0.004247907622453196f * adc_adjust
-    #define b0 79.14536022160605f * adc_adjust
-    #define c0 134.28980589764254f * adc_adjust
-    avg_adc0_converted = (uint16_t) (a0 * powf(avg_adc0, 2) + b0 * avg_adc0 + c0);
-
-    /* Valores da regressão polinomial para o sensor 3*/
-    #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_3
-    #define adc_adjust 1.0125156445556946           /* fator de correção para o ADC */
-    #define a0 -0.004090813302699868f * adc_adjust
-    #define b0 79.87059674657795f * adc_adjust
-    #define c0 11.097134814989177f * adc_adjust
-    avg_adc0_converted = (uint16_t) (a0 * powf(avg_adc0, 2) + b0 * avg_adc0 + c0);
-
-    /* Valores da regressão polinomial para o sensor 4*/
-    #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_4
-    // breaks:
-    //  [ 35.33670772  42.91257191 147.61808008]
-    #define current_adjust 1.0514018691588785       /* fator de correção para a corrente */
-    #define a0 4.8551075756229f * current_adjust
-    #define b0 -596.7507265541577f * current_adjust
-    #define c0 24491.777388889182f * current_adjust
-    #define d0 -334549.3640250371f * current_adjust
-    #define a1 0.0001190802454f * current_adjust
-    #define b1 -0.04230098869f * current_adjust
-    #define c1 32.739227067299f * current_adjust
-    #define d1 -125.1678007132723f * current_adjust
-    if(avg_adc0 <= 35){
-      avg_adc0_converted = 0;
-    }else if(avg_adc0 < 42){
-      avg_adc0_converted = (uint16_t) (a0 * powf(avg_adc0, 3) + b0 * powf(avg_adc0, 2)+ c0 * avg_adc0 + d0);
-      // avg_adc0_converted_f = b1 * avg_adc0;
-      // avg_adc0_converted += (uint16_t) (a1 + (avg_adc0_converted_f * (1.f + (c1 / b1))));
-    }else{
-      avg_adc0_converted = (uint16_t) (a1 * powf(avg_adc0, 3) + b1 * powf(avg_adc0, 2)+ c1 * avg_adc0 + d1);
-    }
-
-    /* Valores da regressão polinomial para o sensor 5*/
-    #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_5
-    // breaks:
-    //  [ 32.5787237   37.72656059 744.76651233]
-    #define coef_adjust 1.1386079714455681              /* Coeficiente de ajuste entre as placas */
-    #define current_adjust 1.065984930032293            /* fator de correção para a corrente */
-
-    #define a0 -6.2127297775771f * current_adjust * coef_adjust
-    #define b0 642.5007704667008f * current_adjust * coef_adjust
-    #define c0 -21901.214999298354f * current_adjust * coef_adjust
-    #define d0 246339.3460664462f * current_adjust * coef_adjust
-    #define a1 -6.127458e-07f * current_adjust * coef_adjust
-    #define b1 -0.0058459342976f * current_adjust * coef_adjust
-    #define c1 25.5236526067201f * current_adjust * coef_adjust
-    #define d1 -1.677696304585f * current_adjust * coef_adjust
-    if(avg_adc0 <= 32){
-      avg_adc0_converted = 0;
-    }else if(avg_adc0 < 37){
-      avg_adc0_converted = (uint16_t) (a0 * powf(avg_adc0, 3) + b0 * powf(avg_adc0, 2)+ c0 * avg_adc0 + d0);
-    }else{
-      avg_adc0_converted = (uint16_t) (a1 * powf(avg_adc0, 3) + b1 * powf(avg_adc0, 2)+ c1 * avg_adc0 + d1);
-    }
-    #endif
-
-
-    msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
-    msg.data[CAN_MSG_MSC19_x_ADC_AVG_BYTE_L]  = LOW(avg_adc0_converted);
-    msg.data[CAN_MSG_MSC19_x_ADC_AVG_BYTE_H]  = HIGH(avg_adc0_converted);
-    msg.data[CAN_MSG_MSC19_x_ADCMIN_BYTE_L]  = LOW(measurements.adc0_min);
-    msg.data[CAN_MSG_MSC19_x_ADCMIN_BYTE_H]  = HIGH(measurements.adc0_min);
-    msg.data[CAN_MSG_MSC19_x_ADCMAX_BYTE_L]  = LOW(measurements.adc0_max);
-    msg.data[CAN_MSG_MSC19_x_ADCMAX_BYTE_H]  = HIGH(measurements.adc0_max);
+    msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] = CAN_SIGNATURE_SELF;
+    msg.data[CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_AVG_L_BYTE]  = LOW(measurements.vo_avg);
+    msg.data[CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_AVG_H_BYTE]  = HIGH(measurements.vo_avg);
+    msg.data[CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_MIN_L_BYTE]  = LOW(measurements.vo_min);
+    msg.data[CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_MIN_H_BYTE]  = HIGH(measurements.vo_min);
+    msg.data[CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_MAX_L_BYTE]  = LOW(measurements.vo_max);
+    msg.data[CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_MAX_H_BYTE]  = HIGH(measurements.vo_max);
 
     can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP
     VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
 #endif
-
 }
 
+inline void can_app_send_output_current(void)
+{
+    can_t msg;
+    msg.id                                  = CAN_MSG_MCB19_1_OUTPUT_CURRENT_ID;
+    msg.length                              = CAN_MSG_MCB19_1_OUTPUT_CURRENT_LENGTH;
+    msg.flags.rtr = 0;
+
+    msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] = CAN_SIGNATURE_SELF;
+    msg.data[CAN_MSG_MCB19_1_OUTPUT_CURRENT_AVG_L_BYTE]  = LOW(measurements.io_avg);
+    msg.data[CAN_MSG_MCB19_1_OUTPUT_CURRENT_AVG_H_BYTE]  = HIGH(measurements.io_avg);
+    msg.data[CAN_MSG_MCB19_1_OUTPUT_CURRENT_MIN_L_BYTE]  = LOW(measurements.io_min);
+    msg.data[CAN_MSG_MCB19_1_OUTPUT_CURRENT_MIN_H_BYTE]  = HIGH(measurements.io_min);
+    msg.data[CAN_MSG_MCB19_1_OUTPUT_CURRENT_MAX_L_BYTE]  = LOW(measurements.io_max);
+    msg.data[CAN_MSG_MCB19_1_OUTPUT_CURRENT_MAX_H_BYTE]  = HIGH(measurements.io_max);
+
+    can_send_message(&msg);
+#ifdef VERBOSE_MSG_CAN_APP
+    VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
+#endif
+}
+ 
+inline void can_app_send_input_voltage(void)
+{
+    can_t msg;
+    msg.id                                  = CAN_MSG_MCB19_1_INPUT_VOLTAGE_ID;
+    msg.length                              = CAN_MSG_MCB19_1_INPUT_VOLTAGE_LENGTH;
+    msg.flags.rtr = 0;
+
+    msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] = CAN_SIGNATURE_SELF;
+    msg.data[CAN_MSG_MCB19_1_INPUT_VOLTAGE_AVG_L_BYTE]  = LOW(measurements.vi_avg);
+    msg.data[CAN_MSG_MCB19_1_INPUT_VOLTAGE_AVG_H_BYTE]  = HIGH(measurements.vi_avg);
+    msg.data[CAN_MSG_MCB19_1_INPUT_VOLTAGE_MIN_L_BYTE]  = LOW(measurements.vi_min);
+    msg.data[CAN_MSG_MCB19_1_INPUT_VOLTAGE_MIN_H_BYTE]  = HIGH(measurements.vi_min);
+    msg.data[CAN_MSG_MCB19_1_INPUT_VOLTAGE_MAX_L_BYTE]  = LOW(measurements.vi_max);
+    msg.data[CAN_MSG_MCB19_1_INPUT_VOLTAGE_MAX_H_BYTE]  = HIGH(measurements.vi_max);
+
+    can_send_message(&msg);
+#ifdef VERBOSE_MSG_CAN_APP
+    VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
+#endif
+}
+ 
 /**
  * @brief extracts the specific MIC19 STATE message
  * @param *msg pointer to the message to be extracted
