@@ -189,7 +189,7 @@ $EndSheet
 Wire Wire Line
 	3450 2525 3450 3200
 Wire Wire Line
-	4500 2425 3775 2425
+	4500 2425 4025 2425
 Wire Wire Line
 	7900 4600 7125 4600
 Wire Wire Line
@@ -317,4 +317,18 @@ Wire Wire Line
 Connection ~ 3775 2425
 Wire Wire Line
 	3775 2425 3550 2425
+$Comp
+L power:PWR_FLAG #FLG0104
+U 1 1 5E9A1334
+P 4025 2425
+F 0 "#FLG0104" H 4025 2500 50  0001 C CNN
+F 1 "PWR_FLAG" H 4050 2625 50  0000 C CNN
+F 2 "" H 4025 2425 50  0001 C CNN
+F 3 "~" H 4025 2425 50  0001 C CNN
+	1    4025 2425
+	1    0    0    -1  
+$EndComp
+Connection ~ 4025 2425
+Wire Wire Line
+	4025 2425 3775 2425
 $EndSCHEMATC
