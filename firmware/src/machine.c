@@ -258,24 +258,24 @@ void print_infos(void)
             break;
         case 4:
             usart_send_string(" , dtsr: ");
-            usart_send_char(dt_safe_range + '0');
+            usart_send_char(control_flags.dt_safe_range + '0');
             break;
         case 5:
             usart_send_string(" , vosr: ");
-            usart_send_char(vo_safe_range + '0');
+            usart_send_char(control_flags.vo_safe_range + '0');
             break;
         case 6:
             usart_send_string(" , visr: ");
-            usart_send_char(vi_safe_range + '0');
+            usart_send_char(control_flags.vi_safe_range + '0');
             break;
         case 7:
             usart_send_string(" , vist: ");
-            usart_send_char(vi_stable + '0');
+            usart_send_char(control_flags.vi_stable + '0');
             break;
         default:
             //VERBOSE_MSG_MACHINE(usart_send_char('\n'));
             usart_send_string(" , en: ");
-            usart_send_char(enable+'0');
+            usart_send_char(control_flags.enable+'0');
             i = 0;
             break;
     }

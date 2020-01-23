@@ -8,7 +8,13 @@
 #include "dbg_vrb.h"
 
 volatile float dt, dt_max, dt_min, vi, vo, io, io_max, vo_setpoint, io_setpoint;
-volatile uint8_t enable, vi_safe_range, vo_safe_range, vi_stable, dt_safe_range;
+volatile struct control_flags_t{
+    uint8_t enable : 1;
+    uint8_t vi_safe_range : 1;
+    uint8_t vo_safe_range: 1;
+    uint8_t vi_stable : 1;
+    uint8_t dt_safe_range : 1;
+}control_flags;
 
 void control(void);
 void control_init(void);
