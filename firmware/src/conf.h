@@ -24,7 +24,7 @@
 #define VERBOSE_ON_INIT
 #define VERBOSE_ON_ERROR
 
-#define CAN_SIGNATURE_SELF      CAN_SIGNATURE_MCB19_1
+#define CAN_SIGNATURE_SELF      CAN_SIGNATURE_MCC19_1
 
 // MODULES ACTIVATION
 #define USART_ON
@@ -39,7 +39,7 @@
 
 #ifdef CONTROL_ON
 #define D_MIN       0
-#define D_MAX       1
+#define D_MAX       0.9
 #define VO_SETPOINT 15.0
 #define IO_MAX      4
 #define VO_MAX      21

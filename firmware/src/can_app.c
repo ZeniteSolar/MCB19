@@ -53,13 +53,14 @@ inline void can_app_task(void)
 inline void can_app_send_state(void)
 {
     can_t msg;
-    msg.id                                  = CAN_MSG_MCB19_1_STATE_ID;
+    msg.id                                  = CAN_MSG_MCC19_1_STATE_ID;
     msg.length                              = CAN_MSG_GENERIC_STATE_LENGTH;
     msg.flags.rtr = 0;
 
     msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
     msg.data[CAN_MSG_GENERIC_STATE_STATE_BYTE]      = (uint8_t) state_machine;
     msg.data[CAN_MSG_GENERIC_STATE_ERROR_BYTE]      = error_flags.all;
+    msg.data[CAN_MSG_MCC19_1_STATE_CONTRO_L_BYTE]    = control_flags.all;
 
     can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP
@@ -69,87 +70,26 @@ inline void can_app_send_state(void)
 
 inline void can_app_send_measurements(void)
 {
-    static char round = 0;
-
-    switch (round) {
-        case 0:
-            can_app_send_output_voltage();
-            round++;
-            break;
-        case 1:
-            can_app_send_output_current();
-            round++;
-            break;
-        case 2: default:
-            can_app_send_input_voltage();
-            round = 0;
-            break;
-    }
-}
-
-inline void can_app_send_output_voltage(void)
-{
     can_t msg;
-    msg.id                                  = CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_ID;
-    msg.length                              = CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_LENGTH;
+    msg.id                                  = CAN_MSG_MCC19_1_OUTPUT_VOLTAGE_ID;
+    msg.length                              = CAN_MSG_MCC19_1_OUTPUT_VOLTAGE_LENGTH;
     msg.flags.rtr = 0;
 
     msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] = CAN_SIGNATURE_SELF;
-    msg.data[CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_AVG_L_BYTE]  = LOW(measurements.vo_avg);
-    msg.data[CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_AVG_H_BYTE]  = HIGH(measurements.vo_avg);
-    msg.data[CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_MIN_L_BYTE]  = LOW(measurements.vo_min);
-    msg.data[CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_MIN_H_BYTE]  = HIGH(measurements.vo_min);
-    msg.data[CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_MAX_L_BYTE]  = LOW(measurements.vo_max);
-    msg.data[CAN_MSG_MCB19_1_OUTPUT_VOLTAGE_MAX_H_BYTE]  = HIGH(measurements.vo_max);
+    msg.data[CAN_MSG_MCC19_1_OUTPUT_VOLTAGE_L_BYTE]  = LOW(measurements.vo_avg);
+    msg.data[CAN_MSG_MCC19_1_OUTPUT_VOLTAGE_H_BYTE]  = HIGH(measurements.vo_avg);
+    msg.data[CAN_MSG_MCC19_1_OUTPUT_CURRENT_L_BYTE]  = LOW(measurements.io_avg);
+    msg.data[CAN_MSG_MCC19_1_OUTPUT_CURRENT_H_BYTE]  = HIGH(measurements.io_avg);
+    msg.data[CAN_MSG_MCC19_1_INPUT_VOLTAGE_L_BYTE]  = LOW(measurements.vi_avg);
+    msg.data[CAN_MSG_MCC19_1_INPUT_VOLTAGE_H_BYTE]  = HIGH(measurements.vi_avg);
+    msg.data[CAN_MSG_MCC19_1_DT__H_BYTE] = measurements.dt;
 
     can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP
     VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
-#endif
+#endif 
 }
 
-inline void can_app_send_output_current(void)
-{
-    can_t msg;
-    msg.id                                  = CAN_MSG_MCB19_1_OUTPUT_CURRENT_ID;
-    msg.length                              = CAN_MSG_MCB19_1_OUTPUT_CURRENT_LENGTH;
-    msg.flags.rtr = 0;
-
-    msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] = CAN_SIGNATURE_SELF;
-    msg.data[CAN_MSG_MCB19_1_OUTPUT_CURRENT_AVG_L_BYTE]  = LOW(measurements.io_avg);
-    msg.data[CAN_MSG_MCB19_1_OUTPUT_CURRENT_AVG_H_BYTE]  = HIGH(measurements.io_avg);
-    msg.data[CAN_MSG_MCB19_1_OUTPUT_CURRENT_MIN_L_BYTE]  = LOW(measurements.io_min);
-    msg.data[CAN_MSG_MCB19_1_OUTPUT_CURRENT_MIN_H_BYTE]  = HIGH(measurements.io_min);
-    msg.data[CAN_MSG_MCB19_1_OUTPUT_CURRENT_MAX_L_BYTE]  = LOW(measurements.io_max);
-    msg.data[CAN_MSG_MCB19_1_OUTPUT_CURRENT_MAX_H_BYTE]  = HIGH(measurements.io_max);
-
-    can_send_message(&msg);
-#ifdef VERBOSE_MSG_CAN_APP
-    VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
-#endif
-}
- 
-inline void can_app_send_input_voltage(void)
-{
-    can_t msg;
-    msg.id                                  = CAN_MSG_MCB19_1_INPUT_VOLTAGE_ID;
-    msg.length                              = CAN_MSG_MCB19_1_INPUT_VOLTAGE_LENGTH;
-    msg.flags.rtr = 0;
-
-    msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] = CAN_SIGNATURE_SELF;
-    msg.data[CAN_MSG_MCB19_1_INPUT_VOLTAGE_AVG_L_BYTE]  = LOW(measurements.vi_avg);
-    msg.data[CAN_MSG_MCB19_1_INPUT_VOLTAGE_AVG_H_BYTE]  = HIGH(measurements.vi_avg);
-    msg.data[CAN_MSG_MCB19_1_INPUT_VOLTAGE_MIN_L_BYTE]  = LOW(measurements.vi_min);
-    msg.data[CAN_MSG_MCB19_1_INPUT_VOLTAGE_MIN_H_BYTE]  = HIGH(measurements.vi_min);
-    msg.data[CAN_MSG_MCB19_1_INPUT_VOLTAGE_MAX_L_BYTE]  = LOW(measurements.vi_max);
-    msg.data[CAN_MSG_MCB19_1_INPUT_VOLTAGE_MAX_H_BYTE]  = HIGH(measurements.vi_max);
-
-    can_send_message(&msg);
-#ifdef VERBOSE_MSG_CAN_APP
-    VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
-#endif
-}
- 
 /**
  * @brief extracts the specific MIC19 STATE message
  * @param *msg pointer to the message to be extracted

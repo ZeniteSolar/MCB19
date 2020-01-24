@@ -85,8 +85,6 @@ inline void control(void){
     // call feedback controller   
     control_feedback();
 
-    dt = 0.5;
-
     // apply outputs
     OCR1B = ICR1 * dt;
     

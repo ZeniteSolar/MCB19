@@ -59,18 +59,13 @@ typedef struct measurements{
     uint16_t    vo_avg;         // average value
     uint16_t    vo_avg_sum_count;
     uint64_t    vo_avg_sum;     // average sum value
-    uint16_t    vo_min;         // period minimum value
-    uint16_t    vo_max;         // period maximum value
     uint16_t    io_avg;         // average value
     uint16_t    io_avg_sum_count;
     uint64_t    io_avg_sum;     // average sum value
-    uint16_t    io_min;         // period minimum value
-    uint16_t    io_max;         // period maximum value
     uint16_t    vi_avg;         // average value
     uint16_t    vi_avg_sum_count;
     uint64_t    vi_avg_sum;     // average sum value
-    uint16_t    vi_min;         // period minimum value
-    uint16_t    vi_max;         // period maximum value
+    uint8_t     dt;
 }measurements_t;
 
 
