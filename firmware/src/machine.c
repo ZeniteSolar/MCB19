@@ -232,6 +232,7 @@ inline void task_reset(void)
 
 void print_infos(void)
 {
+#ifdef PRINT_INFOS
     static uint8_t i = 0;
 
     switch(i++){
@@ -279,6 +280,7 @@ void print_infos(void)
             i = 0;
             break;
     }
+#endif
 }
 
 /**

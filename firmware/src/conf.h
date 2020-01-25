@@ -18,17 +18,18 @@
 // CONFIGURACOES DE COMPILACAO
 #define DEBUG_ON
 #define VERBOSE_ON
-//#define VERBOSE_ON_CAN_APP
+#define VERBOSE_ON_CAN_APP
 //#define VERBOSE_ON_MACHINE
 //#define VERBOSE_ON_ADC
 #define VERBOSE_ON_INIT
 #define VERBOSE_ON_ERROR
+//#define PRINT_INFOS
 
-#define CAN_SIGNATURE_SELF      CAN_SIGNATURE_MCC19_1
+#define CAN_SIGNATURE_SELF      CAN_SIGNATURE_MCB19_1
 
 // MODULES ACTIVATION
 #define USART_ON
-//#define CAN_ON
+#define CAN_ON
 //#define CAN_DEPENDENT
 #define ADC_ON
 #define MACHINE_ON
@@ -82,7 +83,7 @@
 #ifdef CAN_ON
 #define SPI_ON
 #define CAN_APP_SEND_STATE_FREQ     40//36000     //<! state msg frequency in Hz
-#define CAN_APP_SEND_ADC_FREQ       4//6000      //<! adc msg frequency in Hz
+#define CAN_APP_SEND_MEASUREMENTS_FREQ       4//6000      //<! adc msg frequency in Hz
 
 // CANBUS DEFINITONS
 // ----------------------------------------------------------------------------
