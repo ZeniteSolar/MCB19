@@ -75,6 +75,8 @@ inline void can_app_send_measurements(void)
     msg.length                              = CAN_MSG_MCB19_1_MEASUREMENTS_LENGTH;
     msg.flags.rtr = 0;
 
+
+    measurements.vo_avg = (uint16_t) 100* vo;
     msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] = CAN_SIGNATURE_SELF;
     msg.data[CAN_MSG_MCB19_1_MEASUREMENTS_OUTPUT_VOLTAGE_L_BYTE]  = LOW(measurements.vo_avg);
     msg.data[CAN_MSG_MCB19_1_MEASUREMENTS_OUTPUT_VOLTAGE_H_BYTE]  = HIGH(measurements.vo_avg);
@@ -87,7 +89,7 @@ inline void can_app_send_measurements(void)
     can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP
     VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
-#endif 
+#endif
 }
 
 /**
