@@ -11,9 +11,9 @@ Equipe Zênite Solar
 ### Sobre
 
 Este módulo é reponsável por 
-![](https://github.com/ZeniteSolar/MSC19/blob/master/hardware/IMG/3Ddown.png?raw=true)
+![](hardware/IMG/3DDOWN.png?raw=true)
 
-![](https://github.com/ZeniteSolar/MSC19/blob/master/hardware/IMG/3Dup.png?raw=true)
+![](hardware/IMG/3DUP.png?raw=true)
 
 
 
