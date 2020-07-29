@@ -24,3 +24,7 @@ _autosave-*
 # Exported BOM files
 #*.xml
 #*.csv
+
+# can_ids should always be downloaded
+src/can_ids.h
+
