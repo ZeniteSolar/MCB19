@@ -51,10 +51,10 @@
 #define PWM_PIN     PINB
 #define PWM_PORT    PORTB
 #define PWM         PB2
-#define PWM_ENABLE  PD2
-#define PWM_ENABLE_DDR DDRD
-#define PWM_ENABLE_PIN PIND
-#define PWM_ENABLE_PORT PORTD
+#define ENABLE_RELAY  PD2
+#define ENABLE_RELAY_DDR DDRD
+#define ENABLE_RELAY_PIN PIND
+#define ENABLE_RELAY_PORT PORTD
 #endif
 
 #ifdef MACHINE_ON

@@ -11,8 +11,8 @@ void control_init(void)
     ICR1 = 260;
     OCR1B = 0;
 
-    set_bit(PWM_ENABLE_DDR, PWM_ENABLE);
-    clr_bit(PWM_ENABLE_PORT, PWM_ENABLE);
+    set_bit(ENABLE_RELAY_DDR, ENABLE_RELAY);
+    clr_bit(ENABLE_RELAY_PORT, ENABLE_RELAY);
     set_bit(PWM_DDR, PWM);
 }
 
@@ -117,8 +117,8 @@ inline void control(void){
             && control_flags.dt_safe_range) control_flags.enable = 1;
     else                                    control_flags.enable = 0;
 
-    if(control_flags.enable) set_bit(PWM_ENABLE_PORT, PWM_ENABLE);
-    else       clr_bit(PWM_ENABLE_PORT, PWM_ENABLE); 
+    if(control_flags.enable) set_bit(ENABLE_RELAY_PORT, ENABLE_RELAY);
+    else       clr_bit(ENABLE_RELAY_PORT, ENABLE_RELAY); 
 }
 
 inline void control_feedback(void)
