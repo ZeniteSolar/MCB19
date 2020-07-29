@@ -44,5 +44,17 @@ Este módulo é responsável por carregar a bateria auxiliar e da direção elé
    - Corrente de saida: 8A
    - Tensão de saida: 10-15V
 
-   Como a tenão de entrada sempre será maior que a de saida foi escolhido um conversor estatico CC-CC Buck e foi escolhida a topologia sincrona (dois mosfets) pela maior eficiencia e pela disponivilidade de driver para as chaves
+   Como a tenão de entrada sempre será maior que a de saida foi escolhido um conversor estatico CC-CC Buck e foi escolhida a topologia sincrona (dois mosfets) pela maior eficiencia e pela disponivilidade de driver para as chaves.
+   #### [Projeto do Buck](https://github.com/ZeniteSolar/MCB19/blob/master/control/buck.ipynb)
+   
+   - Para as condições especificadas anteriormente foram escolhidos:
+      - Capacitor de saida: 200uF
+      - Indutor de saida 300uH
+ 2. Controlador
+   Foi escolhido um controlador PI porque..... , 
+   [Referencia](https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/902/PI-controller-equations.pdf)
+     
+   
+   
+   
    
