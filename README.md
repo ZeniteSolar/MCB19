@@ -10,7 +10,7 @@ Equipe Zênite Solar
 
 ### Sobre
 
-Este módulo é responsável por carregar a bateria auxiliar e da direção elétrica com a energia da bateria principal.
+Este módulo é responsável por carregar e gerenciar a carga da bateria auxiliar (rádio e bombas de porão) e da bateria extra (direção elétrica) a partir da energia da bateria principal.
 
 ![](hardware/IMG/3DDOWN.png?raw=true)
 
