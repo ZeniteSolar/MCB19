@@ -53,8 +53,13 @@ Este módulo é responsável por carregar e gerenciar a carga da bateria auxilia
       - Capacitor de saida: 200uF
       - Indutor de saida 300uH
  2. Controlador
-   Foi escolhido um controlador PI porque..... , 
+   Por sua simplicidade de implementação e por permitir ajustes empíricos, controladores PI foram escolhidos para controlar tanto a tensão de saída quanto a corrente de saída.
    [Referencia](https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/902/PI-controller-equations.pdf)
+ 3. Simulações
+   Para a simulação foi usado o programa Psim pois ele oferece a simulação de bloco C onde foi possivel simular de uma forma simplificada o comportamento do atmega328p, alem de ter ferramentas para controle.
+   
+ 4. Hardware
+ 5. Firmware
      
    
    
