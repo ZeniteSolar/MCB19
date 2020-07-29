@@ -24,12 +24,15 @@ jobs:
     
     # GET DEPENDENCIES
     - name: Install dependencies
-      run:  sudo apt-get install -y binutils make gcc-avr avr-libc
+      run:  sudo apt-get install -y binutils-avr gcc-avr avr-libc
       
     # BUILD
-    - run: cd firmware
     - name: Build libraries
-      run: ./makelibs.sh
+      run: |
+        cd firmware
+        ./makelibs.sh
       
     - name: Build firmware
-      run: make
+      run: |
+        cd firmware
+        make
