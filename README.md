@@ -59,11 +59,26 @@ Este módulo é responsável por carregar e gerenciar a carga da bateria auxilia
    [Referencia](https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/902/PI-controller-equations.pdf)
  3. Simulações
    Para a simulação foi usado o programa Psim pois ele oferece a simulação de bloco C onde foi possivel simular de uma forma simplificada o comportamento do atmega328p, alem de ter ferramentas para controle.
+
+<table width="100%">
+  <tr>
+    <th width="35%"> <img src="simulations/IMG/current_limitting.png"></th>
+    <th width="65%"><img src="simulations/IMG/schematic.png"></th>
+  </tr>
+</table>
+
+   4. Hardware
+   Para o design da Placa de circuito impresso (PCB) foi utilizado o software KiCad por ser uma ferramenta OpenSource. A PCB foi fabricada usando transferencia termica.
    
- 4. Hardware
- 5. Firmware
-     
+   É importante a utilização de snubber para amortecer os picos de tensão nas chaves
    
+   5. Firmware
+   A cada interrupção do ADC é chamada a função de controle. Ao finalizar a maquina de estados é executada onde as mensagens CAN são enviadas e recebidas.
    
-   
-   
+
+```C
+//#Definições do conversor
+#define VO_SETPOINT 	13.2
+#define IO_MAX      	8
+#define VI_MIN      	21
+```
