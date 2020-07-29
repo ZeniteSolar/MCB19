@@ -16,6 +16,8 @@ Este módulo é responsável por carregar e gerenciar a carga da bateria auxilia
 
 ![](hardware/IMG/3DUP.png?raw=true)
 
+![](hardware/IMG/PlacaMontada_3.jpg?raw=true)
+
 
 
 #### Requisitos
