@@ -36,3 +36,9 @@ jobs:
       run: |
         cd firmware
         make
+
+    - name: Save the build
+      uses: actions/upload-artifact@v2.1.1
+      with:
+        name: Firmware
+        path: firmware/bin
