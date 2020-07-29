@@ -24,7 +24,8 @@ jobs:
     
     # GET DEPENDENCIES
     - name: Install dependencies
-      run:  sudo apt-get install -y binutils-avr gcc-avr avr-libc
+      run: sudo apt-get install -y binutils-avr gcc-avr avr-libc
+    - run: avr-gcc --version
       
     # BUILD
     - name: Build libraries
