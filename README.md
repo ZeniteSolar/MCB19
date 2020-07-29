@@ -46,7 +46,7 @@ Este módulo é responsável por carregar e gerenciar a carga da bateria auxilia
    - Corrente de saida: 8A
    - Tensão de saida: 10-15V
 
-   Como no sistema, a tensão da bateria principal (entrada) será sempre maior que a tensão a tenão da bateria extra/auxiliar (saída), foi escolhido projetar um conversor estatico CC-CC Buck, com chaveamento sincrono (dois mosfets) para maior obter eficiencia.
+   Como no sistema, a tensão da bateria principal (entrada) será sempre maior que a tensão a tenão da bateria extra/auxiliar (saída), foi escolhido projetar um conversor estatico CC-CC Buck, com chaveamento síncrono (dois mosfets) para maior obter eficiencia.
    #### [Projeto do Buck](https://github.com/ZeniteSolar/MCB19/blob/master/control/buck.ipynb)
    
    - Para as condições especificadas anteriormente foram escolhidos:
