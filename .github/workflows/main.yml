@@ -24,7 +24,8 @@ jobs:
     
     # GET DEPENDENCIES
     - name: Install dependencies
-      run:  sudo apt-get install -y binutils-avr gcc-avr avr-libc
+      run: sudo apt-get install -y binutils-avr gcc-avr avr-libc
+    - run: avr-gcc --version
       
     # BUILD
     - name: Build libraries
@@ -36,3 +37,9 @@ jobs:
       run: |
         cd firmware
         make
+
+    - name: Save the build
+      uses: actions/upload-artifact@v2.1.1
+      with:
+        name: Firmware
+        path: firmware/bin
