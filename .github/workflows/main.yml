@@ -10,21 +10,19 @@ on:
   pull_request:
     branches: [ master ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  Build:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+      with:
+        submodules: true
+        fetch-depth: 0
     
     # GET DEPENDENCIES
     - name: Install dependencies
-      run: sudo apt-get install -y binutils-avr gcc-avr avr-libc
+      run: sudo apt-get install -y binutils-avr gcc-avr avr-libc doxygen
     - run: avr-gcc --version
       
     # BUILD
@@ -38,8 +36,26 @@ jobs:
         cd firmware
         make
 
-    - name: Save the build
+    - name: Upload firmware
       uses: actions/upload-artifact@v2.1.1
       with:
         name: Firmware
         path: firmware/bin
+
+    - name: Build docs
+      run: |
+        cd firmware
+        mkdir -p docs/xml docs/md
+        doxygen Doxyfile
+        npx moxygen --groups --classes --anchors --output=docs/md/%s.md docs/xml
+        
+    - name: Publish Docs
+      uses: peaceiris/actions-gh-pages@v3.6.4
+      with: 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: firmware/docs/md
+        force_orphan: true
+        enable_jekyll: true
+        #keep_files: true
+        #allow_empty_commit: true
