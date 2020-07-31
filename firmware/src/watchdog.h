@@ -7,6 +7,7 @@
  *
  * A simple way to test the watchdog is to not call wdt_reset() and let it acts.
  *
+ * @{
  */
 
 #ifndef WATCHDOG_H
@@ -37,5 +38,9 @@ void wdt_init(void)
 {
     wdt_enable(WDTO_4S);
 }
+
+/**
+ * @}
+ */
 
 #endif /* ifndef WATCHDOG_H */

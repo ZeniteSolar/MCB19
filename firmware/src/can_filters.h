@@ -5,6 +5,7 @@
  *
  * @brief Filters for canbus application
  *
+ * @{
  */
 
 #ifndef CAN_FILTERS_H
@@ -82,5 +83,8 @@ const uint8_t can_filter[] PROGMEM =
 };
 // You can receive 11 bit identifiers with either group 0 or 1.
 
+/**
+ * @}
+ */
 
 #endif /* ifndef CAN_FILTERS_H */

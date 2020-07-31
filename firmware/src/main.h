@@ -5,7 +5,9 @@
  *
  * @brief Headers for main.c
  *
+ * @{
  */
+
 #ifndef MAIN_H
 #define MAIN_H 
 
@@ -77,5 +79,9 @@
 #else
 #pragma message "SLEEP: OFF!"
 #endif /*ifdef SLEEP_ON*/
+
+/**
+ * @}
+ */
 
 #endif /* ifndef MAIN_H */

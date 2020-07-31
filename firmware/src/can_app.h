@@ -5,6 +5,7 @@
  *
  * @brief The application layer module for canbus
  *
+ * @{
  */
 
 #ifndef CAN_APP_H
@@ -40,5 +41,9 @@ void check_can(void);
 
 uint32_t can_app_send_state_clk_div;
 uint32_t can_app_send_measurements_clk_div;
+
+/**
+ * @}
+ */
 
 #endif /* ifndef CAN_APP_H */

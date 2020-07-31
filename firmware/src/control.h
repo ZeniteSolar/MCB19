@@ -1,3 +1,13 @@
+/**
+ * @file control.h
+ *
+ * @defgroup CONTROL
+ *
+ * @brief Implements the controller for the power converter
+ *
+ * @{
+ */
+
 #ifndef _CONTROL_H
 #define _CONTROL_H
 
@@ -26,4 +36,8 @@ void control_feedback(void);
 float piVo(float r, float y);
 float piIo(float r, float y);
 
+/**
+ * @}
+ */
+ 
 #endif /* ifndef _CONTROL_H */

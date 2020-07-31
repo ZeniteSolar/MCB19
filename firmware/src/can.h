@@ -27,8 +27,8 @@
  */
 // ----------------------------------------------------------------------------
 /**
- * \file    can.h
- * \brief   Header-Datei für das allgemeine CAN Interface
+ * @file    can.h
+ * @brief   Header-Datei für das allgemeine CAN Interface
  */
 // ----------------------------------------------------------------------------
 
@@ -41,16 +41,16 @@
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup		communication
- * \defgroup 	can_interface Universelles CAN Interface
- * \brief		allgemeines CAN Interface für AT90CAN32/64/128, MCP2515 und SJA1000
+ * @ingroup		communication
+ * @defgroup 	can_interface Universelles CAN Interface
+ * @brief		allgemeines CAN Interface für AT90CAN32/64/128, MCP2515 und SJA1000
  *
- * \author 		Fabian Greif <fabian.greif@rwth-aachen.de>
- * \author      Roboterclub Aachen e.V. (http://www.roboterclub.rwth-aachen.de)
+ * @author 		Fabian Greif <fabian.greif@rwth-aachen.de>
+ * @author      Roboterclub Aachen e.V. (http://www.roboterclub.rwth-aachen.de)
  * 
  * can_sleep() and can_wakeup() functions by Frédéric Lamorce.
  * 
- * \version		$Id: can.h 8086 2009-07-14 14:08:25Z fabian $
+ * @version		$Id: can.h 8086 2009-07-14 14:08:25Z fabian $
  */
 // ----------------------------------------------------------------------------
 
@@ -61,16 +61,16 @@
 #include "conf.h"
 
 // ----------------------------------------------------------------------------
-/** \ingroup	can_interface
- *  \name		Bitdefinitionen
+/** @ingroup	can_interface
+ *  @name		Bitdefinitionen
  */
 //@{
 #define	ONLY_NON_RTR		2
 #define	ONLY_RTR			3
 //@}
 
-/** \ingroup	can_interface
- *  \brief		Bitraten fuer den CAN-Bus 
+/** @ingroup	can_interface
+ *  @brief		Bitraten fuer den CAN-Bus 
  */
 typedef enum {
 	BITRATE_10_KBPS	= 0,	// ungetestet
@@ -84,33 +84,33 @@ typedef enum {
 } can_bitrate_t;
 
 /**
- * \ingroup	    can_interface
- * \brief		Symbol um auf alle Filter zuzugreifen
+ * @ingroup	    can_interface
+ * @brief		Symbol um auf alle Filter zuzugreifen
  */
 #define	CAN_ALL_FILTER		0xff
 
 /**
- * \ingroup	    can_interface
- * \brief		Unterstuetzung fuer Extended-IDs aktivieren
+ * @ingroup	    can_interface
+ * @brief		Unterstuetzung fuer Extended-IDs aktivieren
  */
 #ifndef	SUPPORT_EXTENDED_CANID
 	#define	SUPPORT_EXTENDED_CANID	1
 #endif
 
 /**
- * \ingroup     can_interface
- * \brief		Unterstützung für Zeitstempel aktivieren
- * \warning     Wird nur vom AT90CANxxx unterstützt
+ * @ingroup     can_interface
+ * @brief		Unterstützung für Zeitstempel aktivieren
+ * @warning     Wird nur vom AT90CANxxx unterstützt
  */
 #ifndef	SUPPORT_TIMESTAMPS
 	#define	SUPPORT_TIMESTAMPS		0
 #endif
 
 /**
- * \ingroup	    can_interface
- * \name		Bits des Filters fuer den MCP2515 umformatieren
+ * @ingroup	    can_interface
+ * @name		Bits des Filters fuer den MCP2515 umformatieren
  *
- * \code
+ * @code
  *  uint8_t can_filter[] PROGMEM =
  *  {
  *  	MCP2515_FILTER_EXTENDED(0),	// Filter 0
@@ -124,17 +124,17 @@ typedef enum {
  *  	MCP2515_FILTER_EXTENDED(0),	// Maske 0
  *  	MCP2515_FILTER_EXTENDED(0),	// Maske 1
  *  };
- * \endcode
+ * @endcode
  *
- * \see			can_static_filter()
+ * @see			can_static_filter()
  *
- * \~german
- * \warning		Dieses Makro sollte nur Werte verwendet die schon zur
+ * @~german
+ * @warning		Dieses Makro sollte nur Werte verwendet die schon zur
  *				Compile-Zeit bekannt sind. Der Code sollte ansonsten zwar trotzdem
  *				funktionieren, wird danner aber sehr groß.
  *
- * \~english
- * \warning		Do not use this Makro for Variables, only for static values
+ * @~english
+ * @warning		Do not use this Makro for Variables, only for static values
  *				known at compile-time.
  */
 //@{
@@ -163,8 +163,8 @@ typedef enum {
 //@}
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
- * \brief	Datenstruktur zum Aufnehmen von CAN Nachrichten
+ * @ingroup	can_interface
+ * @brief	Datenstruktur zum Aufnehmen von CAN Nachrichten
  */
 typedef struct
 {
@@ -193,31 +193,31 @@ typedef struct
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
- * \brief	Datenstruktur zur Aufnahme von CAN-Filtern
+ * @ingroup	can_interface
+ * @brief	Datenstruktur zur Aufnahme von CAN-Filtern
  *
- * \code
+ * @code
  *  rtr | Funtion
  * -----|------
  *  00  | alle Nachrichten unabhaengig vom RTR-Bit
  *  01  | ungültig
  *  10  | empfange nur nicht RTR-Nachrichten
  *  11  | empfange nur Nachrichten mit gesetzem RTR-Bit
- * \endcode
+ * @endcode
  *
- * \b ACHTUNG:
+ * @b ACHTUNG:
  * Funktioniert nur mit dem AT90CAN, beim MCP2515 wird der Parameter ignoriert. 
  *
- * \code
+ * @code
  *  ext | Funtion
  * -----|------
  *  00  | alle Nachrichten
  *  01  | ungueltig
  *  10  | empfange nur Standard-Nachrichten
  *  11  | empfange nur Extended-Nachrichten
- * \endcode
+ * @endcode
  *
- * \warning	Filter sind beim SJA1000 nur begrenzt nutzbar, man sollte ihn nur
+ * @warning	Filter sind beim SJA1000 nur begrenzt nutzbar, man sollte ihn nur
  * 			in Systemen mit entweder Standard- oder Extended-Frames einsetzten,
  * 			aber nicht beidem zusammen.
  */
@@ -243,8 +243,8 @@ typedef struct
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup can_interface
- * \brief   Inhalt der Fehler-Register
+ * @ingroup can_interface
+ * @brief   Inhalt der Fehler-Register
  */
 typedef struct {
 	uint8_t rx;				//!< Empfangs-Register
@@ -253,8 +253,8 @@ typedef struct {
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup can_interface
- * \brief   Modus des CAN Interfaces
+ * @ingroup can_interface
+ * @brief   Modus des CAN Interfaces
  */
 typedef enum {
 	LISTEN_ONLY_MODE,		//!< der CAN Contoller empfängt nur und verhält sich völlig passiv
@@ -265,12 +265,12 @@ typedef enum {
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
- * \brief	Initialisierung des CAN Interfaces
+ * @ingroup	can_interface
+ * @brief	Initialisierung des CAN Interfaces
  *
- * \param	bitrate	Gewuenschte Geschwindigkeit des CAN Interfaces
+ * @param	bitrate	Gewuenschte Geschwindigkeit des CAN Interfaces
  *
- * \return	false falls das CAN Interface nicht initialisiert werden konnte,
+ * @return	false falls das CAN Interface nicht initialisiert werden konnte,
  *			true ansonsten.
  */
 extern bool
@@ -278,10 +278,10 @@ can_init(can_bitrate_t bitrate);
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
+ * @ingroup	can_interface
  * 
- * \~english
- * \brief	Put CAN interface to sleep and wake up
+ * @~english
+ * @brief	Put CAN interface to sleep and wake up
  * 
  * MCP2515 active : 5mA
  * MCP2515 sleep  : 1µA
@@ -289,7 +289,7 @@ can_init(can_bitrate_t bitrate);
  * MCP2551 active : 10mA+
  * MCP2551 sleep  : 400µA
  * 
- * \code
+ * @code
  * // before we are going to sleep, enable the interrupt that will wake us up
 // attach interrupt 1 to the routine
 EICRA = 0;  // int on low level
@@ -316,9 +316,9 @@ EIMSK = 0;
 	
 // re-enable 2515 and 2551
 can_wake();
- * \endcode
+ * @endcode
  * 
- * \warning	Only implemented for the MCP2515
+ * @warning	Only implemented for the MCP2515
  */
 extern void
 can_sleep(void);
@@ -328,39 +328,39 @@ can_wakeup(void);
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
- * \brief	Setzen eines Filters
+ * @ingroup	can_interface
+ * @brief	Setzen eines Filters
  * 
  * Für einen MCP2515 sollte die Funktion can_static_filter() bevorzugt werden.
  *
- * \param	number	Position des Filters
- * \param	filter	zu setzender Filter
+ * @param	number	Position des Filters
+ * @param	filter	zu setzender Filter
  *
- * \return	false falls ein Fehler auftrat, true ansonsten
+ * @return	false falls ein Fehler auftrat, true ansonsten
  */
 extern bool
 can_set_filter(uint8_t number, const can_filter_t *filter);
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
- * \brief	Filter deaktivieren
+ * @ingroup	can_interface
+ * @brief	Filter deaktivieren
  *
- * \param	number	Nummer des Filters der deaktiviert werden soll,
+ * @param	number	Nummer des Filters der deaktiviert werden soll,
  *			0xff deaktiviert alle Filter.
- * \return	false falls ein Fehler auftrat, true ansonsten
+ * @return	false falls ein Fehler auftrat, true ansonsten
  *
- * \warning Wird nur vom AT90CAN32/64/128 unterstuetzt.
+ * @warning Wird nur vom AT90CAN32/64/128 unterstuetzt.
  */
 extern bool
 can_disable_filter(uint8_t number);
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
- * \brief	Setzt die Werte für alle Filter
+ * @ingroup	can_interface
+ * @brief	Setzt die Werte für alle Filter
  *
- * \code
+ * @code
  * // Filter und Masken-Tabelle anlegen
  * uint8_t can_filter[] PROGMEM = {
  * 	MCP2515_FILTER_EXTENDED(0),	// Filter 0
@@ -379,41 +379,41 @@ can_disable_filter(uint8_t number);
  *
  * // Filter und Masken-Tabelle laden
  * can_static_filter(can_filter);
- * \endcode
+ * @endcode
  *
- * \param	*filter_array	Array im Flash des AVRs mit den Initialisierungs-
+ * @param	*filter_array	Array im Flash des AVRs mit den Initialisierungs-
  *							werten für die Filter des MCP2515
  * 
- * \see		MCP2515_FILTER_EXTENDED()
- * \see		MCP2515_FILTER()
- * \warning	Wird nur vom MCP2515 unterstuetzt.
+ * @see		MCP2515_FILTER_EXTENDED()
+ * @see		MCP2515_FILTER()
+ * @warning	Wird nur vom MCP2515 unterstuetzt.
  */
 extern void
 can_static_filter(const uint8_t *filter_array);
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
+ * @ingroup	can_interface
  * 
- * \~german
- * \brief	Filterdaten auslesen
+ * @~german
+ * @brief	Filterdaten auslesen
  *
- * \param	number	Nummer des Filters dessen Daten man haben moechte
- * \param	*filter	Pointer in den die Filterstruktur geschrieben wird
+ * @param	number	Nummer des Filters dessen Daten man haben moechte
+ * @param	*filter	Pointer in den die Filterstruktur geschrieben wird
  *
- * \return	\b 0 falls ein Fehler auftrat, \
- *			\b 1 falls der Filter korrekt gelesen werden konnte, \
- *			\b 2 falls der Filter im Moment nicht verwendet wird (nur AT90CAN), \
- *			\b 0xff falls gerade keine Aussage moeglich ist (nur AT90CAN).
+ * @return	@b 0 falls ein Fehler auftrat, \
+ *			@b 1 falls der Filter korrekt gelesen werden konnte, \
+ *			@b 2 falls der Filter im Moment nicht verwendet wird (nur AT90CAN), \
+ *			@b 0xff falls gerade keine Aussage moeglich ist (nur AT90CAN).
  *
- * \warning	Da der SJA1000 nicht feststellen kann ob der ausgelesene Filter
+ * @warning	Da der SJA1000 nicht feststellen kann ob der ausgelesene Filter
  *			nun zwei 11-Bit Filter oder ein 29-Bit Filter ist werden nicht
  *			die Filter sondern die Registerinhalte direkt zurück gegeben.
  *			Der Programmierer muss dann selbst entscheiden was er mit den 
  * 			Werten macht.
  *
- * \~english
- * \warning SJA1000 doesn't return the filter and id directly but the content
+ * @~english
+ * @warning SJA1000 doesn't return the filter and id directly but the content
  *			of the corresponding registers because it is not possible to
  *			check the type of the filter.
  */
@@ -422,31 +422,31 @@ can_get_filter(uint8_t number, can_filter_t *filter);
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
- * \brief	Ueberpruefen ob neue CAN Nachrichten vorhanden sind
+ * @ingroup	can_interface
+ * @brief	Ueberpruefen ob neue CAN Nachrichten vorhanden sind
  *
- * \return	true falls neue Nachrichten verfuegbar sind, false ansonsten.
+ * @return	true falls neue Nachrichten verfuegbar sind, false ansonsten.
  */
 extern bool
 can_check_message(void);
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
- * \brief	Ueberprueft ob ein Puffer zum Versenden einer Nachricht frei ist.
+ * @ingroup	can_interface
+ * @brief	Ueberprueft ob ein Puffer zum Versenden einer Nachricht frei ist.
  *
- * \return	true falls ein Sende-Puffer frei ist, false ansonsten.
+ * @return	true falls ein Sende-Puffer frei ist, false ansonsten.
  */
 extern bool
 can_check_free_buffer(void);
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
- * \brief	Verschickt eine Nachricht über den CAN Bus
+ * @ingroup	can_interface
+ * @brief	Verschickt eine Nachricht über den CAN Bus
  *
- * \param	msg	Nachricht die verschickt werden soll
- * \return	FALSE falls die Nachricht nicht verschickt werden konnte, \n
+ * @param	msg	Nachricht die verschickt werden soll
+ * @return	FALSE falls die Nachricht nicht verschickt werden konnte, \n
  *			ansonsten der Code des Puffes in den die Nachricht gespeichert wurde
  */
 extern uint8_t
@@ -454,11 +454,11 @@ can_send_message(const can_t *msg);
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
- * \brief	Liest eine Nachricht aus den Empfangspuffern des CAN Controllers
+ * @ingroup	can_interface
+ * @brief	Liest eine Nachricht aus den Empfangspuffern des CAN Controllers
  *
- * \param	msg	Pointer auf die Nachricht die gelesen werden soll.
- * \return	FALSE falls die Nachricht nicht ausgelesen konnte,
+ * @param	msg	Pointer auf die Nachricht die gelesen werden soll.
+ * @return	FALSE falls die Nachricht nicht ausgelesen konnte,
  *			ansonsten Filtercode welcher die Nachricht akzeptiert hat.
  */
 extern uint8_t
@@ -466,50 +466,50 @@ can_get_message(can_t *msg);
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
+ * @ingroup	can_interface
  *
- * \~german
- * \brief   Liest den Inhalt der Fehler-Register
+ * @~german
+ * @brief   Liest den Inhalt der Fehler-Register
  *
- * \~english
- * \brief	Reads the Contents of the CAN Error Counter
+ * @~english
+ * @brief	Reads the Contents of the CAN Error Counter
  */
 extern can_error_register_t
 can_read_error_register(void);
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup can_interface
+ * @ingroup can_interface
  *
- * \~german
- * \brief   Überprüft ob der CAN Controller im Bus-Off-Status
+ * @~german
+ * @brief   Überprüft ob der CAN Controller im Bus-Off-Status
  *
- * \return  true wenn der Bus-Off-Status aktiv ist, false ansonsten
+ * @return  true wenn der Bus-Off-Status aktiv ist, false ansonsten
  *
- * \warning aktuell nur auf dem SJA1000
+ * @warning aktuell nur auf dem SJA1000
  */
 extern bool
 can_check_bus_off(void);
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
+ * @ingroup	can_interface
  *
- * \~german
- * \brief	Setzt einen Bus-Off Status zurück und schaltet den CAN Controller
+ * @~german
+ * @brief	Setzt einen Bus-Off Status zurück und schaltet den CAN Controller
  *			wieder aktiv
  *
- * \warning	aktuell nur auf dem SJA1000
+ * @warning	aktuell nur auf dem SJA1000
  */
 extern void
 can_reset_bus_off(void);
 
 // ----------------------------------------------------------------------------
 /**
- * \ingroup	can_interface
- * \brief	Setzt den Operations-Modus
+ * @ingroup	can_interface
+ * @brief	Setzt den Operations-Modus
  *
- * \param	mode	Gewünschter Modus des CAN Controllers
+ * @param	mode	Gewünschter Modus des CAN Controllers
  */
 extern void
 can_set_mode(can_mode_t mode);
@@ -518,4 +518,8 @@ can_set_mode(can_mode_t mode);
 }
 #endif
 
+/**
+ * @}
+ */
+ 
 #endif // CAN_H
