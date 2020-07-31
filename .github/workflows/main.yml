@@ -47,7 +47,7 @@ jobs:
         cd firmware
         mkdir -p docs/xml docs/md
         doxygen Doxyfile
-        npx moxygen --groups --classes --anchors --output=docs/md/%s.md docs/xml
+        npx moxygen --groups --classes --output=docs/md/%s.md docs/xml
         
     - name: Publish Docs
       uses: peaceiris/actions-gh-pages@v3.6.4
