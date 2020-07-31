@@ -5,6 +5,7 @@
  *
  * @brief Implements the main state machine of the system.
  *
+ * @{
  */
 
 #ifndef MACHINE_H
@@ -110,5 +111,9 @@ volatile uint8_t led_clk_div;
 // ISRs
 ISR(TIMER2_COMPA_vect);
 ISR(PCINT2_vect);
+
+/**
+ * @}
+ */
 
 #endif /* ifndef MACHINE_H */

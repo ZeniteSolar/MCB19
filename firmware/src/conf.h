@@ -5,6 +5,7 @@
  *
  * @brief General configuration of the system.
  *
+ * @{
  */
 
 #ifndef CONF_H
@@ -111,4 +112,8 @@
 
 #endif // CAN_ON
 
+/**
+ * @}
+ */
+ 
 #endif /* ifndef CONF_H */

@@ -6,7 +6,7 @@
  * @brief A simple sleep module. Note that some interruption should be
  * configured to wake the device even in SLEEP_MODE_IDLE.
  *
- *
+ * @{
  */
 
 #ifndef SLEEP_H
@@ -19,5 +19,9 @@ void sleep_init(void)
 {
 	set_sleep_mode(SLEEP_MODE_IDLE);
 }
+
+/**
+ * @}
+ */
 
 #endif /* ifndef SLEEP_H */

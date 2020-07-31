@@ -5,6 +5,7 @@
  *
  * @brief Debug and Verbose mode definitions
  *
+ * @{
  */
 
 #ifndef DBG_VRB_H
@@ -70,5 +71,8 @@
 #define XSTR(x) STR(x)
 #define STR(x) #x
 
+/**
+ * @}
+ */
 
 #endif /* ifndef DBG_VRB_H */
