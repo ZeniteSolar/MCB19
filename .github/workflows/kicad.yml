@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    paths:
+    - '**.sch'
+    - '**.kicad_pcb'
+  pull_request:
+    paths:
+      - '**.sch'
+      - '**.kicad_pcb'
+
+jobs:
+  SCHEMATICS:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: nerdyscout/kicad-exports@v2
+      with:
+      # Required - plotting config file
+        config: docs.kiplot.yaml
+      # optional - output directory
+        dir: docs
+      # optional - schematic file
+        schema: "*.sch"
+      # optional - PCB design file
+        board: "*.kicad_pcb"
+    - name: upload results
+      uses: actions/upload-artifact@v2.0
+      with:
+        name: schematics
+        path: docs
