@@ -1,4 +1,5 @@
-# MCB19 [![FIRMWARE](https://github.com/ZeniteSolar/MCB19/workflows/FIRMWARE/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3AFIRMWARE) [![HARDWARE](https://github.com/ZeniteSolar/MCB19/workflows/HARDWARE/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3AHARDWARE)
+# MCB19 [![FIRMWARE](https://github.com/ZeniteSolar/MCB19/workflows/FIRMWARE/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3AFIRMWARE) [![HARDWARE](https://github.com/ZeniteSolar/MCB19/workflows/HARDWARE/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3AHARDWARE) [![GitHub](https://img.shields.io/github/license/ZeniteSolar/MCB19?style=flat)](https://github.com/ZeniteSolar/MCB19/blob/master/LICENSE)
+
 
 **M**ódulo **C**arregamento das **B**aterias 2019 
 
