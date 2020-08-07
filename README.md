@@ -1,6 +1,4 @@
-# MCB19
-
-![BUILD](https://github.com/ZeniteSolar/MCB19/workflows/BUILD/badge.svg?branch=master)
+# MCB19 [![FIRMWARE](https://github.com/ZeniteSolar/MCB19/workflows/FIRMWARE/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3AFIRMWARE) [![HARDWARE](https://github.com/ZeniteSolar/MCB19/workflows/HARDWARE/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3AHARDWARE)
 
 **M**ódulo **C**arregamento das **B**aterias 2019 
 
