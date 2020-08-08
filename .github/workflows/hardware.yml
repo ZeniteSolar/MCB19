@@ -16,7 +16,7 @@ jobs:
       with:
         submodules: 'recursive'
     - name: kicad-exports docs
-      uses: joaoantoniocardoso/kicad-exports@develop
+      uses: nerdyscout/kicad-exports@v2.0
       with:
         config: docs.kiplot.yaml
         dir: hardware
@@ -42,7 +42,7 @@ jobs:
       with:
         submodules: 'recursive'
     - name: kicad-exports bom
-      uses: joaoantoniocardoso/kicad-exports@develop
+      uses: nerdyscout/kicad-exports@v2.0
       with:
         config: bom.kiplot.yaml
         dir: hardware
@@ -68,7 +68,7 @@ jobs:
       with:
         submodules: 'recursive'
     - name: kicad-exports fabrications 
-      uses: joaoantoniocardoso/kicad-exports@develop
+      uses: nerdyscout/kicad-exports@v2.0
       with:
         config: fabrications.kiplot.yaml
         dir: hardware
@@ -107,7 +107,7 @@ jobs:
       with:
         submodules: 'recursive'
     - name: kicad-exports plot
-      uses: joaoantoniocardoso/kicad-exports@develop
+      uses: nerdyscout/kicad-exports@v2.0
       with:
         config: plot.kiplot.yaml
         dir: hardware
