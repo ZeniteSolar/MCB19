@@ -1,4 +1,4 @@
-name: hardware.build
+name: hardware.docs
 
 on:
   push:
@@ -9,13 +9,10 @@ on:
 jobs:
   Docs:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    continue-on-error: false
     steps:
     - uses: actions/checkout@v2
       with:
         submodules: 'recursive'
-
     - name: kicad-exports docs
       uses: nerdyscout/kicad-exports@v2.0
       with:
@@ -59,46 +56,6 @@ jobs:
       with:
         name: bom
         path: hardware/docs/bom/*
-
-  Fabrications:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    continue-on-error: false
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: 'recursive'
-    - name: kicad-exports fabrications 
-      uses: nerdyscout/kicad-exports@v2.0
-      with:
-        config: fabrications.kiplot.yaml
-        dir: hardware
-        board: hardware/MCB19.kicad_pcb
-        schema: hardware/MCB19.sch
-    - name: "check output: fabrications"
-      run: |
-        test -f hardware/gerbers/*B_CrtYd.gbr && \
-        test -f hardware/gerbers/*F_CrtYd.gbr && \
-        test -f hardware/gerbers/*B_Cu.gbr && \
-        test -f hardware/gerbers/*F_Cu.gbr && \
-        test -f hardware/gerbers/*B_Mask.gbr && \
-        test -f hardware/gerbers/*F_Mask.gbr && \
-        test -f hardware/gerbers/*B_Paste.gbr && \
-        test -f hardware/gerbers/*F_Paste.gbr && \
-        test -f hardware/gerbers/*B_SilkS.gbr && \
-        test -f hardware/gerbers/*F_SilkS.gbr && \
-        test -f hardware/gerbers/*B_CrtYd.gbr && \
-        test -f hardware/gerbers/*F_CrtYd.gbr && \
-        test -f hardware/gerbers/*NPTH*.gbr && \
-        test -f hardware/gerbers/*NPTH*.drl && \
-        test -f hardware/gerbers/*-PTH*.gbr && \
-        test -f hardware/gerbers/*-PTH*.drl && \
-        test -f hardware/gerbers/*_pos.csv
-    - uses: actions/upload-artifact@v2
-      if: success()
-      with:
-        name: gerbers
-        path: hardware/gerbers/*, hardware/*.rpt
 
   Plot:
     runs-on: ubuntu-latest

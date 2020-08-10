@@ -1,0 +1,36 @@
+name: hardware.check
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  ERC:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+    - name: kicad-exports erc
+      uses: nerdyscout/kicad-exports@v2.0
+      with:
+        config: erc.kiplot.yaml
+        dir: hardware
+        board: hardware/MCB19.kicad_pcb
+        schema: hardware/MCB19.sch
+
+  DRC:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+    - name: kicad-exports drc
+      uses: nerdyscout/kicad-exports@v2.0
+      with:
+        config: drc.kiplot.yaml
+        dir: hardware
+        board: hardware/MCB19.kicad_pcb
+        schema: hardware/MCB19.sch
