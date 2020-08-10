@@ -22,6 +22,8 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: 'recursive'
+
+    # RUN
     - name: kicad-exports schematics
       uses: nerdyscout/kicad-exports@v2.0
       with:
@@ -29,6 +31,8 @@ jobs:
         dir: hardware
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
+
+    # CHECK
     - name: "check output: schematics"
       run: |
         test -f hardware/docs/MCB19-Schematic*.svg && \
@@ -40,14 +44,24 @@ jobs:
         name: docs
         path: hardware/docs/*
 
+    # PUBLISH
+    - name: Publish docs
+      uses: peaceiris/actions-gh-pages@v3.7.0-8
+      with: 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./hardware/docs
+        enable_jekyll: true
+        keep_files: true
+        destination_dir: ./
+
   Bom:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    continue-on-error: true
     steps:
     - uses: actions/checkout@v2
       with:
         submodules: 'recursive'
+    # RUN
     - name: kicad-exports bom
       uses: nerdyscout/kicad-exports@v2.0
       with:
@@ -55,6 +69,8 @@ jobs:
         dir: hardware
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
+
+    # CHECK
     - name: "check output: bom"
       run: |
         test -f hardware/docs/bom/MCB19*.html && \
@@ -66,13 +82,25 @@ jobs:
         name: bom
         path: hardware/docs/bom/*
 
+    # PUBLISH
+    - name: Publish docs
+      uses: peaceiris/actions-gh-pages@v3.7.0-8
+      with: 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./hardware/docs/bom
+        enable_jekyll: true
+        keep_files: true
+        destination_dir: ./
+
   Plot:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
     - uses: actions/checkout@v2
       with:
         submodules: 'recursive'
+
+    # RUN
     - name: kicad-exports plot
       uses: nerdyscout/kicad-exports@v2.0
       with:
@@ -80,6 +108,8 @@ jobs:
         dir: hardware
         schema: hardware/MCB19.sch
         board: hardware/MCB19.kicad_pcb
+
+    # CHECK
     - name: "check output: plot"
       run: |
         test -f hardware/docs/img/MCB19-top.svg && \
@@ -90,13 +120,25 @@ jobs:
         name: img
         path: hardware/docs/img/*
 
+    # PUBLISH
+    - name: Publish docs
+      uses: peaceiris/actions-gh-pages@v3.7.0-8
+      with: 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./hardware/docs
+        enable_jekyll: true
+        keep_files: true
+        destination_dir: ./
+
   Model:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
     - uses: actions/checkout@v2
       with:
         submodules: 'recursive'
+
+    # RUN
     - name: kicad-exports model
       uses: nerdyscout/kicad-exports@v2.0
       with:
@@ -104,6 +146,8 @@ jobs:
         dir: hardware
         schema: hardware/MCB19.sch
         board: hardware/MCB19.kicad_pcb
+
+    # CHECK
     - name: "check output: model"
       run: |
         ls hardware/docs/cad #debug
@@ -111,5 +155,17 @@ jobs:
     - uses: actions/upload-artifact@v2
       if: success()
       with:
-        name: img
-        path: hardware/docs/img/*
+        name: cad
+        path: hardware/docs/cad/*
+
+    # PUBLISH
+    - name: Publish docs
+      uses: peaceiris/actions-gh-pages@v3.7.0-8
+      with: 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./hardware/docs/cad
+        enable_jekyll: true
+        keep_files: true
+        destination_dir: ./
+
