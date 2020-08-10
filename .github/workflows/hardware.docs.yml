@@ -39,11 +39,6 @@ jobs:
         test -f hardware/docs/MCB19-Schematic*.svg && \
         test -f hardware/docs/MCB19-Schematic*.pdf && \
         test -f hardware/docs/MCB19-Board*.pdf
-    - uses: actions/upload-artifact@v2
-      if: success()
-      with:
-        name: docs
-        path: hardware/docs/*
         
     # UPLOAD
     - name: Upload Schematics
@@ -74,11 +69,6 @@ jobs:
         test -f hardware/docs/bom/MCB19*.html && \
         test -f hardware/docs/bom/MCB19*.csv && \
         test -f hardware/docs/bom/MCB19*.xlsx
-    - uses: actions/upload-artifact@v2
-      if: success()
-      with:
-        name: bom
-        path: hardware/docs/bom/*
         
     # UPLOAD
     - name: Upload Bom
@@ -109,17 +99,12 @@ jobs:
       run: |
         test -f hardware/docs/img/MCB19-top.svg && \
         test -f hardware/docs/img/MCB19-bottom.svg 
-    - uses: actions/upload-artifact@v2
-      if: success()
-      with:
-        name: plot
-        path: hardware/docs/img/*
 
     # UPLOAD
     - name: Upload Plot
       uses: actions/upload-artifact@v2.1.3
       with:
-        name: Plot
+        name: plot
         path: hardware/docs/img
 
   Model:
@@ -144,11 +129,6 @@ jobs:
       run: |
         ls hardware/docs/cad #debug
         test -f hardware/docs/cad/MCB19.step && \
-    - uses: actions/upload-artifact@v2
-      if: success()
-      with:
-        name: cad
-        path: hardware/docs/cad/*
 
     # UPLOAD
     - name: Upload Model

@@ -38,17 +38,12 @@ jobs:
         test -f hardware/docs/bom/MCB19*.html && \
         test -f hardware/docs/bom/MCB19*.csv && \
         test -f hardware/docs/bom/MCB19*.xlsx
-    - uses: actions/upload-artifact@v2
-      if: success()
-      with:
-        name: bom
-        path: hardware/docs/bom/*
-        
+
     # UPLOAD
     - name: Upload Bom
       uses: actions/upload-artifact@v2.1.3
       with:
-        name: Bom
+        name: bom
         path: hardware/bom
 
   Fabrications:
@@ -87,15 +82,10 @@ jobs:
         test -f hardware/gerbers/*-PTH*.gbr && \
         test -f hardware/gerbers/*-PTH*.drl && \
         test -f hardware/gerbers/*_pos.csv
-    - uses: actions/upload-artifact@v2
-      if: success()
-      with:
-        name: gerbers
-        path: hardware/gerbers/*, hardware/*.rpt
-        
+
     # UPLOAD
     - name: Upload Fabrications
       uses: actions/upload-artifact@v2.1.1
       with:
-        name: Fabrications
+        name: gerbers
         path: hardware/gerbers
