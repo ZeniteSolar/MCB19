@@ -166,19 +166,23 @@ jobs:
 
     # DOWNLOAD ARTIFACTS
     - name: Download Schematics
-      uses: actions/download-artifact@v2.1.3
+      uses: actions/download-artifact@v2.0.4
+      continue-on-error: true
       with:
         name: Schematics
     - name: Download Bom
-      uses: actions/download-artifact@v2.1.3
+      uses: actions/download-artifact@v2.0.4
+      continue-on-error: true
       with:
         name: Bom
     - name: Download Plot
-      uses: actions/download-artifact@v2.1.3
+      uses: actions/download-artifact@v2.0.4
+      continue-on-error: true
       with:
         name: Plot
     - name: Download Model
-      uses: actions/download-artifact@v2.1.3
+      uses: actions/download-artifact@v2.0.4
+      continue-on-error: true
       with:
         name: Model
 
