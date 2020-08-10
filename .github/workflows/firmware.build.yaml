@@ -1,14 +1,19 @@
 name: firmware.build
 
 on:
+  workflow_dispatch:
   push:
     branches: [ master ]
     paths:
     - 'firmware/**'
+    - '.config/**'
+    - '.github/**'
   pull_request:
     branches: [ master ]
     paths:
     - 'firmware/**'
+    - '.config/**'
+    - '.github/**'
 
 jobs:
   Build:

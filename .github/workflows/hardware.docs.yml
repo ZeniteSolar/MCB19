@@ -1,10 +1,19 @@
 name: hardware.docs
 
 on:
+  workflow_dispatch:
   push:
     branches: [ master ]
+    paths:
+    - 'hardware/**'
+    - '.config/**'
+    - '.github/**'
   pull_request:
     branches: [ master ]
+    paths:
+    - 'hardware/**'
+    - '.config/**'
+    - '.github/**'
 
 jobs:
   Schematics:
