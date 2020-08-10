@@ -1,0 +1,43 @@
+name: firmware.build
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+    - 'firmware/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+    - 'firmware/**'
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+    
+    # GET DEPENDENCIES
+    - name: Install dependencies
+      run: sudo apt-get install -y binutils-avr gcc-avr avr-libc
+    - run: avr-gcc --version
+      
+    # BUILD
+    - name: Build libraries
+      run: |
+        cd firmware
+        ./makelibs.sh
+      
+    - name: Build firmware
+      run: |
+        cd firmware
+        make
+
+    # UPLOAD
+    - name: Upload firmware
+      uses: actions/upload-artifact@v2.1.1
+      with:
+        name: Firmware
+        path: firmware/bin

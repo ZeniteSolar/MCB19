@@ -1,0 +1,41 @@
+name: firmware.docs
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+    - 'firmware/**'
+
+jobs:
+  Docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+
+    # GET DEPENDENCIES
+    - name: Install dependencies
+      run: sudo apt-get install -y doxygen
+    - run: doxygen --version
+
+    # BUILD
+    - name: Build docs
+      run: |
+        cd firmware
+        mkdir -p docs/xml docs/md
+        doxygen Doxyfile
+        npx moxygen --templates=docs/templates --groups --classes --output=docs/md/%s.md docs/xml
+        #cp ./README.md ./firmware/docs/md/index.md
+        
+    # PUBLISH
+    - name: Publish docs
+      uses: peaceiris/actions-gh-pages@v3.7.0-8
+      with: 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: master
+        publish_dir: ./firmware/docs/md
+        force_orphan: true
+        enable_jekyll: true
+        destination_dir: ./docs
