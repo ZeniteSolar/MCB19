@@ -16,7 +16,7 @@ jobs:
     - name: kicad-exports erc
       uses: nerdyscout/kicad-exports@v2.0
       with:
-        config: erc.kiplot.yaml
+        config: ./.config/erc.kiplot.yaml
         dir: hardware
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
@@ -30,7 +30,7 @@ jobs:
     - name: kicad-exports drc
       uses: nerdyscout/kicad-exports@v2.0
       with:
-        config: drc.kiplot.yaml
+        config: ./.config/drc.kiplot.yaml
         dir: hardware
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
