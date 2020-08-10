@@ -194,6 +194,7 @@ jobs:
         publish_branch: gh-pages
         publish_dir: ./hardware/docs
         enable_jekyll: true
+        force_orphan: true
         keep_files: true
         destination_dir: ./
 

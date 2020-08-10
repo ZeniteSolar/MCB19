@@ -39,7 +39,6 @@ jobs:
         name: Docs
         path: firmware/docs
         
-
   Publish:
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -61,5 +60,6 @@ jobs:
         publish_branch: gh-pages
         publish_dir: ./firmware/docs/md
         enable_jekyll: true
+        force_orphan: true
         keep_files: true
         destination_dir: ./
