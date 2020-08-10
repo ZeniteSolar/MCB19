@@ -22,6 +22,8 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: 'recursive'
+
+    # RUN
     - name: kicad-exports erc
       uses: nerdyscout/kicad-exports@v2.0
       with:
@@ -36,6 +38,8 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: 'recursive'
+
+    # RUN
     - name: kicad-exports drc
       uses: nerdyscout/kicad-exports@v2.0
       with:
