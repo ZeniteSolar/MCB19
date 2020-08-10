@@ -18,6 +18,7 @@ on:
 jobs:
   Schematics:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
     - uses: actions/checkout@v2
       with:
@@ -53,6 +54,7 @@ jobs:
 
   Bom:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
     - uses: actions/checkout@v2
       with:
@@ -87,6 +89,7 @@ jobs:
 
   Plot:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
     - uses: actions/checkout@v2
       with:
@@ -121,6 +124,7 @@ jobs:
 
   Model:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
     - uses: actions/checkout@v2
       with:
@@ -155,11 +159,10 @@ jobs:
 
   Publish:
     runs-on: ubuntu-latest
+    continue-on-error: true
     needs: [Schematics, Bom, Plot, Model]
     steps:
     - uses: actions/checkout@v2
-      with:
-        submodules: 'recursive'
 
     # DOWNLOAD ARTIFACTS
     - name: Download Schematics
