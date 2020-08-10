@@ -18,7 +18,6 @@ on:
 jobs:
   ERC:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
     - uses: actions/checkout@v2
       with:
@@ -35,7 +34,6 @@ jobs:
 
   DRC:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
     - uses: actions/checkout@v2
       with:
