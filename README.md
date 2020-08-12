@@ -1,4 +1,10 @@
-# MCB19 [![FIRMWARE](https://github.com/ZeniteSolar/MCB19/workflows/FIRMWARE/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3AFIRMWARE) [![HARDWARE](https://github.com/ZeniteSolar/MCB19/workflows/HARDWARE/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3AHARDWARE) [![GitHub](https://img.shields.io/github/license/ZeniteSolar/MCB19?style=flat)](https://github.com/ZeniteSolar/MCB19/blob/master/LICENSE)
+# MCB19 [![GitHub](https://img.shields.io/github/license/ZeniteSolar/MCB19?style=flat)](https://github.com/ZeniteSolar/MCB19/blob/master/LICENSE)
+[![hardware.docs](https://github.com/ZeniteSolar/MCB19/workflows/hardware.docs/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Ahardware.docs/badge.svg)
+[![hardware.check](https://github.com/ZeniteSolar/MCB19/workflows/hardware.check/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Ahardware.check/badge.svg)
+[![hardware.fabrication](https://github.com/ZeniteSolar/MCB19/workflows/hardware.fabrication/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Ahardware.fabrication/badge.svg)
+[![firmware.build](https://github.com/ZeniteSolar/MCB19/workflows/firmware.build/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Afirmware.build/badge.svg)
+[![firmware.docs](https://github.com/ZeniteSolar/MCB19/workflows/firmware.docs/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Afirmware.docs/badge.svg)
+
 
 
 **M**ódulo **C**arregamento das **B**aterias 2019 
