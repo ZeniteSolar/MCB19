@@ -8,12 +8,6 @@ on:
     - 'hardware/**'
     - '.config/**'
     - '.github/**'
-  pull_request:
-    branches: [ master ]
-    paths:
-    - 'hardware/**'
-    - '.config/**'
-    - '.github/**'
 
 jobs:
   Schematics:
@@ -141,6 +135,8 @@ jobs:
     needs: [Schematics, Bom, Plot, Model]
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: 'gh-pages'
 
     # DOWNLOAD ARTIFACTS
     - name: Download Schematics
@@ -148,21 +144,25 @@ jobs:
       if: ${{ always() }}
       with:
         name: schematics
+        path: hardware
     - name: Download Bom
       uses: actions/download-artifact@v2.0.4
       if: ${{ always() }}
       with:
         name: bom
+        path: hardware/bom
     - name: Download Plot
       uses: actions/download-artifact@v2.0.4
       if: ${{ always() }}
       with:
         name: plot
+        path: img
     - name: Download Model
       uses: actions/download-artifact@v2.0.4
       if: ${{ always() }}
       with:
         name: model
+        path: hardware/cad
 
     # PUBLISH
     - name: Publish everything
@@ -171,7 +171,7 @@ jobs:
       with: 
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
-        publish_dir: ./hardware/docs
+        publish_dir: ./
         enable_jekyll: true
         force_orphan: true
         keep_files: true
