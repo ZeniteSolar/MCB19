@@ -39,18 +39,21 @@ jobs:
         name: Docs
         path: firmware/docs
         
-#  Publish:
-#    runs-on: ubuntu-latest
-#    continue-on-error: true
-#    needs: Docs
-#    steps:
-#    - uses: actions/checkout@v2
-#
-#    # DOWNLOAD ARTIFACT
-#    - name: Download Docs
-#      uses: actions/download-artifact@v2.0.4
-#      with:
-#        name: Docs
+  Publish:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    needs: Docs
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: 'gh-pages'
+
+    # DOWNLOAD ARTIFACT
+    - name: Download Docs
+      uses: actions/download-artifact@v2.0.4
+      with:
+        name: Docs
+        path: ./
 
     # PUBLISH
     - name: Publish Firmware Docs
@@ -58,7 +61,7 @@ jobs:
       with: 
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
-        publish_dir: ./firmware/docs/md
+        publish_dir: ./
         enable_jekyll: true
         force_orphan: true
         keep_files: true
