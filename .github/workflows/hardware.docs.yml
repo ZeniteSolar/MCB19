@@ -127,8 +127,7 @@ jobs:
     # CHECK
     - name: "check output: model"
       run: |
-        ls hardware/docs/cad #debug
-        test -f hardware/docs/cad/MCB19.step && \
+        test -f hardware/docs/cad/MCB19.step
 
     # UPLOAD
     - name: Upload Model
