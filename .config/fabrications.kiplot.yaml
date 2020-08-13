@@ -63,28 +63,3 @@ outputs:
       separate_files_for_front_and_back: false
       only_smd: true
 
-  # KiBoM (KiCad Bill of Materials):
-  # For more information: https://github.com/INTI-CMNB/KiBoM
-  # This output is what you get from the 'Tools/Generate Bill of Materials' menu in eeschema.
-  - name: 'kibom'
-    comment: 'BOM'
-    type: 'kibom'
-    dir: 'gerbers'
-    options:
-      conf:
-        hide_pcb_info: true
-        exclude_any:
-          - column: Part
-            regex: TestPoint
-          - column: Part
-            regex: LOGO
-          - column: Part
-            regex: Jumper
-      # [string='HTML'] [HTML,CSV,XML,XLSX] format for the BoM
-      format: 'CSV'
-      # [number=1] Number of boards to build (components multiplier)
-      number: 1
-      # [string='%f-%i.%x'] filename for the output (%i=bom). Affected by global options
-      output: '%f_BOM.%x'
-      # [string=','] CSV Separator
-      separator: ';'
