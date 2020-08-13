@@ -60,9 +60,10 @@ jobs:
     # CHECK
     - name: "check output: bom"
       run: |
-        test -f hardware/docs/bom/MCB19*.html && \
-        test -f hardware/docs/bom/MCB19*.csv && \
-        test -f hardware/docs/bom/MCB19*.xlsx
+        test -f hardware/docs/bom/MCB19-interactive-bom.html && \
+        test -f hardware/docs/bom/MCB19-bom.html && \
+        test -f hardware/docs/bom/MCB19-bom.csv && \
+        test -f hardware/docs/bom/MCB19-bom.xlsx
         
     # UPLOAD
     - name: Upload Bom
