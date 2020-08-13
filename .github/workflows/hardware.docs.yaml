@@ -138,6 +138,9 @@ jobs:
       with:
         ref: 'gh-pages'
 
+    # CLEAN
+    - run: rm -rf hardware
+
     # DOWNLOAD ARTIFACTS
     - name: Download Schematics
       uses: actions/download-artifact@v2.0.4
