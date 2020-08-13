@@ -28,7 +28,7 @@ jobs:
       uses: nerdyscout/kicad-exports@v2.0
       with:
         config: ./.config/bom.kiplot.yaml
-        dir: hardware
+        dir: hardware/bom
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
 
@@ -58,7 +58,7 @@ jobs:
       uses: nerdyscout/kicad-exports@v2.0
       with:
         config: ./.config/fabrications.kiplot.yaml
-        dir: hardware
+        dir: hardware/gerbers
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
 

@@ -23,7 +23,7 @@ jobs:
       uses: nerdyscout/kicad-exports@v2.0
       with:
         config: ./.config/schematics.kiplot.yaml
-        dir: hardware
+        dir: hardware/docs
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
 
@@ -53,7 +53,7 @@ jobs:
       uses: nerdyscout/kicad-exports@v2.0
       with:
         config: ./.config/bom.kiplot.yaml
-        dir: hardware
+        dir: hardware/docs/bom
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
 
@@ -84,22 +84,22 @@ jobs:
       uses: nerdyscout/kicad-exports@v2.0
       with:
         config: ./.config/plot.kiplot.yaml
-        dir: hardware
+        dir: hardware/docs/imgs
         schema: hardware/MCB19.sch
         board: hardware/MCB19.kicad_pcb
 
     # CHECK
     - name: "check output: plot"
       run: |
-        test -f hardware/docs/img/MCB19-top.svg && \
-        test -f hardware/docs/img/MCB19-bottom.svg 
+        test -f hardware/docs/imgs/MCB19-top.svg && \
+        test -f hardware/docs/imgs/MCB19-bottom.svg 
 
     # UPLOAD
     - name: Upload Plot
       uses: actions/upload-artifact@v2.1.3
       with:
         name: plot
-        path: hardware/docs/img
+        path: hardware/docs/imgs
 
   Model:
     runs-on: ubuntu-latest
@@ -114,7 +114,7 @@ jobs:
       uses: nerdyscout/kicad-exports@v2.0
       with:
         config: ./.config/model.kiplot.yaml
-        dir: hardware
+        dir: hardware/docs/cad
         schema: hardware/MCB19.sch
         board: hardware/MCB19.kicad_pcb
 
@@ -159,7 +159,7 @@ jobs:
       if: ${{ always() }}
       with:
         name: plot
-        path: img
+        path: hardware/imgs
     - name: Download Model
       uses: actions/download-artifact@v2.0.4
       if: ${{ always() }}
