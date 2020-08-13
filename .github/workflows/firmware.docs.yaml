@@ -41,7 +41,6 @@ jobs:
         
   Publish:
     runs-on: ubuntu-latest
-    continue-on-error: true
     needs: Docs
     steps:
     - uses: actions/checkout@v2
@@ -63,6 +62,6 @@ jobs:
         publish_branch: gh-pages
         publish_dir: ./
         enable_jekyll: true
-        force_orphan: true
+        force_orphan: false
         keep_files: true
         destination_dir: ./
