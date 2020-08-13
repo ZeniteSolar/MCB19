@@ -69,7 +69,7 @@ outputs:
       # [string='%f-%i.%x'] filename for the output (%i=bom). Affected by global options
       output: '%f.%x'
       # [string=','] CSV Separator
-      separator: ';'
+      separator: ','
       conf:
         hide_pcb_info: false
         exclude_any:
