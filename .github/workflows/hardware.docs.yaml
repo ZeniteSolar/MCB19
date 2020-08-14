@@ -139,41 +139,41 @@ jobs:
         submodules: 'recursive'
 
     # RUN
-    - name: kicad-exports fabrications 
+    - name: kicad-exports gerbers
       uses: nerdyscout/kicad-exports@v2.0
       with:
         config: ./.config/fabrications.kiplot.yaml
-        dir: hardware/gerbers
+        dir: hardware/docs/gerbers
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
 
     # CHECK
     - name: "check output: fabrications"
       run: |
-        test -f hardware/gerbers/*B_CrtYd.gbr && \
-        test -f hardware/gerbers/*F_CrtYd.gbr && \
-        test -f hardware/gerbers/*B_Cu.gbr && \
-        test -f hardware/gerbers/*F_Cu.gbr && \
-        test -f hardware/gerbers/*B_Mask.gbr && \
-        test -f hardware/gerbers/*F_Mask.gbr && \
-        test -f hardware/gerbers/*B_Paste.gbr && \
-        test -f hardware/gerbers/*F_Paste.gbr && \
-        test -f hardware/gerbers/*B_SilkS.gbr && \
-        test -f hardware/gerbers/*F_SilkS.gbr && \
-        test -f hardware/gerbers/*B_CrtYd.gbr && \
-        test -f hardware/gerbers/*F_CrtYd.gbr && \
-        test -f hardware/gerbers/*NPTH*.gbr && \
-        test -f hardware/gerbers/*NPTH*.drl && \
-        test -f hardware/gerbers/*-PTH*.gbr && \
-        test -f hardware/gerbers/*-PTH*.drl && \
-        test -f hardware/gerbers/*_pos.csv
+        test -f hardware/docs/gerbers/*B_CrtYd.gbr && \
+        test -f hardware/docs/gerbers/*F_CrtYd.gbr && \
+        test -f hardware/docs/gerbers/*B_Cu.gbr && \
+        test -f hardware/docs/gerbers/*F_Cu.gbr && \
+        test -f hardware/docs/gerbers/*B_Mask.gbr && \
+        test -f hardware/docs/gerbers/*F_Mask.gbr && \
+        test -f hardware/docs/gerbers/*B_Paste.gbr && \
+        test -f hardware/docs/gerbers/*F_Paste.gbr && \
+        test -f hardware/docs/gerbers/*B_SilkS.gbr && \
+        test -f hardware/docs/gerbers/*F_SilkS.gbr && \
+        test -f hardware/docs/gerbers/*B_CrtYd.gbr && \
+        test -f hardware/docs/gerbers/*F_CrtYd.gbr && \
+        test -f hardware/docs/gerbers/*NPTH*.gbr && \
+        test -f hardware/docs/gerbers/*NPTH*.drl && \
+        test -f hardware/docs/gerbers/*-PTH*.gbr && \
+        test -f hardware/docs/gerbers/*-PTH*.drl && \
+        test -f hardware/docs/gerbers/*_pos.csv
 
     # UPLOAD
-    - name: Upload Fabrications
+    - name: Upload Gerbers
       uses: actions/upload-artifact@v2.1.4
       with:
         name: gerbers
-        path: hardware/gerbers
+        path: hardware/docs/gerbers
 
   Publish:
     runs-on: ubuntu-latest
