@@ -184,7 +184,7 @@ jobs:
         ref: 'gh-pages'
 
     # CLEAN
-    - run: rm -rf hardware
+    - run: rm -rf ./hardware
 
     # DOWNLOAD ARTIFACTS
     - name: Download Schematics
@@ -219,7 +219,7 @@ jobs:
         path: hardware/gerbers
 
     # PUBLISH
-    - name: Publish everything
+    - name: Publish Hardware Docs
       uses: peaceiris/actions-gh-pages@v3.7.0-8
       if: ${{ always() }}
       with: 
@@ -229,4 +229,7 @@ jobs:
         enable_jekyll: true
         force_orphan: false
         keep_files: false
+        commit_message: ${{ github.event.head_commit.message  }}
+        #user_name: 'github-actions[bot]'
+        #user_email: 'actions[bot]@users.noreply.github.com'
         destination_dir: ./
