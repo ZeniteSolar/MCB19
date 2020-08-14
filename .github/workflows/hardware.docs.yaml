@@ -142,7 +142,7 @@ jobs:
     - name: kicad-exports gerbers
       uses: nerdyscout/kicad-exports@v2.0
       with:
-        config: ./.config/fabrications.kiplot.yaml
+        config: ./.config/gerbers.kiplot.yaml
         dir: hardware/docs/gerbers
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
@@ -215,7 +215,7 @@ jobs:
       uses: actions/download-artifact@v2.0.5
       if: ${{ always() }}
       with:
-        name: model
+        name: gerbers
         path: hardware/gerbers
 
     # PUBLISH
