@@ -3,6 +3,7 @@ layout: default
 title: Home
 nav_order: 1
 description: "Home"
+toc: true
 ---
 
 # MCB19 [![GitHub](https://img.shields.io/github/license/ZeniteSolar/MCB19?style=flat)](https://github.com/ZeniteSolar/MCB19/blob/master/LICENSE)

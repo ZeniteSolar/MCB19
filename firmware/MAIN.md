@@ -1,3 +1,8 @@
+---
+layout: default
+parent: Firmware
+---
+
 # `MAIN` 
 
 Headers for [main.c](docs/md/undefined.md#main_8c).

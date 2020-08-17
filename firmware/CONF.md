@@ -1,3 +1,8 @@
+---
+layout: default
+parent: Firmware
+---
+
 # `CONF` 
 
 General configuration of the system.

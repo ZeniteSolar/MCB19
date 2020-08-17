@@ -1,3 +1,8 @@
+---
+layout: default
+parent: Firmware
+---
+
 # `DBG_VRB` 
 
 Debug and Verbose mode definitions.

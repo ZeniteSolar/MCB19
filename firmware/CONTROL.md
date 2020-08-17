@@ -1,3 +1,8 @@
+---
+layout: default
+parent: Firmware
+---
+
 # `CONTROL` 
 
 Implements the controller for the power converter.

@@ -1,3 +1,8 @@
+---
+layout: default
+parent: Firmware
+---
+
 # `USART` 
 
 Simple usart using pooling method, with basic functions used for debug purpose.

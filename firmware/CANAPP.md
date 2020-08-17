@@ -1,3 +1,8 @@
+---
+layout: default
+parent: Firmware
+---
+
 # `CANAPP` 
 
 The application layer module for canbus.

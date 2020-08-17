@@ -1,3 +1,8 @@
+---
+layout: default
+parent: Firmware
+---
+
 # `MACHINE` 
 
 Implements the main state machine of the system.

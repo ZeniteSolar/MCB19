@@ -1,3 +1,8 @@
+---
+layout: default
+parent: Firmware
+---
+
 # `WATCHDOG` 
 
 A simple watchdog.
