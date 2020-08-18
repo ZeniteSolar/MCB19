@@ -33,7 +33,8 @@ function create_schematics_page {
     
     # Add images
     for file in $dir/*.svg; do
-        filename="$(basename ${file%.*})"
+        file=$(basename $file)
+        filename="${file%.*}"
         echo "## $filename" >> $md_file
         echo "![$filename]($file)" >> $md_file
         echo "" >> $md_file
@@ -43,6 +44,7 @@ function create_schematics_page {
 function create_layout_page {
     dir=$1
     md_file="$dir/layout.md"
+    subdir="imgs"
 
     # Clean
     \rm -rf $md_file
@@ -52,10 +54,11 @@ function create_layout_page {
     echo "" >> $md_file
     
     # Add images
-    for file in $dir/imgs/*.svg; do
-        filename="$(basename ${file%.*})"
+    for file in $dir/$subdir/*.svg; do
+        file=$(basename $file)
+        filename="${file%.*}"
         echo "## $filename" >> $md_file
-        echo "![$filename]($file)" >> $md_file
+        echo "![$filename]($subdir/$file)" >> $md_file
         echo "" >> $md_file
     done
 }
@@ -63,6 +66,7 @@ function create_layout_page {
 function create_gerbers_page {
     dir=$1
     md_file="$dir/gerbers.md"
+    subdir="gerbers"
 
     # Clean
     \rm -rf $md_file
@@ -75,8 +79,9 @@ function create_gerbers_page {
     echo "[.zip Download](MCB19-Schematic.zip)" >> $md_file
     
     # Add gerbers links
-    for file in $dir/gerbers/*; do
-        echo "  - [$(basename $file)]($file)" >> $md_file
+    for file in $dir/$subdir/*; do
+        file=$(basename $file)
+        echo "  - [$file]($subdir/$file)" >> $md_file
         echo "" >> $md_file
     done
 }
