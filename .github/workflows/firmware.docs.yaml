@@ -57,6 +57,10 @@ jobs:
         name: Docs
         path: ./firmware
 
+    # CREATE CONTENT
+    - name: Create Content
+      run: ./create_content.sh
+
     # PUBLISH
     - name: Publish Firmware Docs
       uses: peaceiris/actions-gh-pages@v3.7.0-8
