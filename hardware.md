@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Hardware
-nav_order: 20
+nav_order: 3
 description: "Hardware Documentation Index"
 permalink: /hardware/
 has_children: true
