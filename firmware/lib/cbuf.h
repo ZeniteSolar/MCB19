@@ -202,7 +202,6 @@ template < class IndexType, unsigned Size, class EntryType >
 class CBUF
 {
 public:
-
     CBUF()
     {
         m_getIdx = m_putIdx = 0;
@@ -228,11 +227,9 @@ public:
     }
 
 private:
-
     volatile IndexType  m_getIdx;
     volatile IndexType  m_putIdx;
     EntryType           m_entry[ Size ];
-
 };
 
 #endif  // __cplusplus
