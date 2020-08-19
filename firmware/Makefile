@@ -123,7 +123,7 @@ CFLAGS += -Wunreachable-code
 CFLAGS += -Wsign-compare
 CFLAGS += -Waddr-space-convert
 CFLAGS += -Wmisspelled-isr
-CFLAGS += -Wa,-adhlns=$(<:%.c=$(OBJDIR)/%.lst)
+#CFLAGS += -Wa,-adhlns=$(<:%.c=$(OBJDIR)/%.lst)
 CFLAGS += $(patsubst %,-I%,$(EXTRAINCDIRS))
 CFLAGS += -mmcu=$(MCU)
 CFLAGS += -std=gnu99
