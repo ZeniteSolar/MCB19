@@ -1,6 +1,9 @@
 #include "can_app.h"
 #include <math.h>
 
+uint32_t can_app_send_state_clk_div;
+uint32_t can_app_send_measurements_clk_div;
+
 /**
  * @brief Prints a can message via usart
  */

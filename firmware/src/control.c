@@ -1,5 +1,8 @@
 #include "control.h"
 
+volatile float dt, dt_max, dt_min, vi, vo, io, io_max, vo_setpoint, io_setpoint;
+volatile control_flags_t control_flags;
+
 void control_init(void)
 {
     TCCR1A = (0<<COM1A1) | (0<<COM1A0) 

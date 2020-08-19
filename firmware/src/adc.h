@@ -21,7 +21,7 @@
 #include "control.h"
 
 typedef enum {ADC0, ADC1, ADC2} adc_channels_t;
-volatile uint8_t print_adc;
+extern volatile uint8_t print_adc;
 
 void adc_init(void);
 

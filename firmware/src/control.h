@@ -17,8 +17,7 @@
 #include "usart.h"
 #include "dbg_vrb.h"
 
-volatile float dt, dt_max, dt_min, vi, vo, io, io_max, vo_setpoint, io_setpoint;
-volatile union control_flags_t{
+typedef union control_flags{
     struct{
         uint8_t enable : 1;
         uint8_t vi_safe_range : 1;
@@ -27,7 +26,10 @@ volatile union control_flags_t{
         uint8_t dt_safe_range : 1;
     };
     uint8_t all;
-}control_flags;
+}control_flags_t;
+
+extern volatile control_flags_t control_flags;
+extern volatile float dt, dt_max, dt_min, vi, vo, io, io_max, vo_setpoint, io_setpoint;
 
 void control(void);
 void control_init(void);
