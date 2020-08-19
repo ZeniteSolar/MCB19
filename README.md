@@ -3,6 +3,7 @@
 [![hardware.check](https://github.com/ZeniteSolar/MCB19/workflows/hardware.check/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Ahardware.check)
 [![firmware.build](https://github.com/ZeniteSolar/MCB19/workflows/firmware.build/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Afirmware.build)
 [![firmware.docs](https://github.com/ZeniteSolar/MCB19/workflows/firmware.docs/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Afirmware.docs)
+[![CodeFactor](https://www.codefactor.io/repository/github/zenitesolar/mcb19/badge)](https://www.codefactor.io/repository/github/zenitesolar/mcb19)
 
 
 
