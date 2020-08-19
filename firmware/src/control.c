@@ -82,46 +82,56 @@ inline float piIo(float r, float y){
 }
 
 inline void control(void){
-    static float vi_old = 0;
-    static uint16_t vi_stable_counter = 0;
-
     // call feedback controller   
     control_feedback();
 
     // apply outputs
     OCR1B = ICR1 * dt;
     
+    // check for long-time stability
+    static uint16_t vi_stable_counter = 0;
     if(!control_flags.enable){
-        if(dt > 0)  control_flags.dt_safe_range = 1;
-        else        control_flags.dt_safe_range = 0;
+        control_flags.dt_safe_range = (dt > 0);
 
-        if((vo > 14) && (vo < 16))  control_flags.dt_safe_range = 1;
-        else                        control_flags.dt_safe_range = 0;
+        // check output range
+        const float vo_safe_range_min_value = 14;
+        const float vo_safe_range_max_value = 16;
+        control_flags.vo_safe_range = (
+                (vo > vo_safe_range_min_value) &&
+                (vo < vo_safe_range_max_value));
  
-        if(vi_stable_counter < 1000){
-            control_flags.dt_safe_range = 0;
-            if((vi - vi_old) < 1)   vi_stable_counter++;
-            else                    vi_stable_counter = 0;
+        // check input stability over time
+        const uint16_t vi_stable_counter_max = 1000;
+        if(vi_stable_counter < vi_stable_counter_max){
+            static float vi_old = 0;
+
+            control_flags.vi_stable = 0;
+            const float vi_max_delta = 1;
+            if((vi - vi_old) < vi_max_delta) vi_stable_counter++;
+            else                             vi_stable_counter = 0;
+
             vi_old = vi;
         }else{
-            control_flags.dt_safe_range = 1;
+            control_flags.vi_stable = 1;
         }
     }else{
         vi_stable_counter = 0;
     }
 
-    if(vi > VI_MIN)         control_flags.dt_safe_range = 1;
-    else if(vi < VI_MIN -2) control_flags.dt_safe_range = 0;
-
+    // check for input range
+    if(vi > VI_MIN)         control_flags.vi_safe_range = 1;
+    else if(vi < VI_MIN -2) control_flags.vi_safe_range = 0;
                                 
-    if(control_flags.dt_safe_range 
-            && control_flags.dt_safe_range 
-            && control_flags.dt_safe_range 
-            && control_flags.dt_safe_range) control_flags.enable = 1;
-    else                                    control_flags.enable = 0;
+    // check all conditions to enable relay
+    control_flags.enable = (
+            control_flags.dt_safe_range &&
+            control_flags.vi_safe_range &&
+            control_flags.vo_safe_range &&
+            control_flags.vi_stable);
 
+    // control relay
     if(control_flags.enable) set_bit(ENABLE_RELAY_PORT, ENABLE_RELAY);
-    else       clr_bit(ENABLE_RELAY_PORT, ENABLE_RELAY); 
+    else                     clr_bit(ENABLE_RELAY_PORT, ENABLE_RELAY); 
 }
 
 inline void control_feedback(void)
