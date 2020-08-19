@@ -52,7 +52,7 @@ outputs:
           - column: Part
             regex: LOGO
           - column: Part
-            regex: Jumper    
+            regex: Jumper
 
   # KiBoM (KiCad Bill of Materials):
   # For more information: https://github.com/INTI-CMNB/KiBoM
@@ -78,7 +78,7 @@ outputs:
           - column: Part
             regex: LOGO
           - column: Part
-            regex: Jumper    
+            regex: Jumper
 
   # KiBoM (KiCad Bill of Materials):
   # For more information: https://github.com/INTI-CMNB/KiBoM
@@ -102,4 +102,4 @@ outputs:
           - column: Part
             regex: LOGO
           - column: Part
-            regex: Jumper    
+            regex: Jumper

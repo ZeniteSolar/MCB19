@@ -6,7 +6,7 @@ preflight:
   run_drc: false
   check_zone_fills: false
   ignore_unconnected: false
-        
+
 outputs:
   - name: 'print schema'
     comment: "Print schematic (PDF)"
@@ -21,7 +21,7 @@ outputs:
     dir: '.'
     options:
       output: '%p-Schematic.%x'
-            
+
   - name: 'print board'
     comment: "Print board (PDF)"
     type: pdf_pcb_print

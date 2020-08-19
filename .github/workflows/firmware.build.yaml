@@ -23,18 +23,18 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: 'recursive'
-    
+
     # GET DEPENDENCIES
     - name: Install dependencies
       run: sudo apt-get install -y binutils-avr gcc-avr avr-libc
     - run: avr-gcc --version
-      
+
     # BUILD
     - name: Build libraries
       run: |
         cd firmware
         ./makelibs.sh
-      
+
     - name: Build firmware
       run: |
         cd firmware

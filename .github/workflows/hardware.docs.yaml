@@ -33,7 +33,7 @@ jobs:
         test -f hardware/docs/MCB19-Schematic*.svg && \
         test -f hardware/docs/MCB19-Schematic*.pdf && \
         test -f hardware/docs/MCB19-Board*.pdf
-        
+
     # UPLOAD
     - name: Upload Schematics
       uses: actions/upload-artifact@v2.1.4
@@ -64,7 +64,7 @@ jobs:
         test -f hardware/docs/bom/MCB19-bom.html && \
         test -f hardware/docs/bom/MCB19-bom.csv && \
         test -f hardware/docs/bom/MCB19-bom.xlsx
-        
+
     # UPLOAD
     - name: Upload Bom
       uses: actions/upload-artifact@v2.1.4
@@ -93,7 +93,7 @@ jobs:
     - name: "check output: plot"
       run: |
         test -f hardware/docs/imgs/MCB19-top.svg && \
-        test -f hardware/docs/imgs/MCB19-bottom.svg 
+        test -f hardware/docs/imgs/MCB19-bottom.svg
 
     # UPLOAD
     - name: Upload Plot
@@ -226,7 +226,7 @@ jobs:
     - name: Publish Hardware Docs
       uses: peaceiris/actions-gh-pages@v3.7.0-8
       if: ${{ always() }}
-      with: 
+      with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
         publish_dir: ./

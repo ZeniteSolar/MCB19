@@ -37,7 +37,7 @@ jobs:
       with:
         name: Docs
         path: firmware/docs/md
-        
+
   Publish:
     runs-on: ubuntu-latest
     needs: Docs
@@ -65,7 +65,7 @@ jobs:
     - name: Publish Firmware Docs
       uses: peaceiris/actions-gh-pages@v3.7.0-8
       if: ${{ always() }}
-      with: 
+      with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
         publish_dir: ./
