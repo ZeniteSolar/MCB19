@@ -1,30 +1,8 @@
-# For PCBs designed using KiCad: http://www.kicad-pcb.org/
-# Format documentation: http://kicad-pcb.org/help/file-formats/
-
-# Temporary files
-*.000
-*.bak
-*.bck
-*.kicad_pcb-bak
-*~
-_autosave-*
-*.tmp
-*-cache.lib
-*-rescue.lib
-*-save.pro
-*-save.kicad_pcb
-
-# Netlist files (exported from Eeschema)
-*.net
-
-# Autorouter files (exported from Pcbnew)
-*.dsn
-*.ses
-
-# Exported BOM files
-#*.xml
-#*.csv
-
 # can_ids should always be downloaded
 src/can_ids.h
+bin
+obj
 
+
+compile_commands.json
+src/adc.c.dump src/can_app.c.dump src/control.c.dump src/machine.c.dump src/main.c.dump src/usart.c.dump
