@@ -16,15 +16,11 @@ parent: Hardware
 
   - [MCB19-B_Mask.gbr](gerbers/MCB19-B_Mask.gbr)
 
-  - [MCB19-both_pos.csv](gerbers/MCB19-both_pos.csv)
-
   - [MCB19-B_Paste.gbr](gerbers/MCB19-B_Paste.gbr)
 
   - [MCB19-B_SilkS.gbr](gerbers/MCB19-B_SilkS.gbr)
 
   - [MCB19-Cmts_User.gbr](gerbers/MCB19-Cmts_User.gbr)
-
-  - [MCB19.csv](gerbers/MCB19.csv)
 
   - [MCB19-Dwgs_User.gbr](gerbers/MCB19-Dwgs_User.gbr)
 
@@ -48,8 +44,6 @@ parent: Hardware
 
   - [MCB19-F_SilkS.gbr](gerbers/MCB19-F_SilkS.gbr)
 
-  - [MCB19-job.gbrjob](gerbers/MCB19-job.gbrjob)
-
   - [MCB19-Margin.gbr](gerbers/MCB19-Margin.gbr)
 
   - [MCB19-NPTH_drill.drl](gerbers/MCB19-NPTH_drill.drl)
@@ -59,4 +53,10 @@ parent: Hardware
   - [MCB19-PTH_drill.drl](gerbers/MCB19-PTH_drill.drl)
 
   - [MCB19-PTH_drill.gbr](gerbers/MCB19-PTH_drill.gbr)
+
+  - [MCB19-both_pos.csv](gerbers/MCB19-both_pos.csv)
+
+  - [MCB19-job.gbrjob](gerbers/MCB19-job.gbrjob)
+
+  - [MCB19.csv](gerbers/MCB19.csv)
 
