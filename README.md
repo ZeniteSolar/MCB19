@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b258fc0bb0c443239bbbb54ab368a3f5)](https://app.codacy.com/gh/ZeniteSolar/MCB19?utm_source=github.com&utm_medium=referral&utm_content=ZeniteSolar/MCB19&utm_campaign=Badge_Grade_Dashboard)
 # MCB19 [![GitHub](https://img.shields.io/github/license/ZeniteSolar/MCB19?style=flat)](https://github.com/ZeniteSolar/MCB19/blob/master/LICENSE)
 [![hardware.docs](https://github.com/ZeniteSolar/MCB19/workflows/hardware.docs/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Ahardware.docs)
 [![hardware.check](https://github.com/ZeniteSolar/MCB19/workflows/hardware.check/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Ahardware.check)
