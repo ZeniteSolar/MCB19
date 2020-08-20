@@ -192,7 +192,7 @@ jobs:
       if: ${{ always() }}
       with:
         name: schematics
-        path: hardware
+        path: hardware/schematics
     - name: Download Bom
       uses: actions/download-artifact@v2.0.5
       if: ${{ always() }}
@@ -204,7 +204,7 @@ jobs:
       if: ${{ always() }}
       with:
         name: plot
-        path: hardware/imgs
+        path: hardware/layout
     - name: Download Model
       uses: actions/download-artifact@v2.0.5
       if: ${{ always() }}
