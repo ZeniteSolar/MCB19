@@ -33,7 +33,7 @@ function create_schematics_page {
     echo "" >> "$md_file"
 
     # Add pdf link
-    echo "[.pdf Download]($subdir/*-Schematic.pdf)" >> "$md_file"
+    echo "  - [.pdf Download]($subdir/*-Schematic.pdf)" >> "$md_file"
     
     # Add images
     for file in $dir/$subdir/*.svg; do
@@ -86,7 +86,7 @@ function create_gerbers_page {
     echo "" >> "$md_file"
 
     # Add zip link
-    echo "[.zip Download](*-Gerbers.zip)" >> "$md_file"
+    echo "  - [.zip Download](*-Gerbers.zip)" >> "$md_file"
     
     # Add gerbers links
     for file in $dir/$subdir/*.{gbr,csv,txt,job,drl}; do
@@ -99,9 +99,48 @@ function create_gerbers_page {
     done
 }
 
+function create_bom_page {
+    dir="$1"
+    subdir="bom"
+    md_file="$dir/$subdir/index.md"
+
+    # Clean
+    \rm -rf "$md_file"
+
+    # Add title
+    echo "# BOM" >> "$md_file"
+    echo "" >> "$md_file"
+
+    # Add links
+    echo "  - [**Interactive BOM**]($subdir/MCB19-interactive-bom.html)" >> "$md_file"
+    echo "  - [BOM](bom/MCB19-bom.html)" >> "$md_file"
+    echo "  - [.csv Download](bom/MCB19-bom.csv)" >> "$md_file"
+    echo "  - [.xlsx Download](bom/MCB19-bom.xlsx)" >> "$md_file"
+}
+
+function create_cad_page {
+    dir="$1"
+    subdir="cad"
+    md_file="$dir/$subdir/index.md"
+
+    # Clean
+    \rm -rf "$md_file"
+
+    # Add title
+    echo "# 3D Model" >> "$md_file"
+    echo "" >> "$md_file"
+
+    # Add links
+    echo "  - [.step download]($subdir/MCB19.step)" >> "$md_file"
+}
+
+# Create each page
 create_schematics_page "hardware"
 create_layout_page "hardware"
 create_gerbers_page "hardware"
+create_bom_page "hardware"
+create_cad_page "hardware"
 
+# Add jekyll header to all pages
 add_headers "firmware" "Firmware"
 add_headers "hardware/*/" "Hardware"
