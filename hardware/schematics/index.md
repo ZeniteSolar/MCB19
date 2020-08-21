@@ -5,7 +5,7 @@ parent: Hardware
 
 # Schematics
 
-  - [.pdf Download](schematics/*-Schematic.pdf)
+  - [.pdf Download](MCB19-Schematic.pdf)
 ## +12V-supplies12
 <a href="+12V-supplies12.svg"><img src="+12V-supplies12.svg"></a>
 

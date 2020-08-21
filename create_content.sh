@@ -33,7 +33,7 @@ function create_schematics_page {
     echo "" >> "$md_file"
 
     # Add pdf link
-    echo "  - [.pdf Download]($subdir/*-Schematic.pdf)" >> "$md_file"
+    echo "  - [.pdf Download]($(basename $dir/$subdir/*-Schematic.pdf))" >> "$md_file"
     
     # Add images
     for file in $dir/$subdir/*.svg; do
@@ -86,7 +86,7 @@ function create_gerbers_page {
     echo "" >> "$md_file"
 
     # Add zip link
-    echo "  - [.zip Download](*-Gerbers.zip)" >> "$md_file"
+    echo "  - [.zip Download]($(basename $dir/$subdir/*-Gerbeers.zip))" >> "$md_file"
     
     # Add gerbers links
     for file in $dir/$subdir/*.{gbr,csv,txt,job,drl}; do
@@ -112,10 +112,10 @@ function create_bom_page {
     echo "" >> "$md_file"
 
     # Add links
-    echo "  - [**Interactive BOM**]($subdir/MCB19-interactive-bom.html)" >> "$md_file"
-    echo "  - [BOM](bom/MCB19-bom.html)" >> "$md_file"
-    echo "  - [.csv Download](bom/MCB19-bom.csv)" >> "$md_file"
-    echo "  - [.xlsx Download](bom/MCB19-bom.xlsx)" >> "$md_file"
+    echo "  - [**Interactive BOM**](MCB19-interactive-bom.html)" >> "$md_file"
+    echo "  - [BOM](MCB19-bom.html)" >> "$md_file"
+    echo "  - [.csv Download](MCB19-bom.csv)" >> "$md_file"
+    echo "  - [.xlsx Download](MCB19-bom.xlsx)" >> "$md_file"
 }
 
 function create_cad_page {
@@ -130,8 +130,15 @@ function create_cad_page {
     echo "# 3D Model" >> "$md_file"
     echo "" >> "$md_file"
 
-    # Add links
-    echo "  - [.step download]($subdir/MCB19.step)" >> "$md_file"
+    # Add model links
+    for file in $dir/$subdir/*.{stl,step}; do
+        if [ -f "$file" ]; then
+            file=$(basename "$file")
+            url="$file"
+            echo "  - [$file]($url)" >> "$md_file"
+            echo "" >> "$md_file"
+        fi
+    done
 }
 
 # Create each page

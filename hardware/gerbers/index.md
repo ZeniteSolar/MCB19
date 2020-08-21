@@ -5,7 +5,7 @@ parent: Hardware
 
 # Gerbers
 
-  - [.zip Download](*-Gerbers.zip)
+  - [.zip Download](*-Gerbeers.zip)
   - [MCB19-B_Adhes.gbr](MCB19-B_Adhes.gbr)
 
   - [MCB19-B_CrtYd.gbr](MCB19-B_CrtYd.gbr)
