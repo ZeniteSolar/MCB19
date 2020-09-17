@@ -1,13 +1,9 @@
-View this project on [CADLAB.io](https://cadlab.io/project/23224). 
-
-# MCB19 [![GitHub](https://img.shields.io/github/license/ZeniteSolar/MCB19?style=flat)](https://github.com/ZeniteSolar/MCB19/blob/master/LICENSE)
+# MCB19
 [![hardware.docs](https://github.com/ZeniteSolar/MCB19/workflows/hardware.docs/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Ahardware.docs)
 [![hardware.check](https://github.com/ZeniteSolar/MCB19/workflows/hardware.check/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Ahardware.check)
 [![firmware.build](https://github.com/ZeniteSolar/MCB19/workflows/firmware.build/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Afirmware.build)
 [![firmware.docs](https://github.com/ZeniteSolar/MCB19/workflows/firmware.docs/badge.svg)](https://github.com/ZeniteSolar/MCB19/actions?query=workflow%3Afirmware.docs)
 [![CodeFactor](https://www.codefactor.io/repository/github/zenitesolar/mcb19/badge)](https://www.codefactor.io/repository/github/zenitesolar/mcb19)
-
-
 
 **M**ódulo **C**arregamento das **B**aterias 2019 
 
@@ -15,6 +11,10 @@ Embarcação Guarapuvu II
 
 Equipe Zênite Solar
 
+### LICENSES
+![](license_badge.svg)
+- All firmware (unless otherwise noted), [is licensed under GPL-3.0 or any later version](https://www.gnu.org/licenses/gpl.html)
+- All hardware is [licensed under CERN-OHL-S v2 or any later version](https://ohwr.org/cern_ohl_s_v2)
 
 
 ### Sobre
@@ -24,7 +24,6 @@ Este módulo é responsável por carregar e gerenciar a carga da bateria auxilia
 ![](hardware/IMG/3DDOWN.png?raw=true)
 
 ![](hardware/IMG/3DUP.png?raw=true)
-
 
 
 #### Requisitos
