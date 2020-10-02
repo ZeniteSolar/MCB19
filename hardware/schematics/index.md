@@ -9,6 +9,9 @@ parent: Hardware
 ## +12V-supplies12
 <a href="+12V-supplies12.svg"><img src="+12V-supplies12.svg"></a>
 
+## MCB19-Schematic
+<a href="MCB19-Schematic.svg"><img src="MCB19-Schematic.svg"></a>
+
 ## atmega328p-MCU
 <a href="atmega328p-MCU.svg"><img src="atmega328p-MCU.svg"></a>
 
@@ -20,9 +23,6 @@ parent: Hardware
 
 ## driver-driver
 <a href="driver-driver.svg"><img src="driver-driver.svg"></a>
-
-## MCB19-Schematic
-<a href="MCB19-Schematic.svg"><img src="MCB19-Schematic.svg"></a>
 
 ## supplies-POWER SUPPLY
 <a href="supplies-POWER SUPPLY.svg"><img src="supplies-POWER SUPPLY.svg"></a>
