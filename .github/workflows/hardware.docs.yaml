@@ -20,7 +20,7 @@ jobs:
 
     # RUN
     - name: kicad-exports schematics
-      uses: nerdyscout/kicad-exports@v2.0
+      uses: nerdyscout/kicad-exports@v2.1
       with:
         config: ./.config/schematics.kiplot.yaml
         dir: hardware/docs
@@ -50,7 +50,7 @@ jobs:
         submodules: 'recursive'
     # RUN
     - name: kicad-exports bom
-      uses: nerdyscout/kicad-exports@v2.0
+      uses: nerdyscout/kicad-exports@v2.1
       with:
         config: ./.config/bom.kiplot.yaml
         dir: hardware/docs/bom
@@ -82,7 +82,7 @@ jobs:
 
     # RUN
     - name: kicad-exports plot
-      uses: nerdyscout/kicad-exports@v2.0
+      uses: nerdyscout/kicad-exports@v2.1
       with:
         config: ./.config/plot.kiplot.yaml
         dir: hardware/docs/imgs
@@ -112,7 +112,7 @@ jobs:
 
     # RUN
     - name: kicad-exports model
-      uses: nerdyscout/kicad-exports@v2.0
+      uses: nerdyscout/kicad-exports@v2.1
       with:
         config: ./.config/model.kiplot.yaml
         dir: hardware/docs/cad
@@ -140,7 +140,7 @@ jobs:
 
     # RUN
     - name: kicad-exports gerbers
-      uses: nerdyscout/kicad-exports@v2.0
+      uses: nerdyscout/kicad-exports@v2.1
       with:
         config: ./.config/gerbers.kiplot.yaml
         dir: hardware/docs/gerbers
