@@ -5,9 +5,9 @@
     {
       "Vendor":      "KiCad",
       "Application": "Pcbnew",
-      "Version":     "5.1.5+dfsg1-2~bpo10+1"
+      "Version":     "5.1.6+dfsg1-1~bpo10+1"
     },
-    "CreationDate":  "2020-10-21T20:15:32+00:00"
+    "CreationDate":  "2020-10-23T23:00:35+00:00"
   },
   "GeneralSpecs":
   {
