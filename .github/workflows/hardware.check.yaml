@@ -25,7 +25,7 @@ jobs:
 
     # RUN
     - name: kicad-exports erc
-      uses: nerdyscout/kicad-exports@v2.1
+      uses: nerdyscout/kicad-exports@v2.2
       with:
         config: ./.config/erc.kiplot.yaml
         dir: hardware
@@ -41,7 +41,7 @@ jobs:
 
     # RUN
     - name: kicad-exports drc
-      uses: nerdyscout/kicad-exports@v2.1
+      uses: nerdyscout/kicad-exports@v2.2
       with:
         config: ./.config/drc.kiplot.yaml
         dir: hardware
