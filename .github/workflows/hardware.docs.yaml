@@ -36,7 +36,7 @@ jobs:
 
     # UPLOAD
     - name: Upload Schematics
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v2.2.3
       with:
         name: schematics
         path: hardware/docs
@@ -67,7 +67,7 @@ jobs:
 
     # UPLOAD
     - name: Upload Bom
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v2.2.3
       with:
         name: bom
         path: hardware/docs/bom
@@ -97,7 +97,7 @@ jobs:
 
     # UPLOAD
     - name: Upload Plot
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v2.2.3
       with:
         name: plot
         path: hardware/docs/imgs
@@ -126,7 +126,7 @@ jobs:
 
     # UPLOAD
     - name: Upload Model
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v2.2.3
       with:
         name: model
         path: hardware/docs/cad
@@ -170,7 +170,7 @@ jobs:
 
     # UPLOAD
     - name: Upload Gerbers
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v2.2.3
       with:
         name: gerbers
         path: hardware/docs/gerbers
