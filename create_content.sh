@@ -150,7 +150,7 @@ function create_boardview_page {
     \rm -rf "$md_file"
 
     # Add title
-    echo "# BOARDVIEW" >> "$md_file"
+    echo "# BoardView" >> "$md_file"
     echo "" >> "$md_file"
 
     # Add links
