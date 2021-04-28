@@ -141,12 +141,29 @@ function create_cad_page {
     done
 }
 
+function create_boardview_page {
+    dir="$1"
+    subdir="boardview"
+    md_file="$dir/$subdir/index.md"
+
+    # Clean
+    \rm -rf "$md_file"
+
+    # Add title
+    echo "# BOARDVIEW" >> "$md_file"
+    echo "" >> "$md_file"
+
+    # Add links
+    echo "  - [.brd (BoardView) Download](MCB19-boardview.brd)" >> "$md_file"
+}
+
 # Create each page
 create_schematics_page "hardware"
 create_layout_page "hardware"
 create_gerbers_page "hardware"
 create_bom_page "hardware"
 create_cad_page "hardware"
+create_boardview_page "boardview"
 
 # Add jekyll header to all pages
 add_headers "firmware" "Firmware"
