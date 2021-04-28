@@ -1,0 +1,9 @@
+kibot:
+  version: 1
+
+outputs:
+  - name: 'https://openboardview.org'
+    comment: 'BoardView file'
+    type: 'boardview'
+    dir: '.'
+
