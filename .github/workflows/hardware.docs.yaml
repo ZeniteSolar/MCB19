@@ -189,6 +189,7 @@ jobs:
         config: ./.config/boardview.kibot.yaml
         dir: hardware/docs/gerbers
         board: hardware/MCB19.kicad_pcb
+        schema: hardware/MCB19.sch
 
     # CHECK
     - name: "check output: boardview"
