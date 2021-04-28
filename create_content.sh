@@ -163,7 +163,7 @@ create_layout_page "hardware"
 create_gerbers_page "hardware"
 create_bom_page "hardware"
 create_cad_page "hardware"
-create_boardview_page "boardview"
+create_boardview_page "hardware"
 
 # Add jekyll header to all pages
 add_headers "firmware" "Firmware"
