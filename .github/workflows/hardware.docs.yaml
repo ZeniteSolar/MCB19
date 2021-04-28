@@ -194,7 +194,7 @@ jobs:
     # CHECK
     - name: "check output: boardview"
       run: |
-        test -f hardware/docs/boardview/*.brd && \
+        test -f hardware/docs/boardview/*.brd
 
     # UPLOAD
     - name: Upload BoardView
