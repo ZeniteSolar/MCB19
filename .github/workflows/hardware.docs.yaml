@@ -187,7 +187,7 @@ jobs:
       uses: nerdyscout/kicad-exports@v2.3
       with:
         config: ./.config/boardview.kibot.yaml
-        dir: hardware/docs/gerbers
+        dir: hardware/docs/boardview
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
 
