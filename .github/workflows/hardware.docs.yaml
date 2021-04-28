@@ -22,7 +22,7 @@ jobs:
     - name: kicad-exports schematics
       uses: nerdyscout/kicad-exports@v2.3
       with:
-        config: ./.config/schematics.kiplot.yaml
+        config: ./.config/schematics.kibot.yaml
         dir: hardware/docs
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
@@ -52,7 +52,7 @@ jobs:
     - name: kicad-exports bom
       uses: nerdyscout/kicad-exports@v2.3
       with:
-        config: ./.config/bom.kiplot.yaml
+        config: ./.config/bom.kibot.yaml
         dir: hardware/docs/bom
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
@@ -84,7 +84,7 @@ jobs:
     - name: kicad-exports plot
       uses: nerdyscout/kicad-exports@v2.3
       with:
-        config: ./.config/plot.kiplot.yaml
+        config: ./.config/plot.kibot.yaml
         dir: hardware/docs/imgs
         schema: hardware/MCB19.sch
         board: hardware/MCB19.kicad_pcb
@@ -114,7 +114,7 @@ jobs:
     - name: kicad-exports model
       uses: nerdyscout/kicad-exports@v2.3
       with:
-        config: ./.config/model.kiplot.yaml
+        config: ./.config/model.kibot.yaml
         dir: hardware/docs/cad
         schema: hardware/MCB19.sch
         board: hardware/MCB19.kicad_pcb
@@ -142,7 +142,7 @@ jobs:
     - name: kicad-exports gerbers
       uses: nerdyscout/kicad-exports@v2.3
       with:
-        config: ./.config/gerbers.kiplot.yaml
+        config: ./.config/gerbers.kibot.yaml
         dir: hardware/docs/gerbers
         board: hardware/MCB19.kicad_pcb
         schema: hardware/MCB19.sch
@@ -186,7 +186,7 @@ jobs:
     - name: kicad-exports BoardView
       uses: nerdyscout/kicad-exports@v2.3
       with:
-        config: ./.config/boardview.kiplot.yaml
+        config: ./.config/boardview.kibot.yaml
         dir: hardware/docs/gerbers
         board: hardware/MCB19.kicad_pcb
 
