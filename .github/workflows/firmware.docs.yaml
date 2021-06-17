@@ -33,7 +33,7 @@ jobs:
 
     # UPLOAD
     - name: Upload Docs
-      uses: actions/upload-artifact@v2.2.3
+      uses: actions/upload-artifact@v2.2.4
       with:
         name: Docs
         path: firmware/docs/md

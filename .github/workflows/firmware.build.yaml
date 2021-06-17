@@ -42,7 +42,7 @@ jobs:
 
     # UPLOAD
     - name: Upload firmware
-      uses: actions/upload-artifact@v2.2.3
+      uses: actions/upload-artifact@v2.2.4
       with:
         name: Firmware
         path: firmware/bin
