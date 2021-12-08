@@ -216,37 +216,37 @@ jobs:
 
     # DOWNLOAD ARTIFACTS
     - name: Download Schematics
-      uses: actions/download-artifact@v2.0.10
+      uses: actions/download-artifact@v2.1.0
       if: ${{ always() }}
       with:
         name: schematics
         path: hardware/schematics
     - name: Download Bom
-      uses: actions/download-artifact@v2.0.10
+      uses: actions/download-artifact@v2.1.0
       if: ${{ always() }}
       with:
         name: bom
         path: hardware/bom
     - name: Download Plot
-      uses: actions/download-artifact@v2.0.10
+      uses: actions/download-artifact@v2.1.0
       if: ${{ always() }}
       with:
         name: plot
         path: hardware/layout
     - name: Download Model
-      uses: actions/download-artifact@v2.0.10
+      uses: actions/download-artifact@v2.1.0
       if: ${{ always() }}
       with:
         name: model
         path: hardware/cad
     - name: Download Gerbers
-      uses: actions/download-artifact@v2.0.10
+      uses: actions/download-artifact@v2.1.0
       if: ${{ always() }}
       with:
         name: gerbers
         path: hardware/gerbers
     - name: Download BoardView
-      uses: actions/download-artifact@v2.0.10
+      uses: actions/download-artifact@v2.1.0
       if: ${{ always() }}
       with:
         name: boardview
