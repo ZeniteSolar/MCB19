@@ -52,7 +52,7 @@ jobs:
 
     # DOWNLOAD ARTIFACT
     - name: Download Docs
-      uses: actions/download-artifact@v2.1.0
+      uses: actions/download-artifact@v3
       with:
         name: Docs
         path: ./firmware
