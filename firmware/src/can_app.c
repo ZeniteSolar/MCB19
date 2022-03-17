@@ -34,7 +34,7 @@ inline void can_app_task(void)
 
     if(can_app_send_state_clk_div++ >= CAN_APP_SEND_STATE_CLK_DIV){
 #ifdef USART_ON
-        VERBOSE_MSG_CAN_APP(usart_send_string("state msg was sent.\n"));
+        //VERBOSE_MSG_CAN_APP(usart_send_string("state msg was sent.\n"));
 #endif
         can_app_send_state();
         can_app_send_state_clk_div = 0;
@@ -42,7 +42,7 @@ inline void can_app_task(void)
 
     if(can_app_send_measurements_clk_div++ >= CAN_APP_SEND_MEASUREMENTS_CLK_DIV){
 #ifdef USART_ON
-        VERBOSE_MSG_CAN_APP(usart_send_string("measurements msg was sent.\n"));
+      //  VERBOSE_MSG_CAN_APP(usart_send_string("measurements msg was sent.\n"));
 #endif
         can_app_send_measurements();
         can_app_send_measurements_clk_div = 0;
@@ -64,7 +64,7 @@ inline void can_app_send_state(void)
 
     can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP
-    VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
+    //VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
 #endif
 }
 
@@ -88,7 +88,7 @@ inline void can_app_send_measurements(void)
 
     can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP
-    VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
+    //VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
 #endif
 }
 
@@ -102,12 +102,36 @@ inline void can_app_extractor_mic17_state(can_t *msg)
     //  - se tiver em erro, desligar acionamento
     if(msg->data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] == CAN_SIGNATURE_MIC19){
         // zerar contador
+        if(msg->data[CAN_MSG_MIC19_MCS_BOAT_ON_BYTE] == 0xFF){
+            system_flags.boat = 1;
+        }else if(msg->data[CAN_MSG_MIC19_MCS_BOAT_ON_BYTE] == 0x00){
+            system_flags.boat = 0;
+        }
         if(msg->data[CAN_MSG_GENERIC_STATE_ERROR_BYTE]){
             //ERROR!!!
         }
-        /*if(contador == maximo)*/{
-            //ERROR!!!
-        }
+    }
+}
+
+void can_app_extractor_mic19_pumps(can_t *msg)
+{
+    if(msg->data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] == CAN_SIGNATURE_MIC19)
+    {
+        if(bit_is_set(msg->data [CAN_MSG_MIC19_PUMPS_PUMPS_BYTE],CAN_MSG_MIC19_PUMPS_PUMPS_PUMP3_BIT))
+            system_flags.pump = 1;
+        else
+            system_flags.pump = 0;
+    }
+}
+
+
+inline void can_app_extractor_mic19_motor(can_t *msg)
+{
+    if(msg->data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] == CAN_SIGNATURE_MIC19){
+        
+        potenciometro_rampa = msg->data[
+            CAN_MSG_MIC19_MOTOR_I_BYTE];
+
     }
 }
 
@@ -119,18 +143,29 @@ inline void can_app_msg_extractors_switch(can_t *msg)
 {
     if(msg->data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] == CAN_SIGNATURE_MIC19){
         switch(msg->id){
-            case CAN_MSG_MIC19_STATE_ID:
-#ifdef USART_ON
-                VERBOSE_MSG_CAN_APP(usart_send_string("got a state msg: "));
-#endif
-                VERBOSE_MSG_CAN_APP(can_app_print_msg(msg));
+            case CAN_MSG_MIC19_MCS_ID:
+
+                //usart_send_string("got a state msg: ");
+
+                //VERBOSE_MSG_CAN_APP(can_app_print_msg(msg));
                 can_app_extractor_mic17_state(msg);
                 break;
+            case CAN_MSG_MIC19_PUMPS_ID:
+
+                //usart_send_string("got a pumps msg: ");
+
+                can_app_extractor_mic19_pumps(msg);
+                break;
+            case CAN_MSG_MIC19_MOTOR_ID:
+                //usart_send_string("got a motor msg: ");
+               // VERBOSE_MSG_CAN_APP(can_app_print_msg(msg));
+                can_app_extractor_mic19_motor(msg);
+                break;
             default:
-#ifdef USART_ON
-                VERBOSE_MSG_CAN_APP(usart_send_string("got a unknown msg: "));
-#endif
-                VERBOSE_MSG_CAN_APP(can_app_print_msg(msg));
+
+                //VERBOSE_MSG_CAN_APP(usart_send_string("got a unknown msg: "));
+
+                //VERBOSE_MSG_CAN_APP(can_app_print_msg(msg));
                 break;
         }
     }

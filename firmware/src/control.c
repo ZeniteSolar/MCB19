@@ -117,8 +117,7 @@ inline void control(void){
             && control_flags.dt_safe_range) control_flags.enable = 1;
     else                                    control_flags.enable = 0;
 
-    if(control_flags.enable) set_bit(PWM_ENABLE_PORT, PWM_ENABLE);
-    else       clr_bit(PWM_ENABLE_PORT, PWM_ENABLE); 
+
 }
 
 inline void control_feedback(void)

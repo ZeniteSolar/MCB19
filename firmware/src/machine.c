@@ -150,12 +150,21 @@ inline void task_idle(void)
 #ifdef LED_ON
     if(led_clk_div++ >= 30){
         cpl_led(LED1);
+        usart_send_string("Idle.\n")
         led_clk_div = 0;
     }        
 #endif
-
-    set_state_running();
-
+    usart_send_string("\npotenciometro_rampa:");
+    usart_send_uint16(potenciometro_rampa);
+    usart_send_string("| pumps:");
+    usart_send_uint16(system_flags.pump);
+    usart_send_string("| boat:");
+    usart_send_uint16(system_flags.boat);
+    usart_send_string("| idle:");
+    clr_bit(PWM_ENABLE_PORT, PWM_ENABLE); 
+    if((system_flags.pump) && (potenciometro_rampa > 125) && (system_flags.boat)){
+        set_state_running();
+    }
 }
 
 
@@ -170,6 +179,23 @@ inline void task_running(void)
         led_clk_div = 0;
     }
 #endif // LED_ON
+
+    usart_send_string("\npotenciometro_rampa:");
+    usart_send_uint16(potenciometro_rampa);
+    usart_send_string("| pumps:");
+    usart_send_uint16(system_flags.pump);
+    usart_send_string("| boat:");
+    usart_send_uint16(system_flags.boat);
+    usart_send_string("| running:");
+    clr_bit(PWM_ENABLE_PORT, PWM_ENABLE); 
+        if((!system_flags.pump) | (potenciometro_rampa < 125) | (!system_flags.boat)){
+            set_state_idle();
+        }
+        else
+        {
+            if(control_flags.enable) set_bit(PWM_ENABLE_PORT, PWM_ENABLE);
+            else       clr_bit(PWM_ENABLE_PORT, PWM_ENABLE); 
+        }
 }
 
 
@@ -307,6 +333,7 @@ inline void machine_run(void)
                 break;
             case STATE_IDLE:
                 task_idle();
+                    can_app_task();
 
                 break;
             case STATE_RUNNING:

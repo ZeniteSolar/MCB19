@@ -27,6 +27,8 @@ void can_app_send_output_current(void);
 void can_app_send_input_voltage(void);
 void can_app_msg_extractors_switch(can_t *msg);
 void can_app_extractor_mic17_state(can_t *msg);
+void can_app_extractor_mic19_pumps(can_t *msg);
+void can_app_extractor_mic19_motor(can_t *msg);
 void can_app_extractor_mic17_msc(can_t *msg);
 void check_can(void);
 

@@ -43,10 +43,14 @@ typedef enum state_machine{
 
 typedef union system_flags{
     struct{
-        uint8_t     none          :1;
+        uint8_t     boat          :1;
+        uint8_t     pump          :1;
+        uint8_t     none         :1;
     };
     uint8_t   all;
 } system_flags_t;
+
+
 
 typedef union error_flags{
     struct{
@@ -103,6 +107,7 @@ volatile measurements_t measurements;
 volatile uint8_t machine_clk;
 volatile uint8_t machine_clk_divider;
 volatile uint8_t total_errors;           // Contagem de ERROS
+volatile uint8_t potenciometro_rampa;
 
 // other variables
 volatile uint8_t led_clk_div;
