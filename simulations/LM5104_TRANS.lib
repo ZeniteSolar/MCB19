@@ -1,0 +1,158 @@
+* PSpice Model Editor - Version 16.2.0
+*$
+*LM5104
+*****************************************************************************
+*  (C) Copyright 2012 Texas Instruments Incorporated. All rights reserved.
+*****************************************************************************
+** This model is designed as an aid for customers of Texas Instruments.
+** TI and its licensors and suppliers make no warranties, either expressed
+** or implied, with respect to this model, including the warranties of 
+** merchantability or fitness for a particular purpose.  The model is
+** provided solely on an "as is" basis.  The entire risk as to its quality
+** and performance is with the customer
+*****************************************************************************
+*
+** Released by: WEBENCH Design Center,Texas Instruments Inc.
+* Part: LM5104
+* Date: 09JAN2013
+* Model Type: TRANSIENT
+* Simulator: PSPICE
+* Simulator Version: 16.2.0.p001
+* EVM Order Number: 
+* EVM Users Guide: 
+* Datasheet: SNVS269B-MAY 2004-REVISED DECEMBER 2008
+*
+* Model Version: Final 1.00
+*
+*****************************************************************************
+*
+* Updates:
+*
+* Final 1.00
+* Release to Web.
+*
+*****************************************************************************
+.subckt lm5104 vdd hb ho hs in rt vss lo
+* Input side pull down resistor
+Rin  in vss 200k 
+*** Rvd  vd vss 200k 
+*non-inverting schmit trigger
+eschu  2 0 value={if(v(in)>1.8,12,0)}
+*inverting schmit trigger
+eschl  3 0 value={if(v(in)<1.8,12,0)}
+* VDD internal voltage
+evdd vddint 0 value={v(vdd,vss)}
+* Boosttrap voltage   
+rdummy1 hs hs1 1
+cdummy1 hs1 0  1000p
+ebst hbs 0 value={v(hb,hs)} 
+*bootstrap diode 
+dbst  vdd hb dboot
+.model dboot d (is=6.304P n=1.392 rs=0.8)
+*uvlo for vdd supply voltage
+xuvlo_vdd vddint vdout comphyst_vd 
+*uvlo for bootstrap 
+xuvlo_bst hbs bstout comphyst_bst 
+*anding of output of uvlo_vdd and uvlo_bst 
+e3 uvlo_hs 0 value= {if(v(vdout)>6 & v(bstout)>6,12,0)}
+*input to the high side gate driver
+ehsd 40_1 0 value={if(v(uvlo_hs)>6 & v(2)>6 & v(y)>6,12,0)}
+T1 40 0  40_1 0 zo=1000 td=15n
+Rterm1 40 0 1000
+*input to the low side transistor
+elsd 41_1 0 value={if(v(vdout)>6 & v(3)>6 & v(x)>6,12,0)}
+T2 41 0  41_1 0 zo=1000 td=25n
+Rterm2 41 0 1000
+*** high stsge driver
+ehsvdd hbs_vdd 0  value={v(hbs)+v(hs1)} 
+xhsd  40 ho hbs_vdd hs hsd
+*** low stage driver
+xlsd 41 lo vddint vss lsd
+*to provide additional delay by varying the RT value  
+xdeadtime 40 41 rt x y deadtime
+.ends
+*$
+.subckt comphyst_vd in out
+e12 out 0 value ={if((v(out)<6 & v(in)>7.15 ) | ( v(out)>6 & v(in)>6.65) ,12,0) }
+.ends
+*$
+.subckt comphyst_bst in out
+e12 out 0 value ={ if((v(out)<6 & v(in)>6.8 ) | ( v(out)>6 & v(in)>6.4 ) ,12,0) }
+.ends
+*$
+.subckt inv in vout vdd vss  
+e12 vout vss value ={if(v(in)>6,0,v(vdd,vss))}
+.ends
+*$
+.subckt hsd in ho vdd_hs vss_hs
+xinv in ho_inv vdd_hs vss_hs inv 
+m1 ho ho_inv vdd_hs vdd_hs _m1
+m2 ho ho_inv vss_hs vss_hs _m2
+.model _m1 pmos w=800u l=0.6u
+.model _m2 nmos w=685u l=0.6u
+.ends
+*$
+.subckt lsd in lo vdd_ls vss_ls
+xinv in lo_inv vdd_ls vss_ls inv 
+m1 lo lo_inv vdd_ls vdd_ls _m1
+m2 lo lo_inv vss_ls vss_ls _m2
+.model _m1 pmos w=800u l=0.6u
+.model _m2 nmos w=685u l=0.6u   
+.ends
+*$
+.subckt deadtime ho lo rt ho_out lo_out 
+v1 1 0 dc=3
+rlimit 1 101 2k
+vdummy 101 rt 
+e2 10 0 table {i(vdummy)} (0,0) (30.10u, 191.3u) (33.63u,203.6u) (37.48u,215.8u) (42.52u,227.05u) (49.4u,237.75u)
++ (62.54u,251.61u) (73.6u,262.35u) (76.03u,264.63u) (97.98u,274u) (146.53u,277.65u) (300u,193.3u)
+vref 5 0 dc=2
+vvdd 8 0 dc=12
+g1ho 0 3_ho value={i(vdummy)+v(10)}
+c1ho 3_ho 0 22.10p
+s1ho 3_ho 0 ho 0 _s1ho
+.model _s1ho vswitch ron=1 roff=10meg von=1 voff=0
+s2ho 8 ho_out 3_ho 5 _s2ho
+.model _s2ho vswitch ron=1 roff=10meg von=0.1 voff=-0.1
+r_s2ho ho_out 0 1k
+g1lo 0 3_lo value={i(vdummy)+v(10)}
+c1lo 3_lo 0 22.10p
+s1lo 3_lo 0 lo 0 _s1lo
+.model _s1lo vswitch ron=1 roff=10meg von=1 voff=0
+s2lo 8 lo_out 3_lo 5 _s2lo
+.model _s2lo vswitch ron=1 roff=10meg von=0.1 voff=-0.1
+r_s2lo lo_out 0 1k
+.ends
+*$
+.SUBCKT POWERMOS G D S PARAMS: RDSON=16m Ciss=1375p Crss=70p Coss=340p VSP=3.5 RG=1
+* This is a simple model for Power MOSFET.
+* The parameters modeled are
+* - RDSon,
+* - Input Capacitance,
+* - Reverse capacitance,
+* - Output capacitance,
+* - Switching point voltage (Gate voltage where the FET starts switching),
+* - Gate Resistance
+C_C1         S Da  {Coss} IC=0
+R_R1         Da D  10
+C_C2         Ga D  {Crss}  IC=0
+R_R2         G Ga {RG}
+C_C3         Ga S  {Ciss} IC=0
+D_D1         S Db Dbreak
+R_R3         Db D 1m
+S_switchM         D S Ga S _switchM
+RS_switchM         Ga S 100Meg
+.MODEL         _switchM VSWITCH Roff=100e6 Ron={RDSON} Voff=1.1 Von={VSP}
+.model Dbreak D Is=1e-14 Cjo=.1pF Rs=.01
+.ends POWERMOS
+*$
+.MODEL DIODE D
++ RS=.5
++ CJO=100.00E-15
++ M=.3333
++ VJ=.75
++ ISR=100.00E-12
++ BV=100
++ IBV=100.00E-6
++ TT=5.0000E-9
+*$
