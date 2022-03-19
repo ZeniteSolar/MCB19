@@ -49,6 +49,7 @@ General configuration of the system.
 `define `[`clr_led`](#group__CONF_1gaab0b5fd0daf38ac80ef11d397b83f4e1)            | 
 `define `[`SPI_ON`](#group__CONF_1ga15c099865dadad7c6e3c6d8c185fc8c2)            | 
 `define `[`CAN_APP_SEND_STATE_FREQ`](#group__CONF_1gac1b6432c2a4650676a8dee0e6e30c3e0)            | 
+`define `[`CAN_APP_SEND_MEASUREMENTS_FREQ`](#group__CONF_1ga2a5fe8d79505a38cfdd3fde0687ef5ca)            | 
 `define `[`SUPPORT_EXTENDED_CANID`](#group__CONF_1gac0f5b384b9866c391517aac0549b3978)            | 
 `define `[`SUPPORT_TIMESTAMPS`](#group__CONF_1gafe033c4dc0ffd1f277edb4f70aa6c519)            | 
 
@@ -129,6 +130,8 @@ General configuration of the system.
 #### `define `[`SPI_ON`](#group__CONF_1ga15c099865dadad7c6e3c6d8c185fc8c2) 
 
 #### `define `[`CAN_APP_SEND_STATE_FREQ`](#group__CONF_1gac1b6432c2a4650676a8dee0e6e30c3e0) 
+
+#### `define `[`CAN_APP_SEND_MEASUREMENTS_FREQ`](#group__CONF_1ga2a5fe8d79505a38cfdd3fde0687ef5ca) 
 
 #### `define `[`SUPPORT_EXTENDED_CANID`](#group__CONF_1gac0f5b384b9866c391517aac0549b3978) 
 
