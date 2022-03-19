@@ -42,9 +42,9 @@
 #ifdef CONTROL_ON
 #define D_MIN       0
 #define D_MAX       0.9
-#define VO_SETPOINT 13.2
+#define VO_SETPOINT 14
 #define IO_MAX      8
-#define VO_MAX      21
+#define VO_MAX      16
 #define VI_MIN      21
 #define PERIOD      0.0009960853844391542f;// 0.0001995171684523453f; // 0.0002      // 5kHz
 #define F_PWM       30000UL

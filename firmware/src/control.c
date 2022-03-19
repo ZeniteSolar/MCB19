@@ -137,7 +137,8 @@ inline void control(void){
 inline void control_feedback(void)
 {
     // VOLTAGE CONTROL as outter loop
-    vo_setpoint = VO_SETPOINT;
+    if(vo > VO_MAX) vo_setpoint = 0;
+    else vo_setpoint = VO_SETPOINT;
     io_setpoint = piVo(vo_setpoint, vo);
 
     // CURRENT CONTROL as inner loop
