@@ -252,21 +252,21 @@ void print_infos(void)
         case 0:
             //print_system_flags();
             usart_send_string("\nvi: ");
-            usart_send_float(vi);
+            usart_send_float(measurements.vi_avg);
             break;
         case 1:
             //print_error_flags();
             usart_send_string(" , vo: ");
-            usart_send_float(vo); 
+            usart_send_float(measurements.vo_avg);
             break;
         case 2:
             //print_control_others(); 
             usart_send_string(" , io: ");
-            usart_send_float(io);
+            usart_send_float(measurements.io_avg);
             break;
         case 3:
             usart_send_string(" , dt: ");
-            usart_send_float(dt);
+            usart_send_float(measurements.dt_avg);
             usart_send_char(',');
             usart_send_char(dt_min);
             break;
@@ -296,6 +296,32 @@ void print_infos(void)
 #endif
 }
 
+inline void compute_measurements(void)
+{
+    measurements.vo_avg_sum += vo;
+    measurements.io_avg_sum += io;
+    measurements.vi_avg_sum += vi;
+    measurements.dt_avg_sum += dt;
+
+    measurements.vo_avg_sum_count++;
+    measurements.io_avg_sum_count++;
+    measurements.vi_avg_sum_count++;
+    measurements.dt_avg_sum_count++;
+}
+
+inline void reset_measurements(void)
+{
+    measurements.vo_avg_sum = 0;
+    measurements.io_avg_sum = 0;
+    measurements.vi_avg_sum = 0;
+    measurements.dt_avg_sum = 0;
+
+    measurements.vo_avg_sum_count = 0;
+    measurements.io_avg_sum_count = 0;
+    measurements.vi_avg_sum_count = 0;
+    measurements.dt_avg_sum_count = 0;
+}
+
 /**
  * @brief this is the machine state itself.
  */
@@ -312,6 +338,8 @@ inline void machine_run(void)
             print_infos();
             set_state_error();
         }
+
+        compute_measurements();
 
         switch(state_machine){
             case STATE_INITIALIZING:

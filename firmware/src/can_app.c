@@ -78,8 +78,11 @@ inline void can_app_send_measurements(void)
     msg.length                              = CAN_MSG_MCB19_1_MEASUREMENTS_LENGTH;
     msg.flags.rtr = 0;
 
+    measurements.io_avg = 100 * measurements.vo_avg_sum / measurements.vo_avg_sum_count;
+    measurements.io_avg = 100 * measurements.io_avg_sum / measurements.io_avg_sum_count;
+    measurements.vi_avg = 100 * measurements.vi_avg_sum / measurements.vi_avg_sum_count;
+    measurements.dt_avg = 255 * measurements.dt_avg_sum / measurements.dt_avg_sum_count;
 
-    measurements.vo_avg = (uint16_t) 100* vo;
     msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] = CAN_SIGNATURE_SELF;
     msg.data[CAN_MSG_MCB19_1_MEASUREMENTS_OUTPUT_VOLTAGE_L_BYTE]  = LOW(measurements.vo_avg);
     msg.data[CAN_MSG_MCB19_1_MEASUREMENTS_OUTPUT_VOLTAGE_H_BYTE]  = HIGH(measurements.vo_avg);
@@ -87,7 +90,9 @@ inline void can_app_send_measurements(void)
     msg.data[CAN_MSG_MCB19_1_MEASUREMENTS_OUTPUT_CURRENT_H_BYTE]  = HIGH(measurements.io_avg);
     msg.data[CAN_MSG_MCB19_1_MEASUREMENTS_INPUT_VOLTAGE_L_BYTE]  = LOW(measurements.vi_avg);
     msg.data[CAN_MSG_MCB19_1_MEASUREMENTS_INPUT_VOLTAGE_H_BYTE]  = HIGH(measurements.vi_avg);
-    msg.data[CAN_MSG_MCB19_1_MEASUREMENTS_DT_BYTE] = measurements.dt;
+    msg.data[CAN_MSG_MCB19_1_MEASUREMENTS_DT_BYTE] = measurements.dt_avg;
+
+    reset_measurements();
 
     can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP

@@ -66,13 +66,18 @@ typedef struct measurements{
     uint16_t    vi_avg;         // average value
     uint16_t    vi_avg_sum_count;
     uint64_t    vi_avg_sum;     // average sum value
-    uint8_t     dt;
+    uint16_t    dt_avg;
+    uint16_t    dt_avg_sum_count;
+    uint64_t    dt_avg_sum;     // average sum value
 }measurements_t;
 
 
 // machine checks
 void check_buffers(void);
+
+// measurements
 void reset_measurements(void);
+void compute_measurements(void);
 
 // debug functions
 void print_configurations(void);
