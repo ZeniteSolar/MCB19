@@ -14,7 +14,8 @@ Implements the main state machine of the system.
 `define `[`MACHINE_TIMER_TOP`](#group__MACHINE_1ga1a431d451418f48047c477527c2c2d9b)            | 
 `enum `[`state_machine`](#group__MACHINE_1ga915b2902e05c4e29541a0e9973500da8)            | 
 `public void `[`check_buffers`](#group__MACHINE_1ga0f3aefde0fe7e93f12c4dbfd6f143a7a)`(void)`            | 
-`public void `[`reset_measurements`](#group__MACHINE_1ga26546bf9a37ccceee050bcb70e96520d)`(void)`            | 
+`public inline void `[`reset_measurements`](#group__MACHINE_1ga26546bf9a37ccceee050bcb70e96520d)`(void)`            | 
+`public inline void `[`compute_measurements`](#group__MACHINE_1gacd8f9e003f9f5f1135504f95e9774cb6)`(void)`            | 
 `public inline void `[`print_configurations`](#group__MACHINE_1gaf3999118ae30d3dc3a4761c638c11e41)`(void)`            | @breif prints the configurations and definitions
 `public inline void `[`print_system_flags`](#group__MACHINE_1ga5e30265a3cf4a2d3d2c2561d35e6d5bc)`(void)`            | prints the system flags
 `public inline void `[`print_error_flags`](#group__MACHINE_1gaf62ab3f75404cc2208289dfe85bb6878)`(void)`            | prints the error flags
@@ -50,7 +51,9 @@ STATE_RESET            |
 
 #### `public void `[`check_buffers`](#group__MACHINE_1ga0f3aefde0fe7e93f12c4dbfd6f143a7a)`(void)` 
 
-#### `public void `[`reset_measurements`](#group__MACHINE_1ga26546bf9a37ccceee050bcb70e96520d)`(void)` 
+#### `public inline void `[`reset_measurements`](#group__MACHINE_1ga26546bf9a37ccceee050bcb70e96520d)`(void)` 
+
+#### `public inline void `[`compute_measurements`](#group__MACHINE_1gacd8f9e003f9f5f1135504f95e9774cb6)`(void)` 
 
 #### `public inline void `[`print_configurations`](#group__MACHINE_1gaf3999118ae30d3dc3a4761c638c11e41)`(void)` 
 
