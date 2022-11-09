@@ -55,14 +55,13 @@
 #define ENABLE_RELAY  PD2
 #define ENABLE_RELAY_DDR DDRD
 #define ENABLE_RELAY_PIN PIND
-#define ENABLE_RELAY_PORT PORTD
+#define ENABLE_RELAY_PORT PORTDse
 #endif
 
 #ifdef MACHINE_ON
-#define MACHINE_TIMER_FREQUENCY             300           //<! machine timer frequency in Hz
+#define MACHINE_TIMER_FREQUENCY             120           //<! same machine timer as others modules
 #define MACHINE_TIMER_PRESCALER             1024          //<! machine timer prescaler
-#define MACHINE_FREQUENCY                   100           //<! machine frequency in Hz
-#define MACHINE_CLK_DIVIDER_VALUE           (MACHINE_TIMER_FREQUENCY)/(MACHINE_FREQUENCY)  //<! machine_run clock divider
+#define MACHINE_FREQUENCY                   MACHINE_TIMER_FREQUENCY           //<! machine frequency in Hz
 #endif // MACHINE_ON
 
 #ifdef LED_ON
@@ -83,8 +82,8 @@
 
 #ifdef CAN_ON
 #define SPI_ON
-#define CAN_APP_SEND_STATE_FREQ     40//36000     //<! state msg frequency in Hz
-#define CAN_APP_SEND_MEASUREMENTS_FREQ       4//6000      //<! adc msg frequency in Hz
+#define CAN_APP_SEND_STATE_FREQ              1     //<! state msg frequency in Hz
+#define CAN_APP_SEND_MEASUREMENTS_FREQ       10    //<! adc msg frequency in Hz
 
 // CANBUS DEFINITONS
 // ----------------------------------------------------------------------------
