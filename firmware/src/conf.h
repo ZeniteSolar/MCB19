@@ -26,7 +26,7 @@
 #define VERBOSE_ON_ERROR
 //#define PRINT_INFOS
 
-#define CAN_SIGNATURE_SELF      CAN_SIGNATURE_MCB19_1
+#define CAN_SIGNATURE_SELF      CAN_SIGNATURE_MCB19_2
 
 // MODULES ACTIVATION
 #define USART_ON
@@ -42,8 +42,8 @@
 #ifdef CONTROL_ON
 #define D_MIN       0
 #define D_MAX       0.9
-#define VO_SETPOINT 14
-#define IO_MAX      8
+#define VO_SETPOINT 14.6
+#define IO_MAX      10
 #define VO_MAX      16
 #define VI_MIN      21
 #define PERIOD      0.0009960853844391542f;// 0.0001995171684523453f; // 0.0002      // 5kHz
@@ -59,10 +59,8 @@
 #endif
 
 #ifdef MACHINE_ON
-#define MACHINE_TIMER_FREQUENCY             300           //<! machine timer frequency in Hz
-#define MACHINE_TIMER_PRESCALER             1024          //<! machine timer prescaler
-#define MACHINE_FREQUENCY                   100           //<! machine frequency in Hz
-#define MACHINE_CLK_DIVIDER_VALUE           (MACHINE_TIMER_FREQUENCY)/(MACHINE_FREQUENCY)  //<! machine_run clock divider
+#define MACHINE_TIMER_FREQUENCY             200U           //<! machine timer frequency in Hz
+#define MACHINE_TIMER_PRESCALER             1024U          //<! machine timer prescaler
 #endif // MACHINE_ON
 
 #ifdef LED_ON
@@ -83,8 +81,6 @@
 
 #ifdef CAN_ON
 #define SPI_ON
-#define CAN_APP_SEND_STATE_FREQ     40//36000     //<! state msg frequency in Hz
-#define CAN_APP_SEND_MEASUREMENTS_FREQ       4//6000      //<! adc msg frequency in Hz
 
 // CANBUS DEFINITONS
 // ----------------------------------------------------------------------------
