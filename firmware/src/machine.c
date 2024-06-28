@@ -18,39 +18,40 @@ volatile uint8_t led_clk_div;
  */
 void machine_init(void)
 {
-	//clr_bit(PRR0, PRTIM2);                          // Activates clock
+	// clr_bit(PRR0, PRTIM2);                          // Activates clock
 
-    // MODE 2 -> CTC with TOP on OCR2
-    TCCR2A  =    (1 << WGM21) | (0 << WGM20)        // mode 2
-              | (0 << COM2B1) | (0 << COM2B0)       // do nothing
-              | (0 << COM2A1) | (0 << COM2A0);      // do nothing
+	// MODE 2 -> CTC with TOP on OCR1
+	TCCR2A = (1 << WGM21) | (0 << WGM20)	  // mode 2
+			 | (0 << COM2B1) | (0 << COM2B0)  // do nothing
+			 | (0 << COM2A1) | (0 << COM2A0); // do nothing
 
-    TCCR2B =
-#if MACHINE_TIMER_PRESCALER ==     1
-                (0 << CS22) | (0 << CS21) | (1 << CS20) // Prescaler N=1
-#elif MACHINE_TIMER_PRESCALER ==   8
-                (0 << CS22) | (1 << CS21) | (0 << CS20) // Prescaler N=8
-#elif MACHINE_TIMER_PRESCALER ==   32
-                (0 << CS22) | (1 << CS21) | (1 << CS20) // Prescaler N=32
-#elif MACHINE_TIMER_PRESCALER ==   64
-                (1 << CS22) | (0 << CS21) | (0 << CS20) // Prescaler N=64
-#elif MACHINE_TIMER_PRESCALER ==   128
-                (1 << CS22) | (0 << CS21) | (1 << CS20) // Prescaler N=128
-#elif MACHINE_TIMER_PRESCALER ==   256
-                (1 << CS22) | (1 << CS21) | (0 << CS20) // Prescaler N=256
-#elif MACHINE_TIMER_PRESCALER ==   1024
-                (1 << CS22) | (1 << CS21) | (1 << CS20) // Prescaler N=1024
+	TCCR2B =
+#if MACHINE_TIMER_PRESCALER == 1
+		(0 << CS22) | (0 << CS21) | (1 << CS20) // Prescaler N=1
+#elif MACHINE_TIMER_PRESCALER == 8
+		(0 << CS22) | (1 << CS21) | (0 << CS20) // Prescaler N=8
+#elif MACHINE_TIMER_PRESCALER == 32
+		(0 << CS22) | (1 << CS21) | (1 << CS20) // Prescaler N=32
+#elif MACHINE_TIMER_PRESCALER == 64
+		(1 << CS22) | (0 << CS21) | (0 << CS20) // Prescaler N=64
+#elif MACHINE_TIMER_PRESCALER == 128
+		(1 << CS22) | (0 << CS21) | (1 << CS20) // Prescaler N=128
+#elif MACHINE_TIMER_PRESCALER == 256
+		(1 << CS22) | (1 << CS21) | (0 << CS20) // Prescaler N=256
+#elif MACHINE_TIMER_PRESCALER == 1024
+		(1 << CS22) | (1 << CS21) | (1 << CS20) // Prescaler N=1024
 #else
-                0
+		0
 #endif
-                | (0 << WGM22);      // mode 2
+		| (0 << WGM22); // mode 2
 
-    OCR2A = MACHINE_TIMER_TOP;                       // OCR2A = TOP = fcpu/(N*2*f) -1
+	OCR2A = MACHINE_TIMER_TOP; // OCR2A = TOP = fcpu/(N*2*f) -1
 
-    TIMSK2 |=   (1 << OCIE2A);                      // Activates interruption
+	TIMSK2 |= (1 << OCIE2A); // Activates interruption
 
-    set_machine_initial_state();
-    set_state_initializing();
+	set_machine_initial_state();
+	set_state_initializing();
+
 } 
 
 /**
@@ -117,7 +118,7 @@ inline void print_configurations(void)
     VERBOSE_MSG_MACHINE(usart_send_string("\nadc_f: "));
     VERBOSE_MSG_MACHINE(usart_send_uint16( ADC_FREQUENCY ));
     VERBOSE_MSG_MACHINE(usart_send_string("\nmachine_f: "));
-    VERBOSE_MSG_MACHINE(usart_send_uint16( MACHINE_FREQUENCY ));
+    VERBOSE_MSG_MACHINE(usart_send_uint16( MACHINE_TIMER_FREQUENCY ));
 
     VERBOSE_MSG_MACHINE(usart_send_char('\n'));
 }
@@ -373,16 +374,6 @@ inline void machine_run(void)
 */
 ISR(TIMER2_COMPA_vect)
 {
-    if(++machine_clk_divider == MACHINE_CLK_DIVIDER_VALUE){
-        machine_clk_divider = 0;
-        machine_clk = 1;
-
-        /*if(machine_clk){
-            for(;;){
-                pwm_reset();
-                VERBOSE_MSG_ERROR(if(machine_clk) usart_send_string("\nERROR: CLOCK CONFLICT!!!\n"));
-            }
-        }*/
-    }
+    machine_clk = 1;
 }
 
