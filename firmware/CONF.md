@@ -42,14 +42,10 @@ General configuration of the system.
 `define `[`ENABLE_RELAY_PORT`](#group__CONF_1ga8d5aae097ba53c7ed57601928e060932)            | 
 `define `[`MACHINE_TIMER_FREQUENCY`](#group__CONF_1ga39c552f1d5685f81d14dbe8480723709)            | 
 `define `[`MACHINE_TIMER_PRESCALER`](#group__CONF_1ga7488c6927da4c7435f70ede6bd3618d7)            | 
-`define `[`MACHINE_FREQUENCY`](#group__CONF_1ga5c1f01a387425df808d31e6edf9eebb2)            | 
-`define `[`MACHINE_CLK_DIVIDER_VALUE`](#group__CONF_1gaf29aa95e3b75744a80bec4024c784cd9)            | 
 `define `[`cpl_led`](#group__CONF_1ga628df6739ce246dd478441704923daf2)            | 
 `define `[`set_led`](#group__CONF_1ga5692bdc7c501c5f77eede2b0f5af6867)            | 
 `define `[`clr_led`](#group__CONF_1gaab0b5fd0daf38ac80ef11d397b83f4e1)            | 
 `define `[`SPI_ON`](#group__CONF_1ga15c099865dadad7c6e3c6d8c185fc8c2)            | 
-`define `[`CAN_APP_SEND_STATE_FREQ`](#group__CONF_1gac1b6432c2a4650676a8dee0e6e30c3e0)            | 
-`define `[`CAN_APP_SEND_MEASUREMENTS_FREQ`](#group__CONF_1ga2a5fe8d79505a38cfdd3fde0687ef5ca)            | 
 `define `[`SUPPORT_EXTENDED_CANID`](#group__CONF_1gac0f5b384b9866c391517aac0549b3978)            | 
 `define `[`SUPPORT_TIMESTAMPS`](#group__CONF_1gafe033c4dc0ffd1f277edb4f70aa6c519)            | 
 
@@ -117,10 +113,6 @@ General configuration of the system.
 
 #### `define `[`MACHINE_TIMER_PRESCALER`](#group__CONF_1ga7488c6927da4c7435f70ede6bd3618d7) 
 
-#### `define `[`MACHINE_FREQUENCY`](#group__CONF_1ga5c1f01a387425df808d31e6edf9eebb2) 
-
-#### `define `[`MACHINE_CLK_DIVIDER_VALUE`](#group__CONF_1gaf29aa95e3b75744a80bec4024c784cd9) 
-
 #### `define `[`cpl_led`](#group__CONF_1ga628df6739ce246dd478441704923daf2) 
 
 #### `define `[`set_led`](#group__CONF_1ga5692bdc7c501c5f77eede2b0f5af6867) 
@@ -128,10 +120,6 @@ General configuration of the system.
 #### `define `[`clr_led`](#group__CONF_1gaab0b5fd0daf38ac80ef11d397b83f4e1) 
 
 #### `define `[`SPI_ON`](#group__CONF_1ga15c099865dadad7c6e3c6d8c185fc8c2) 
-
-#### `define `[`CAN_APP_SEND_STATE_FREQ`](#group__CONF_1gac1b6432c2a4650676a8dee0e6e30c3e0) 
-
-#### `define `[`CAN_APP_SEND_MEASUREMENTS_FREQ`](#group__CONF_1ga2a5fe8d79505a38cfdd3fde0687ef5ca) 
 
 #### `define `[`SUPPORT_EXTENDED_CANID`](#group__CONF_1gac0f5b384b9866c391517aac0549b3978) 
 
