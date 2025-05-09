@@ -1,14 +1,18 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Device:Fuse_Small"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.254) hide)
+				(offset 0.254)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -136,12 +140,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:+12V"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -213,7 +222,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -225,7 +234,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -256,12 +265,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:+5V"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -333,7 +347,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -345,7 +359,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -376,12 +390,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:GND"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -472,12 +491,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:PWR_FLAG"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -568,12 +592,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:VCC"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -645,7 +674,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -657,7 +686,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -688,6 +717,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 	)
 	(junction
@@ -2035,6 +2065,10 @@
 	(sheet
 		(at 103.505 104.14)
 		(size 34.29 31.75)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0)
@@ -2064,93 +2098,93 @@
 		)
 		(pin "SI" input
 			(at 137.795 111.76 0)
+			(uuid "864bcfd7-e028-4f01-ac2d-509ee433761f")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify right)
 			)
-			(uuid "864bcfd7-e028-4f01-ac2d-509ee433761f")
 		)
 		(pin "SO" output
 			(at 137.795 109.22 0)
+			(uuid "cf6c2d48-5d9c-47d0-b674-cf639ff9374e")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify right)
 			)
-			(uuid "cf6c2d48-5d9c-47d0-b674-cf639ff9374e")
 		)
 		(pin "CS" input
 			(at 137.795 114.3 0)
+			(uuid "0e83acf6-4fc8-462e-b68d-f2e2c8f688df")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify right)
 			)
-			(uuid "0e83acf6-4fc8-462e-b68d-f2e2c8f688df")
 		)
 		(pin "SCK" input
 			(at 137.795 106.68 0)
+			(uuid "b29757ed-9001-4f73-a76e-edb6f297523c")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify right)
 			)
-			(uuid "b29757ed-9001-4f73-a76e-edb6f297523c")
 		)
 		(pin "INT" output
 			(at 137.795 116.84 0)
+			(uuid "f0bb4313-86d6-4574-8df1-ad6ec1db1e11")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify right)
 			)
-			(uuid "f0bb4313-86d6-4574-8df1-ad6ec1db1e11")
 		)
 		(pin "GND" output
 			(at 103.505 107.95 180)
+			(uuid "d223460b-7fba-4228-a76f-40c935e8ebb6")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify left)
 			)
-			(uuid "d223460b-7fba-4228-a76f-40c935e8ebb6")
 		)
 		(pin "VCC" input
 			(at 103.505 105.41 180)
+			(uuid "d0095b9d-b6d5-4cd8-b542-37503f379413")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify left)
 			)
-			(uuid "d0095b9d-b6d5-4cd8-b542-37503f379413")
 		)
 		(pin "CAN_H" bidirectional
 			(at 103.505 110.49 180)
+			(uuid "c6542f48-58bd-436e-93c6-956804ff8753")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify left)
 			)
-			(uuid "c6542f48-58bd-436e-93c6-956804ff8753")
 		)
 		(pin "CAN_L" bidirectional
 			(at 103.505 113.03 180)
+			(uuid "c8733f22-f08b-4d75-98a0-cab72e179bda")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify left)
 			)
-			(uuid "c8733f22-f08b-4d75-98a0-cab72e179bda")
 		)
 		(instances
 			(project "MCB19"
@@ -2163,6 +2197,10 @@
 	(sheet
 		(at 152.4 93.98)
 		(size 28.575 41.91)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0)
@@ -2192,123 +2230,123 @@
 		)
 		(pin "SPI_MISO" input
 			(at 152.4 109.22 180)
+			(uuid "e327b2da-0a7c-492a-aee8-37453848d8aa")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify left)
 			)
-			(uuid "e327b2da-0a7c-492a-aee8-37453848d8aa")
 		)
 		(pin "SPI_MOSI" output
 			(at 152.4 111.76 180)
+			(uuid "f177f26e-b6af-4614-970d-891b04a32a61")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify left)
 			)
-			(uuid "f177f26e-b6af-4614-970d-891b04a32a61")
 		)
 		(pin "MCP_INT" input
 			(at 152.4 116.84 180)
+			(uuid "1b6290fe-f1ad-44f0-9fb9-fc11ee9642e3")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify left)
 			)
-			(uuid "1b6290fe-f1ad-44f0-9fb9-fc11ee9642e3")
 		)
 		(pin "VCC" input
 			(at 180.975 101.6 0)
+			(uuid "a56e16e0-563e-41f8-8ad8-ce56e44ae07b")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify right)
 			)
-			(uuid "a56e16e0-563e-41f8-8ad8-ce56e44ae07b")
 		)
 		(pin "GND" output
 			(at 180.975 106.68 0)
+			(uuid "17efb190-a4de-4499-b231-be2ce80d2cf6")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify right)
 			)
-			(uuid "17efb190-a4de-4499-b231-be2ce80d2cf6")
 		)
 		(pin "SPI_SCK" output
 			(at 152.4 106.68 180)
+			(uuid "4c61abb4-67a2-4717-80f1-0c2b03c0cda8")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "4c61abb4-67a2-4717-80f1-0c2b03c0cda8")
 		)
 		(pin "MCP_SS" output
 			(at 152.4 114.3 180)
+			(uuid "dcabdd7d-3855-4e13-9214-bd194aaf1f90")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "dcabdd7d-3855-4e13-9214-bd194aaf1f90")
 		)
 		(pin "INALLL" input
 			(at 180.975 116.84 0)
+			(uuid "cd692797-0c96-442d-b4c2-0f076dd9c670")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "cd692797-0c96-442d-b4c2-0f076dd9c670")
 		)
 		(pin "PWM" output
 			(at 180.975 119.38 0)
+			(uuid "08aa8a2b-b1f8-4b51-b2ff-5c75f9aaad7e")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "08aa8a2b-b1f8-4b51-b2ff-5c75f9aaad7e")
 		)
 		(pin "LM324_A" input
 			(at 180.975 121.92 0)
+			(uuid "7a496be1-a949-4263-ad4a-7ed8f8258cf6")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "7a496be1-a949-4263-ad4a-7ed8f8258cf6")
 		)
 		(pin "LM324_B" input
 			(at 180.975 124.46 0)
+			(uuid "4a6af203-4686-4f97-8cbd-a101bbbba627")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "4a6af203-4686-4f97-8cbd-a101bbbba627")
 		)
 		(pin "ENABLE" output
 			(at 180.975 127 0)
+			(uuid "d944871a-e08e-4603-9842-b1502b927fd0")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "d944871a-e08e-4603-9842-b1502b927fd0")
 		)
 		(instances
 			(project "MCB19"
@@ -2321,6 +2359,10 @@
 	(sheet
 		(at 114.3 56.515)
 		(size 26.67 12.7)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0)
@@ -2350,33 +2392,33 @@
 		)
 		(pin "GND" output
 			(at 114.3 64.135 180)
+			(uuid "579ec2e7-7d31-44fa-9393-6c062a25886e")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify left)
 			)
-			(uuid "579ec2e7-7d31-44fa-9393-6c062a25886e")
 		)
 		(pin "+5V_OUT" output
 			(at 140.97 64.135 0)
+			(uuid "68a337f9-776e-4371-b811-adc6f4eb339b")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify right)
 			)
-			(uuid "68a337f9-776e-4371-b811-adc6f4eb339b")
 		)
 		(pin "+18V_IN" input
 			(at 114.3 61.595 180)
+			(uuid "7e95075e-4c17-4517-8d61-84aef73e5538")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify left)
 			)
-			(uuid "7e95075e-4c17-4517-8d61-84aef73e5538")
 		)
 		(instances
 			(project "MCB19"
@@ -2389,6 +2431,10 @@
 	(sheet
 		(at 53.34 60.325)
 		(size 15.24 11.43)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0)
@@ -2418,43 +2464,43 @@
 		)
 		(pin "CAN_H" bidirectional
 			(at 68.58 66.675 0)
+			(uuid "51977417-b02a-487e-aa9e-714bb7bfe0b8")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify right)
 			)
-			(uuid "51977417-b02a-487e-aa9e-714bb7bfe0b8")
 		)
 		(pin "CAN_L" bidirectional
 			(at 68.58 69.215 0)
+			(uuid "0c24815d-8150-4d91-8ecb-9e25bf3803be")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify right)
 			)
-			(uuid "0c24815d-8150-4d91-8ecb-9e25bf3803be")
 		)
 		(pin "CAN_18V" output
 			(at 68.58 61.595 0)
+			(uuid "da5c276a-5062-463d-9deb-c6d61f199e38")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify right)
 			)
-			(uuid "da5c276a-5062-463d-9deb-c6d61f199e38")
 		)
 		(pin "CAN_GND" bidirectional
 			(at 68.58 64.135 0)
+			(uuid "57f2077d-bbf5-4d72-bce5-b8a6a34a2d5d")
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 				(justify right)
 			)
-			(uuid "57f2077d-bbf5-4d72-bce5-b8a6a34a2d5d")
 		)
 		(instances
 			(project "MCB19"
@@ -2467,6 +2513,10 @@
 	(sheet
 		(at 200.66 93.98)
 		(size 26.035 41.275)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0)
@@ -2496,93 +2546,93 @@
 		)
 		(pin "VCC" input
 			(at 200.66 101.6 180)
+			(uuid "63e4f7a1-fd02-4e39-9f1b-3b5f89daebea")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "63e4f7a1-fd02-4e39-9f1b-3b5f89daebea")
 		)
 		(pin "GND" input
 			(at 200.66 106.68 180)
+			(uuid "297e11c5-eb57-47ab-a8a2-f14571425ba9")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "297e11c5-eb57-47ab-a8a2-f14571425ba9")
 		)
 		(pin "IRALLL" output
 			(at 200.66 116.84 180)
+			(uuid "670cd2c5-d9e0-42a7-8388-c4bac92fe810")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "670cd2c5-d9e0-42a7-8388-c4bac92fe810")
 		)
 		(pin "PWM" output
 			(at 200.66 119.38 180)
+			(uuid "0fe8b02e-eace-444b-b5be-5bca3104d350")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "0fe8b02e-eace-444b-b5be-5bca3104d350")
 		)
 		(pin "LM324A" input
 			(at 200.66 121.92 180)
+			(uuid "6d46d595-4908-471a-901c-7c9adc7e3e99")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "6d46d595-4908-471a-901c-7c9adc7e3e99")
 		)
 		(pin "+12V" input
 			(at 200.66 99.06 180)
+			(uuid "174ae0a8-540a-43b4-806a-790248347856")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "174ae0a8-540a-43b4-806a-790248347856")
 		)
 		(pin "LM324B" input
 			(at 200.66 124.46 180)
+			(uuid "39cc9168-81c4-490a-b66d-42c81141e104")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "39cc9168-81c4-490a-b66d-42c81141e104")
 		)
 		(pin "ENABLE_RELAY" input
 			(at 200.66 127 180)
+			(uuid "0ed8000b-2a8f-4e32-bae1-83d72f9d2430")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "0ed8000b-2a8f-4e32-bae1-83d72f9d2430")
 		)
 		(pin "+18V" input
 			(at 200.66 96.52 180)
+			(uuid "c6d34f91-e8e4-4c38-9cfd-e12b98992cf0")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "c6d34f91-e8e4-4c38-9cfd-e12b98992cf0")
 		)
 		(instances
 			(project "MCB19"
@@ -2595,6 +2645,10 @@
 	(sheet
 		(at 114.3 73.025)
 		(size 26.67 12.7)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0)
@@ -2624,33 +2678,33 @@
 		)
 		(pin "GND" output
 			(at 114.3 81.28 180)
+			(uuid "8c0d2953-3fda-4353-9adb-3ad304a7e5a0")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "8c0d2953-3fda-4353-9adb-3ad304a7e5a0")
 		)
 		(pin "+12V_OUT" input
 			(at 140.97 81.28 0)
+			(uuid "79177019-b592-4929-a781-e81560cc31de")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "79177019-b592-4929-a781-e81560cc31de")
 		)
 		(pin "+18V_IN" input
 			(at 114.3 78.74 180)
+			(uuid "adb3d0ac-7ccc-4843-9bd4-eeb82a0ce135")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "adb3d0ac-7ccc-4843-9bd4-eeb82a0ce135")
 		)
 		(instances
 			(project "MCB19"
@@ -2665,4 +2719,5 @@
 			(page "1")
 		)
 	)
+	(embedded_fonts no)
 )

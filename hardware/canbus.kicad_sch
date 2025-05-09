@@ -1,14 +1,18 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "2bb18881-6e20-4678-8ec2-bcf1f1f65c4a")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Connector:TestPoint"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.762) hide)
+				(offset 0.762)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -106,11 +110,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:C_Small"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.254) hide)
+				(offset 0.254)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -180,10 +189,10 @@
 			(symbol "C_Small_0_1"
 				(polyline
 					(pts
-						(xy -1.524 -0.508) (xy 1.524 -0.508)
+						(xy -1.524 0.508) (xy 1.524 0.508)
 					)
 					(stroke
-						(width 0.3302)
+						(width 0.3048)
 						(type default)
 					)
 					(fill
@@ -192,10 +201,10 @@
 				)
 				(polyline
 					(pts
-						(xy -1.524 0.508) (xy 1.524 0.508)
+						(xy -1.524 -0.508) (xy 1.524 -0.508)
 					)
 					(stroke
-						(width 0.3048)
+						(width 0.3302)
 						(type default)
 					)
 					(fill
@@ -241,11 +250,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:Crystal_Small"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 1.016) hide)
+				(offset 1.016)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -311,23 +325,23 @@
 				)
 			)
 			(symbol "Crystal_Small_0_1"
-				(rectangle
-					(start -0.762 -1.524)
-					(end 0.762 1.524)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
 				(polyline
 					(pts
 						(xy -1.27 -0.762) (xy -1.27 0.762)
 					)
 					(stroke
 						(width 0.381)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -0.762 -1.524)
+					(end 0.762 1.524)
+					(stroke
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -385,11 +399,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:R_Small"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.254) hide)
+				(offset 0.254)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -507,6 +526,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Interface_CAN_LIN:MCP2515-xSO"
 			(exclude_from_sim no)
@@ -590,96 +610,6 @@
 				)
 			)
 			(symbol "MCP2515-xSO_1_1"
-				(pin output line
-					(at 15.24 12.7 180)
-					(length 2.54)
-					(name "TXCAN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 15.24 -5.08 180)
-					(length 2.54)
-					(name "~{RX1BF}"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 15.24 -2.54 180)
-					(length 2.54)
-					(name "~{RX0BF}"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "11"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 15.24 0 180)
-					(length 2.54)
-					(name "~{INT}"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -15.24 7.62 0)
-					(length 2.54)
-					(name "SCK"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "13"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at -15.24 15.24 0)
 					(length 2.54)
@@ -735,16 +665,70 @@
 					)
 				)
 				(pin input line
-					(at 15.24 -15.24 180)
+					(at -15.24 7.62 0)
 					(length 2.54)
-					(name "~{RESET}"
+					(name "SCK"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "17"
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at -15.24 -5.08 0)
+					(length 2.54)
+					(name "OSC2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -15.24 -7.62 0)
+					(length 2.54)
+					(name "OSC1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at -15.24 -10.16 0)
+					(length 2.54)
+					(name "CLKOUT/SOF"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -763,6 +747,24 @@
 						)
 					)
 					(number "18"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -20.32 90)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -789,16 +791,70 @@
 					)
 				)
 				(pin output line
-					(at -15.24 -10.16 0)
+					(at 15.24 12.7 180)
 					(length 2.54)
-					(name "CLKOUT/SOF"
+					(name "TXCAN"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "3"
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 15.24 0 180)
+					(length 2.54)
+					(name "~{INT}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 15.24 -2.54 180)
+					(length 2.54)
+					(name "~{RX0BF}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 15.24 -5.08 180)
+					(length 2.54)
+					(name "~{RX1BF}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -860,53 +916,17 @@
 						)
 					)
 				)
-				(pin output line
-					(at -15.24 -5.08 0)
-					(length 2.54)
-					(name "OSC2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin input line
-					(at -15.24 -7.62 0)
+					(at 15.24 -15.24 180)
 					(length 2.54)
-					(name "OSC1"
+					(name "~{RESET}"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 -20.32 90)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
+					(number "17"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -915,6 +935,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Interface_CAN_LIN:MCP2561-E-SN"
 			(pin_names
@@ -1019,17 +1040,35 @@
 						)
 					)
 				)
-				(pin power_in line
-					(at 0 -10.16 90)
+				(pin output line
+					(at -12.7 2.54 0)
 					(length 2.54)
-					(name "VSS"
+					(name "RXD"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "2"
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 -5.08 0)
+					(length 2.54)
+					(name "STBY"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1055,17 +1094,35 @@
 						)
 					)
 				)
-				(pin output line
-					(at -12.7 2.54 0)
+				(pin power_in line
+					(at 0 -10.16 90)
 					(length 2.54)
-					(name "RXD"
+					(name "VSS"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "4"
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 12.7 2.54 180)
+					(length 2.54)
+					(name "CANH"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1109,49 +1166,18 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 12.7 2.54 180)
-					(length 2.54)
-					(name "CANH"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -12.7 -5.08 0)
-					(length 2.54)
-					(name "STBY"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:+5V"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1223,7 +1249,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -1235,7 +1261,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -1266,12 +1292,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:GND"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1362,7 +1393,20 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
+	)
+	(text "EMI/ESD Protection Solutions for the CAN Bus: \nhttps://www.onsemi.com/pub/Collateral/AND8169-D.PDF\nSparkFun CAN-Bus Shield:\nhttps://cdn.sparkfun.com/datasheets/Dev/Arduino/Shields/SparkFun_CAN-Bus_Shield_v13a.pdf"
+		(exclude_from_sim no)
+		(at 170.18 123.19 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "e1570b03-b18b-4e67-ab83-eaca581a5655")
 	)
 	(junction
 		(at 163.83 60.96)
@@ -2359,18 +2403,6 @@
 			(type default)
 		)
 		(uuid "fbece6d0-e9dd-4997-bd23-867c9698621d")
-	)
-	(text "EMI/ESD Protection Solutions for the CAN Bus: \nhttps://www.onsemi.com/pub/Collateral/AND8169-D.PDF\nSparkFun CAN-Bus Shield:\nhttps://cdn.sparkfun.com/datasheets/Dev/Arduino/Shields/SparkFun_CAN-Bus_Shield_v13a.pdf"
-		(exclude_from_sim no)
-		(at 170.18 123.19 0)
-		(effects
-			(font
-				(size 1.524 1.524)
-				(italic yes)
-			)
-			(justify left bottom)
-		)
-		(uuid "e1570b03-b18b-4e67-ab83-eaca581a5655")
 	)
 	(label "RXCAN"
 		(at 133.35 78.74 180)
@@ -3626,10 +3658,6 @@
 					(reference "U202")
 					(unit 1)
 				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d"
-					(reference "U202")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -3694,14 +3722,6 @@
 		(instances
 			(project "MCB19"
 				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aabfc1b"
-					(reference "Y201")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aaca401"
-					(reference "Y?")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d"
 					(reference "Y201")
 					(unit 1)
 				)
@@ -3774,14 +3794,6 @@
 					(reference "C203")
 					(unit 1)
 				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aaca401"
-					(reference "C?")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d"
-					(reference "C203")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -3851,14 +3863,6 @@
 					(reference "C204")
 					(unit 1)
 				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aaca401"
-					(reference "C?")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d"
-					(reference "C204")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -3924,14 +3928,6 @@
 					(reference "#PWR0210")
 					(unit 1)
 				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aaca401"
-					(reference "#PWR?")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d"
-					(reference "#PWR0210")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -3994,14 +3990,6 @@
 		(instances
 			(project "MCB19"
 				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aabfc1b"
-					(reference "#PWR0204")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aaca401"
-					(reference "#PWR?")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d"
 					(reference "#PWR0204")
 					(unit 1)
 				)
@@ -4269,14 +4257,6 @@
 					(reference "#PWR0205")
 					(unit 1)
 				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aaca401"
-					(reference "#PWR?")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d"
-					(reference "#PWR0205")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -4472,14 +4452,6 @@
 					(reference "#PWR0206")
 					(unit 1)
 				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aaca401"
-					(reference "#PWR?")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d"
-					(reference "#PWR0206")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -4545,14 +4517,6 @@
 					(reference "#PWR0211")
 					(unit 1)
 				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aaca401"
-					(reference "#PWR?")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d"
-					(reference "#PWR0211")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -4615,14 +4579,6 @@
 		(instances
 			(project "MCB19"
 				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aabfc1b"
-					(reference "#PWR0207")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aaca401"
-					(reference "#PWR?")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d"
 					(reference "#PWR0207")
 					(unit 1)
 				)
@@ -4760,14 +4716,6 @@
 					(reference "#PWR0212")
 					(unit 1)
 				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aaca401"
-					(reference "#PWR?")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d"
-					(reference "#PWR0212")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -4830,14 +4778,6 @@
 		(instances
 			(project "MCB19"
 				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aabfc1b"
-					(reference "#PWR0208")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d/00000000-0000-0000-0000-00005aaca401"
-					(reference "#PWR?")
-					(unit 1)
-				)
-				(path "/51b1c311-1fda-4f2e-af7d-ac4dbd43ce1d"
 					(reference "#PWR0208")
 					(unit 1)
 				)
