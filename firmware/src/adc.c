@@ -60,7 +60,7 @@ void adc_init(void)
                 | (0 << WGM02);      // mode 2
 
     TCNT0 = 0;
-    OCR0A = 82;              // OCR2A = TOP = fcpu/(N*2*f) -1
+    OCR0A = 82;              // OCR2A = TOP = fcpu/(N*f) -1 // Division by two only applies for toggle pin frequency.
 
     TIMSK0 |=   (1 << OCIE0A);          // Ativa a interrupcao na igualdade de comparação do TC0 com OCR0A
 
