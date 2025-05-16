@@ -492,7 +492,6 @@
         "bus_width": 12,
         "clearance": 0.127,
         "diff_pair_gap": 0.508,
-        "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.508,
         "line_style": 0,
         "microvia_diameter": 0.3,
@@ -510,7 +509,6 @@
         "bus_width": 12,
         "clearance": 0.762,
         "diff_pair_gap": 0.508,
-        "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.508,
         "line_style": 0,
         "microvia_diameter": 0.3,
@@ -536,7 +534,7 @@
         "pattern": "+12V"
       },
       {
-        "netclass": "Default",
+        "netclass": "Shunt",
         "pattern": "+5V"
       },
       {
@@ -810,7 +808,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "GERBERS/PERFURAÇÂO/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
